@@ -1,228 +1,615 @@
-<script type="text/javascript">
-        var gk_isXlsx = false;
-        var gk_xlsxFileLookup = {};
-        var gk_fileData = {};
-        function filledCell(cell) {
-          return cell !== '' && cell != null;
-        }
-        function loadFileData(filename) {
-        if (gk_isXlsx && gk_xlsxFileLookup[filename]) {
-            try {
-                var workbook = XLSX.read(gk_fileData[filename], { type: 'base64' });
-                var firstSheetName = workbook.SheetNames[0];
-                var worksheet = workbook.Sheets[firstSheetName];
-
-                // Convert sheet to JSON to filter blank rows
-                var jsonData = XLSX.utils.sheet_to_json(worksheet, { header: 1, blankrows: false, defval: '' });
-                // Filter out blank rows (rows where all cells are empty, null, or undefined)
-                var filteredData = jsonData.filter(row => row.some(filledCell));
-
-                // Heuristic to find the header row by ignoring rows with fewer filled cells than the next row
-                var headerRowIndex = filteredData.findIndex((row, index) =>
-                  row.filter(filledCell).length >= filteredData[index + 1]?.filter(filledCell).length
-                );
-                // Fallback
-                if (headerRowIndex === -1 || headerRowIndex > 25) {
-                  headerRowIndex = 0;
-                }
-
-                // Convert filtered JSON back to CSV
-                var csv = XLSX.utils.aoa_to_sheet(filteredData.slice(headerRowIndex)); // Create a new sheet from filtered array of arrays
-                csv = XLSX.utils.sheet_to_csv(csv, { header: 1 });
-                return csv;
-            } catch (e) {
-                console.error(e);
-                return "";
-            }
-        }
-        return gk_fileData[filename] || "";
-        }
-        </script><!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Aesthetic Blog</title>
+    <title>Dr. Thach-Thao L.T. - Linguistics Researcher</title>
     <style>
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Georgia', serif;
+        }
+
+        :root {
+            --primary-color: #2c3e50;
+            --secondary-color: #3498db;
+            --accent-color: #e74c3c;
+            --text-color: #2c3e50;
+            --light-bg: #f8f9fa;
+            --white: #ffffff;
+            --shadow: 0 4px 20px rgba(0,0,0,0.1);
+            --gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
         }
 
         body {
-            background: #f9f1f0;
-            color: #4a4a4a;
+            font-family: 'Georgia', 'Times New Roman', serif;
             line-height: 1.6;
-        }
-
-        header {
-            background: linear-gradient(135deg, #f8e1e9, #d8e2dc);
-            padding: 3rem 2rem;
-            text-align: center;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-        }
-
-        header h1 {
-            font-size: 2.5rem;
-            color: #6b5e62;
-            margin-bottom: 0.5rem;
-            transition: transform 0.3s ease;
-        }
-
-        header h1:hover {
-            transform: scale(1.05);
-        }
-
-        header p {
-            font-size: 1.2rem;
-            color: #8a7f82;
-        }
-
-        nav {
-            background: #fff;
-            padding: 1rem;
-            text-align: center;
-            position: sticky;
-            top: 0;
-            z-index: 100;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-        }
-
-        nav a {
-            color: #6b5e62;
-            text-decoration: none;
-            margin: 0 1.5rem;
-            font-size: 1.1rem;
-            transition: color 0.3s ease;
-        }
-
-        nav a:hover {
-            color: #d8a7b1;
+            color: var(--text-color);
+            background: var(--light-bg);
         }
 
         .container {
-            max-width: 800px;
-            margin: 2rem auto;
-            padding: 0 1.5rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
         }
 
-        .blog-post {
-            background: #fff;
-            padding: 2rem;
+        /* Navigation */
+        nav {
+            background: var(--white);
+            box-shadow: var(--shadow);
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 0;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--primary-color);
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-color);
+            font-weight: 500;
+            transition: color 0.3s ease;
+            cursor: pointer;
+        }
+
+        .nav-links a:hover {
+            color: var(--secondary-color);
+        }
+
+        /* Main Content */
+        main {
+            margin-top: 80px;
+            min-height: calc(100vh - 80px);
+        }
+
+        .page {
+            display: none;
+            padding: 3rem 0;
+        }
+
+        .page.active {
+            display: block;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: var(--gradient);
+            color: var(--white);
+            padding: 5rem 0;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .hero .subtitle {
+            font-size: 1.3rem;
             margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: var(--accent-color);
+            color: var(--white);
+            padding: 1rem 2rem;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.2);
+        }
+
+        /* Cards */
+        .card {
+            background: var(--white);
+            padding: 2rem;
+            margin: 2rem 0;
             border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            box-shadow: var(--shadow);
             transition: transform 0.3s ease;
         }
 
-        .blog-post:hover {
+        .card:hover {
             transform: translateY(-5px);
         }
 
-        .blog-post h2 {
-            font-size: 1.8rem;
-            color: #6b5e62;
+        .card h2 {
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+            border-bottom: 3px solid var(--secondary-color);
+            padding-bottom: 0.5rem;
+        }
+
+        .card h3 {
+            color: var(--secondary-color);
+            margin: 1.5rem 0 0.5rem 0;
+        }
+
+        /* Research Interests */
+        .interests-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1rem;
+            margin: 2rem 0;
+        }
+
+        .interest-tag {
+            background: var(--secondary-color);
+            color: var(--white);
+            padding: 1rem;
+            text-align: center;
+            border-radius: 8px;
+            font-weight: 500;
+            transition: background 0.3s ease;
+        }
+
+        .interest-tag:hover {
+            background: var(--primary-color);
+        }
+
+        /* Publications */
+        .publication {
+            margin: 1.5rem 0;
+            padding: 1rem;
+            border-left: 4px solid var(--secondary-color);
+            background: rgba(52, 152, 219, 0.05);
+        }
+
+        .publication-title {
+            font-weight: bold;
+            color: var(--primary-color);
             margin-bottom: 0.5rem;
         }
 
-        .blog-post .date {
-            font-size: 0.9rem;
-            color: #8a7f82;
-            margin-bottom: 1rem;
+        .publication-details {
+            font-style: italic;
+            color: #666;
         }
 
-        .blog-post p {
-            margin-bottom: 1rem;
+        /* Awards */
+        .award {
+            display: flex;
+            align-items: center;
+            margin: 1rem 0;
+            padding: 1rem;
+            background: rgba(231, 76, 60, 0.05);
+            border-radius: 8px;
         }
 
-        .read-more {
-            color: #d8a7b1;
-            text-decoration: none;
+        .award-icon {
+            background: var(--accent-color);
+            color: var(--white);
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 1rem;
             font-weight: bold;
-            transition: color 0.3s ease;
         }
 
-        .read-more:hover {
-            color: #b5838d;
+        /* Contact */
+        .contact-info {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin: 2rem 0;
         }
 
+        /* Footer */
         footer {
-            background: #6b5e62;
-            color: #fff;
+            background: var(--primary-color);
+            color: var(--white);
             text-align: center;
-            padding: 1.5rem;
-            margin-top: 2rem;
+            padding: 2rem 0;
+            margin-top: 3rem;
         }
 
-        footer p {
-            font-size: 1rem;
-        }
-
-        @media (max-width: 600px) {
-            header h1 {
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            
+            .hero h1 {
                 font-size: 2rem;
             }
-
-            nav a {
-                margin: 0 0.8rem;
-                font-size: 1rem;
+            
+            .hero .subtitle {
+                font-size: 1.1rem;
             }
-
-            .blog-post h2 {
-                font-size: 1.5rem;
+            
+            .interests-grid {
+                grid-template-columns: 1fr;
             }
+        }
+
+        /* Animation */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .fade-in {
+            animation: fadeInUp 0.6s ease-out;
         }
     </style>
 </head>
 <body>
-    <header>
-        <h1>My Aesthetic Blog</h1>
-        <p>Thoughts, dreams, and stories in a serene space</p>
-    </header>
-
+    <!-- Navigation -->
     <nav>
-        <a href="#home">Home</a>
-        <a href="#about">About</a>
-        <a href="#blog">Blog</a>
-        <a href="#contact">Contact</a>
+        <div class="container">
+            <div class="nav-container">
+                <div class="logo">Dr. Thach-Thao L.T.</div>
+                <ul class="nav-links">
+                    <li><a onclick="showPage('home')">Home</a></li>
+                    <li><a onclick="showPage('about')">About</a></li>
+                    <li><a onclick="showPage('research')">Research</a></li>
+                    <li><a onclick="showPage('publications')">Publications</a></li>
+                    <li><a onclick="showPage('awards')">Awards</a></li>
+                    <li><a onclick="showPage('contact')">Contact</a></li>
+                </ul>
+            </div>
+        </div>
     </nav>
 
-    <div class="container">
-        <div class="blog-post">
-            <h2>Sunrise by the Coast</h2>
-            <div class="date">June 25, 2025</div>
-            <p>
-                The morning air was crisp, with the soft glow of the sunrise painting the sky in hues of pink and gold. Walking along the coast, I felt the world wake up around me—birds soaring, waves whispering. Moments like these remind me to pause and breathe.
-            </p>
-            <a href="#" class="read-more">Read More</a>
+    <!-- Main Content -->
+    <main>
+        <!-- Home Page -->
+        <div id="home" class="page active">
+            <section class="hero">
+                <div class="container">
+                    <h1>Dr. Thach-Thao L.T.</h1>
+                    <p class="subtitle">Ph.D. Candidate in Linguistics | Researcher in Sociolinguistics & AI-Assisted Language Learning</p>
+                    <a href="#" class="cta-button" onclick="showPage('about')">Learn More About My Work</a>
+                </div>
+            </section>
+
+            <div class="container">
+                <div class="card fade-in">
+                    <h2>Welcome to My Academic Journey</h2>
+                    <p>I am a Ph.D. candidate in Linguistics at National Taiwan University, specializing in sociolinguistics, multilingualism, and computational linguistics. My research focuses on Vietnamese immigrant children's translanguaging practices, AI-assisted language learning, and multimodal metaphor analysis.</p>
+                    
+                    <div class="interests-grid">
+                        <div class="interest-tag">Sociolinguistics</div>
+                        <div class="interest-tag">Multilingualism</div>
+                        <div class="interest-tag">Computational Linguistics</div>
+                        <div class="interest-tag">AI-Assisted Language Learning</div>
+                        <div class="interest-tag">Multimodal Metaphor Analysis</div>
+                        <div class="interest-tag">Corpus Linguistics</div>
+                    </div>
+                </div>
+            </div>
         </div>
 
-        <div class="blog-post">
-            <h2>A World of Imagination</h2>
-            <div class="date">June 20, 2025</div>
-            <p>
-                Sitting under a tree with a book, I let my mind wander through vibrant worlds. The clouds above seemed to dance, blending reality with dreams. There's magic in stories, and I’m chasing that spark every day.
-            </p>
-            <a href="#" class="read-more">Read More</a>
+        <!-- About Page -->
+        <div id="about" class="page">
+            <div class="container">
+                <div class="card fade-in">
+                    <h2>About Me</h2>
+                    <p>I am a dedicated linguistics researcher currently pursuing my Ph.D. at the Graduate Institute of Linguistics at National Taiwan University. My academic journey has taken me from Vietnam to Taiwan, where I have developed expertise in multiple areas of linguistics and applied research.</p>
+                    
+                    <h3>Educational Background</h3>
+                    <div class="card">
+                        <h4>Ph.D. Program in Linguistics (2024 - Present)</h4>
+                        <p><strong>Graduate Institute of Linguistics</strong><br>
+                        National Taiwan University, Taiwan</p>
+                    </div>
+                    
+                    <div class="card">
+                        <h4>Master Program in TESOL and Applied Linguistics (2021 - 2024)</h4>
+                        <p><strong>National Kaohsiung University of Science and Technology (NKUST)</strong><br>
+                        Taiwan</p>
+                    </div>
+                    
+                    <div class="card">
+                        <h4>B.A in English Language Studies (2015 - 2019)</h4>
+                        <p><strong>Dalat University</strong><br>
+                        Vietnam</p>
+                    </div>
+                </div>
+            </div>
         </div>
-    </div>
 
+        <!-- Research Page -->
+        <div id="research" class="page">
+            <div class="container">
+                <div class="card fade-in">
+                    <h2>Research Interests</h2>
+                    <p>My research spans multiple interconnected areas of linguistics, with a particular focus on multilingual communities and the intersection of technology with language learning.</p>
+                    
+                    <div class="interests-grid">
+                        <div class="interest-tag">
+                            <h4>Sociolinguistics</h4>
+                            <p>Studying language in social contexts and communities</p>
+                        </div>
+                        <div class="interest-tag">
+                            <h4>Multilingualism</h4>
+                            <p>Exploring how multiple languages interact and coexist</p>
+                        </div>
+                        <div class="interest-tag">
+                            <h4>Computational Linguistics</h4>
+                            <p>Applying computational methods to linguistic analysis</p>
+                        </div>
+                        <div class="interest-tag">
+                            <h4>AI-Assisted Language Learning</h4>
+                            <p>Investigating how AI can enhance language education</p>
+                        </div>
+                        <div class="interest-tag">
+                            <h4>Multimodal Metaphor Analysis</h4>
+                            <p>Analyzing metaphors across different communication modes</p>
+                        </div>
+                        <div class="interest-tag">
+                            <h4>Corpus Linguistics</h4>
+                            <p>Using large language datasets for linguistic research</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <h2>Current Research Projects</h2>
+                    <p>My current work focuses on understanding how Vietnamese immigrant families navigate multilingual environments in Taiwan, and how AI technologies can be better integrated into language learning contexts.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Publications Page -->
+        <div id="publications" class="page">
+            <div class="container">
+                <div class="card fade-in">
+                    <h2>Publications</h2>
+                    
+                    <h3>Journal Articles</h3>
+                    <div class="publication">
+                        <div class="publication-title">Navigating multilingual worlds: Vietnamese immigrant children's translanguaging practices and family resilience in Taiwan</div>
+                        <div class="publication-details">Thach-Thao, L. T. (2025). [Manuscript submitted for publication]. (Under review at a Q1 linguistics journal)</div>
+                    </div>
+
+                    <h3>Book Chapters</h3>
+                    <div class="publication">
+                        <div class="publication-title">War on waste: Metaphorical Warfare in Environmental Advertising</div>
+                        <div class="publication-details">Thach-Thao, L. T., & Thanh-Nhan, Le. (2025). In F. E. Anderson, J. C. Maher, & B. J. Sethna (Eds.), Language for Peace and Education. Candlin & Mynard e-Publishing. (Abstract accepted; full book chapter invited by editors)</div>
+                    </div>
+
+                    <h3>Conference Presentations</h3>
+                    <div class="publication">
+                        <div class="publication-title">University students' perceptions of ChatGPT and Deepseek: An extended TAM study in linguistics and language education</div>
+                        <div class="publication-details">Thach-Thao, L. T., & Thanh-Nhan, Le. (2025, July 16–18). Paper presented at the 2025 Annual Conference of the Linguistic Association of Canada and the United States (LACUS), Western University, London, Ontario, Canada.</div>
+                    </div>
+
+                    <div class="publication">
+                        <div class="publication-title">Unraveling the Intercultural Identity of Vietnamese-Taiwanese Children: A Sociocultural-Ecological-Systems Analysis</div>
+                        <div class="publication-details">Thach-Thao, L. T., & Thanh-Nhan, Le. (2025, March). Accepted for roundtable presentation at the American Association for Applied Linguistics (AAAL) 2025 Conference, Denver, Colorado, USA.</div>
+                    </div>
+
+                    <div class="publication">
+                        <div class="publication-title">War on Waste: Metaphorical Warfare in Environmental Advertising</div>
+                        <div class="publication-details">Thach-Thao, L. T. & Thanh-Nhan, Le. (2024, December). Paper presented at the Linguapax Asia 2024 International Symposium at Eikei University of Hiroshima, Hiroshima, Japan.</div>
+                    </div>
+
+                    <div class="publication">
+                        <div class="publication-title">Strategic Use and Effectiveness of Metaphors and Metonymies in Non-Commercial Climate Change Advertisements</div>
+                        <div class="publication-details">Thach-Thao, L. T. (2024, December). Paper presented at the First Eurasian Congress of Linguists [Virtual oral presentation] at Russian Academy of Sciences, Moscow, Russia.</div>
+                    </div>
+
+                    <div class="publication">
+                        <div class="publication-title">Decoding AI Discourse: Insights from TED Talks on Themes, Language, and Communication Strategies</div>
+                        <div class="publication-details">Thach-Thao, L. T. (2024, May). Poster presented at The 11th Conference on Language, Discourse, and Cognition (CLDC 11) at National Taiwan University, Taiwan.</div>
+                    </div>
+
+                    <div class="publication">
+                        <div class="publication-title">Artificial Intelligence's Impacts on English Language Learning: A Systematic Review</div>
+                        <div class="publication-details">Thach-Thao, L. T., & Thanh-Nhan, Le. (2024, April). Paper presented at TESOL 2024 International Convention & English Language Expo [Virtual oral presentation], Tampa, Florida, USA.</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Awards Page -->
+        <div id="awards" class="page">
+            <div class="container">
+                <div class="card fade-in">
+                    <h2>Honors & Awards</h2>
+                    
+                    <div class="award">
+                        <div class="award-icon">🏆</div>
+                        <div>
+                            <h4>First Prize - National Collegiate UN SDGs Youth Advocates Contest</h4>
+                            <p>English Proposal Contest (November 2022)<br>
+                            National Kaohsiung University of Science and Technology, Ministry of Education, Taiwan</p>
+                        </div>
+                    </div>
+
+                    <div class="award">
+                        <div class="award-icon">🥉</div>
+                        <div>
+                            <h4>Third Prize - Green Pitch Competition</h4>
+                            <p>March 2022<br>
+                            National Kaohsiung University of Science and Technology, Taiwan</p>
+                        </div>
+                    </div>
+
+                    <div class="award">
+                        <div class="award-icon">🎥</div>
+                        <div>
+                            <h4>Best Award "Most Likes" Video Creator</h4>
+                            <p>Taiwan TikTok Video Competition (November 2020)<br>
+                            Taiwan Tourism Bureau, Ministry of Transportation and Communications, Taiwan</p>
+                        </div>
+                    </div>
+
+                    <div class="award">
+                        <div class="award-icon">📄</div>
+                        <div>
+                            <h4>Best Student Paper</h4>
+                            <p>Student Scientific Research Conference (June 2019)<br>
+                            Dalat University, Vietnam</p>
+                        </div>
+                    </div>
+
+                    <div class="award">
+                        <div class="award-icon">⭐</div>
+                        <div>
+                            <h4>Top Honor for Excellence</h4>
+                            <p>Union Activities and Youth Movements (June 2019)<br>
+                            Dalat University, Vietnam</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <h2>Scholarships & Grants</h2>
+                    
+                    <h3>Current Funding</h3>
+                    <div class="publication">
+                        <div class="publication-title">Scholarship for Outstanding International Graduate Student</div>
+                        <div class="publication-details">National Taiwan University, Taiwan (February 2024 – Present)</div>
+                    </div>
+
+                    <h3>Previous Funding</h3>
+                    <div class="publication">
+                        <div class="publication-title">Scholarship for Outstanding International Students</div>
+                        <div class="publication-details">National Kaohsiung University of Science and Technology, Taiwan (September 2021 – January 2024)</div>
+                    </div>
+
+                    <div class="publication">
+                        <div class="publication-title">Future Seeds Project Grant</div>
+                        <div class="publication-details">Call Over Ridges Organization, Taiwan (March 2021 – January 2022)</div>
+                    </div>
+
+                    <div class="publication">
+                        <div class="publication-title">Huayu Enrichment Scholarship</div>
+                        <div class="publication-details">Taiwan Ministry of Education Scholarship (September 2019 – June 2020)</div>
+                    </div>
+
+                    <div class="publication">
+                        <div class="publication-title">Dalat University Scholarship for Outstanding Students</div>
+                        <div class="publication-details">September 2015 – June 2019</div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <h2>Invited Talks</h2>
+                    
+                    <div class="publication">
+                        <div class="publication-title">Guest Speaker - 2022 Annual Donors Gathering Event</div>
+                        <div class="publication-details">Call Over Ridges Organization, Taipei city, Taiwan (January 2022)</div>
+                    </div>
+
+                    <div class="publication">
+                        <div class="publication-title">Panelist - 2021 Asia Social Impact Incubation Program</div>
+                        <div class="publication-details">Call Over Ridges Organization, Taipei city, Taiwan (November 2021)</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Contact Page -->
+        <div id="contact" class="page">
+            <div class="container">
+                <div class="card fade-in">
+                    <h2>Contact Information</h2>
+                    
+                    <div class="contact-info">
+                        <div>
+                            <h3>Academic Affiliation</h3>
+                            <p><strong>Ph.D. Candidate</strong><br>
+                            Graduate Institute of Linguistics<br>
+                            National Taiwan University<br>
+                            Taiwan</p>
+                        </div>
+                        
+                        <div>
+                            <h3>Research Collaboration</h3>
+                            <p>I welcome opportunities for research collaboration, especially in areas related to multilingualism, AI-assisted language learning, and sociolinguistic research.</p>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <h3>Areas of Expertise</h3>
+                        <div class="interests-grid">
+                            <div class="interest-tag">Sociolinguistic Research</div>
+                            <div class="interest-tag">Multilingual Education</div>
+                            <div class="interest-tag">AI & Language Learning</div>
+                            <div class="interest-tag">Corpus Analysis</div>
+                            <div class="interest-tag">Metaphor Studies</div>
+                            <div class="interest-tag">Cross-cultural Research</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
     <footer>
-        <p>&copy; 2025 My Aesthetic Blog. Made with love.</p>
+        <div class="container">
+            <p>&copy; 2025 Dr. Thach-Thao L.T. All rights reserved. | Ph.D. Candidate in Linguistics, National Taiwan University</p>
+        </div>
     </footer>
 
     <script>
-        // Smooth scroll for nav links
-        document.querySelectorAll('nav a').forEach(anchor => {
-            anchor.addEventListener('click', function(e) {
-                e.preventDefault();
-                const section = document.querySelector(this.getAttribute('href'));
-                if (section) {
-                    section.scrollIntoView({ behavior: 'smooth' });
-                }
+        function showPage(pageId) {
+            // Hide all pages
+            const pages = document.querySelectorAll('.page');
+            pages.forEach(page => {
+                page.classList.remove('active');
             });
+            
+            // Show selected page
+            const selectedPage = document.getElementById(pageId);
+            selectedPage.classList.add('active');
+            
+            // Add fade-in animation
+            selectedPage.classList.add('fade-in');
+            
+            // Remove animation class after animation completes
+            setTimeout(() => {
+                selectedPage.classList.remove('fade-in');
+            }, 600);
+            
+            // Scroll to top
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        // Add smooth scrolling for mobile menu (if implemented)
+        document.addEventListener('DOMContentLoaded', function() {
+            // Add any additional initialization here
         });
     </script>
 </body>
