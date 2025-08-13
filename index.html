@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dr. Thach-Thao L.T. - Linguistics Researcher</title>
+    <title>Thach-Thao L.T. Linguistics Researcher</title>
     <style>
         * {
             margin: 0;
@@ -109,6 +109,44 @@
             font-size: 1.3rem;
             margin-bottom: 2rem;
             opacity: 0.9;
+        }
+
+        /* Profile Picture */
+        .profile-picture {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            border: 4px solid var(--white);
+            box-shadow: 0 8px 30px rgba(0,0,0,0.3);
+            margin: 0 auto 2rem auto;
+            display: block;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+
+        .profile-picture:hover {
+            transform: scale(1.05);
+        }
+
+        /* About page profile */
+        .about-profile {
+            display: flex;
+            align-items: flex-start;
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .about-profile-img {
+            width: 250px;
+            height: 300px;
+            border-radius: 10px;
+            box-shadow: var(--shadow);
+            object-fit: cover;
+            flex-shrink: 0;
+        }
+
+        .about-content {
+            flex: 1;
         }
 
         .cta-button {
@@ -251,6 +289,22 @@
             .interests-grid {
                 grid-template-columns: 1fr;
             }
+
+            .profile-picture {
+                width: 150px;
+                height: 150px;
+            }
+
+            .about-profile {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .about-profile-img {
+                width: 200px;
+                height: 240px;
+                margin: 0 auto;
+            }
         }
 
         /* Animation */
@@ -275,7 +329,7 @@
     <nav>
         <div class="container">
             <div class="nav-container">
-                <div class="logo">Dr. Thach-Thao L.T.</div>
+                <div class="logo">Le Thi Thach Thao</div>
                 <ul class="nav-links">
                     <li><a onclick="showPage('home')">Home</a></li>
                     <li><a onclick="showPage('about')">About</a></li>
@@ -294,8 +348,10 @@
         <div id="home" class="page active">
             <section class="hero">
                 <div class="container">
-                    <h1>Dr. Thach-Thao L.T.</h1>
-                    <p class="subtitle">Ph.D. Candidate in Linguistics | Researcher in Sociolinguistics & AI-Assisted Language Learning</p>
+                    <!-- My profile picture - local file -->
+                    <img src="thach thao.jpg" alt="Le Thi Thach Thao" class="profile-picture">
+                    <h1>Le Thi Thach Thao (Jessica)</h1>
+                    <p class="subtitle">Ph.D. Student in Linguistics | Researcher in Sociolinguistics & AI-Assisted Language Learning</p>
                     <a href="#" class="cta-button" onclick="showPage('about')">Learn More About My Work</a>
                 </div>
             </section>
@@ -303,7 +359,7 @@
             <div class="container">
                 <div class="card fade-in">
                     <h2>Welcome to My Academic Journey</h2>
-                    <p>I am a Ph.D. candidate in Linguistics at National Taiwan University, specializing in sociolinguistics, multilingualism, and computational linguistics. My research focuses on Vietnamese immigrant children's translanguaging practices, AI-assisted language learning, and multimodal metaphor analysis.</p>
+                    <p>I am a Ph.D. student in Linguistics at National Taiwan University, specializing in sociolinguistics, multilingualism, and computational linguistics. My research focuses on Vietnamese immigrant children's translanguaging practices, AI-assisted language learning, and multimodal metaphor analysis.</p>
                     
                     <div class="interests-grid">
                         <div class="interest-tag">Sociolinguistics</div>
@@ -322,7 +378,14 @@
             <div class="container">
                 <div class="card fade-in">
                     <h2>About Me</h2>
-                    <p>I am a dedicated linguistics researcher currently pursuing my Ph.D. at the Graduate Institute of Linguistics at National Taiwan University. My academic journey has taken me from Vietnam to Taiwan, where I have developed expertise in multiple areas of linguistics and applied research.</p>
+                    <div class="about-profile">
+                        <!-- Same photo for about page -->
+                        <img src="thach thao.jpg" alt="Le Thi Thach Thao Professional Photo" class="about-profile-img">
+                        <div class="about-content">
+                            <p>I am a dedicated linguistics researcher currently pursuing my Ph.D. at the Graduate Institute of Linguistics at National Taiwan University. My academic journey has taken me from Vietnam to Taiwan, where I have developed expertise in multiple areas of linguistics and applied research.</p>
+                            <p>My research focuses on understanding multilingual communities, particularly Vietnamese immigrant families in Taiwan, and exploring how artificial intelligence can enhance language learning experiences.</p>
+                        </div>
+                    </div>
                     
                     <h3>Educational Background</h3>
                     <div class="card">
@@ -402,21 +465,28 @@
 
                     <h3>Book Chapters</h3>
                     <div class="publication">
+                        <div class="publication-title">Empowering voices: Vietnamese mothers' agency in multilingual heritage preservation in Taiwan</div>
+                        <div class="publication-details">Thach-Thao, L. T., & Thanh-Nhan, Le. (2025). (in press). In [Eds. to be determined]. To appear in the Scopus-indexed book chapter of the 10th International Language Learning Conference (ILLC) 2025. [Publisher to be determined].</div>
+                    </div>
+                    <div class="publication">
                         <div class="publication-title">War on waste: Metaphorical Warfare in Environmental Advertising</div>
                         <div class="publication-details">Thach-Thao, L. T., & Thanh-Nhan, Le. (2025). In F. E. Anderson, J. C. Maher, & B. J. Sethna (Eds.), Language for Peace and Education. Candlin & Mynard e-Publishing. (Abstract accepted; full book chapter invited by editors)</div>
+                    </div>
+                    <div class="publication">
+                        <div class="publication-title">The Effects of Improving Working Memory on Interpretation Process of English Major Students</div>
+                        <div class="publication-details">Thach-Thao, L. T., My, H. T. T., Anh, N. H. M., & Van, T. T. M. (2020, December). In the Proceedings of ELT for Life Long Learning in the New Decade: 5th International Conference of English Language Teaching (pp. 139-156). Ho Chi Minh City, Vietnam: Macmillan Education. ISBN: 978-604-73-8009-1.</div>
                     </div>
 
                     <h3>Conference Presentations</h3>
                     <div class="publication">
+                        <div class="publication-title">The perception-preference paradox in AI platform adoption: How geopolitical tensions and subconscious biases shape language education technology choices</div>
+                        <div class="publication-details">Thanh-Nhan, Le., & Thach-Thao, L. T. (2025, September). (Accepted). The 10th International Language Learning Conference (ILLC 2025), Universiti Sains Malaysia, Penang, Malaysia</div>
+                    </div>
+                    <div class="publication">
                         <div class="publication-title">University students' perceptions of ChatGPT and Deepseek: An extended TAM study in linguistics and language education</div>
                         <div class="publication-details">Thach-Thao, L. T., & Thanh-Nhan, Le. (2025, July 16–18). Paper presented at the 2025 Annual Conference of the Linguistic Association of Canada and the United States (LACUS), Western University, London, Ontario, Canada.</div>
                     </div>
-
-                    <div class="publication">
-                        <div class="publication-title">Unraveling the Intercultural Identity of Vietnamese-Taiwanese Children: A Sociocultural-Ecological-Systems Analysis</div>
-                        <div class="publication-details">Thach-Thao, L. T., & Thanh-Nhan, Le. (2025, March). Accepted for roundtable presentation at the American Association for Applied Linguistics (AAAL) 2025 Conference, Denver, Colorado, USA.</div>
-                    </div>
-
+    
                     <div class="publication">
                         <div class="publication-title">War on Waste: Metaphorical Warfare in Environmental Advertising</div>
                         <div class="publication-details">Thach-Thao, L. T. & Thanh-Nhan, Le. (2024, December). Paper presented at the Linguapax Asia 2024 International Symposium at Eikei University of Hiroshima, Hiroshima, Japan.</div>
@@ -436,6 +506,11 @@
                         <div class="publication-title">Artificial Intelligence's Impacts on English Language Learning: A Systematic Review</div>
                         <div class="publication-details">Thach-Thao, L. T., & Thanh-Nhan, Le. (2024, April). Paper presented at TESOL 2024 International Convention & English Language Expo [Virtual oral presentation], Tampa, Florida, USA.</div>
                     </div>
+
+                    <div class="publication">
+                        <div class="publication-title">Analyzing Generic Moves and Lexical Bundles in Ted Talks</div>
+                        <div class="publication-details">Thach-Thao, L. T., Thanh-Nhan, Le., & Shi-Jen, Huang. (2023, November). Paper presented at 49th Annual International Conference on Language Teaching and Learning & Educational Materials Exhibition [Virtual oral presentation] of The Japan Association for Language Teaching (JALT), Tsukuba, Ibaraki, Japan.</div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -446,6 +521,15 @@
                 <div class="card fade-in">
                     <h2>Honors & Awards</h2>
                     
+                    <div class="award">
+                        <div class="award-icon">📄</div>
+                        <div>
+                            <h4>The Presidents' Prize for the Best Pre-Doctoral Paper</h4>
+                            <p>The Fifty First LACUS Forum (July 2025)<br>
+                            The University of Western Ontario, London, Canada</p>
+                        </div>
+                    </div>
+
                     <div class="award">
                         <div class="award-icon">🏆</div>
                         <div>
@@ -548,7 +632,7 @@
                     <div class="contact-info">
                         <div>
                             <h3>Academic Affiliation</h3>
-                            <p><strong>Ph.D. Candidate</strong><br>
+                            <p><strong>Ph.D. Student</strong><br>
                             Graduate Institute of Linguistics<br>
                             National Taiwan University<br>
                             Taiwan</p>
@@ -579,7 +663,7 @@
     <!-- Footer -->
     <footer>
         <div class="container">
-            <p>&copy; 2025 Dr. Thach-Thao L.T. All rights reserved. | Ph.D. Candidate in Linguistics, National Taiwan University</p>
+            <p>&copy; 2025 Le Thi Thach-Thao. All rights reserved. | Ph.D. Student in Linguistics, National Taiwan University</p>
         </div>
     </footer>
 
