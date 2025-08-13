@@ -76,6 +76,46 @@
             color: var(--secondary-color);
         }
 
+        /* Mobile Menu */
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            color: var(--primary-color);
+            cursor: pointer;
+            padding: 0.5rem;
+        }
+
+        .mobile-menu {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            right: 0;
+            background: var(--white);
+            box-shadow: var(--shadow);
+            padding: 1rem 0;
+        }
+
+        .mobile-menu.active {
+            display: block;
+        }
+
+        .mobile-menu a {
+            display: block;
+            padding: 1rem 2rem;
+            text-decoration: none;
+            color: var(--text-color);
+            border-bottom: 1px solid #eee;
+            transition: background 0.3s ease;
+        }
+
+        .mobile-menu a:hover {
+            background: var(--light-bg);
+            color: var(--secondary-color);
+        }
+
         /* Main Content */
         main {
             margin-top: 80px;
@@ -277,6 +317,10 @@
             .nav-links {
                 display: none;
             }
+
+            .mobile-menu-btn {
+                display: block;
+            }
             
             .hero h1 {
                 font-size: 2rem;
@@ -330,6 +374,8 @@
         <div class="container">
             <div class="nav-container">
                 <div class="logo">Le Thi Thach Thao</div>
+                
+                <!-- Desktop Navigation -->
                 <ul class="nav-links">
                     <li><a onclick="showPage('home')">Home</a></li>
                     <li><a onclick="showPage('about')">About</a></li>
@@ -338,6 +384,19 @@
                     <li><a onclick="showPage('awards')">Awards</a></li>
                     <li><a onclick="showPage('contact')">Contact</a></li>
                 </ul>
+
+                <!-- Mobile Menu Button -->
+                <button class="mobile-menu-btn" onclick="toggleMobileMenu()">☰</button>
+                
+                <!-- Mobile Menu -->
+                <div class="mobile-menu" id="mobileMenu">
+                    <a onclick="showPage('home'); closeMobileMenu()">Home</a>
+                    <a onclick="showPage('about'); closeMobileMenu()">About</a>
+                    <a onclick="showPage('research'); closeMobileMenu()">Research</a>
+                    <a onclick="showPage('publications'); closeMobileMenu()">Publications</a>
+                    <a onclick="showPage('awards'); closeMobileMenu()">Awards</a>
+                    <a onclick="showPage('contact'); closeMobileMenu()">Contact</a>
+                </div>
             </div>
         </div>
     </nav>
@@ -348,8 +407,8 @@
         <div id="home" class="page active">
             <section class="hero">
                 <div class="container">
-                    <!-- My profile picture - local file -->
-                    <img src="thach thao.jpg" alt="Le Thi Thach Thao" class="profile-picture">
+                    <!-- Your profile picture - local file -->
+                    <img src="profile.jpg" alt="Le Thi Thach Thao" class="profile-picture">
                     <h1>Le Thi Thach Thao (Jessica)</h1>
                     <p class="subtitle">Ph.D. Student in Linguistics | Researcher in Sociolinguistics & AI-Assisted Language Learning</p>
                     <a href="#" class="cta-button" onclick="showPage('about')">Learn More About My Work</a>
@@ -379,8 +438,8 @@
                 <div class="card fade-in">
                     <h2>About Me</h2>
                     <div class="about-profile">
-                        <!-- Same photo for about page -->
-                        <img src="thach thao.jpg" alt="Le Thi Thach Thao Professional Photo" class="about-profile-img">
+                        <!-- Same photo for about page - local file -->
+                        <img src="profile.jpg" alt="Le Thi Thach Thao Professional Photo" class="about-profile-img">
                         <div class="about-content">
                             <p>I am a dedicated linguistics researcher currently pursuing my Ph.D. at the Graduate Institute of Linguistics at National Taiwan University. My academic journey has taken me from Vietnam to Taiwan, where I have developed expertise in multiple areas of linguistics and applied research.</p>
                             <p>My research focuses on understanding multilingual communities, particularly Vietnamese immigrant families in Taiwan, and exploring how artificial intelligence can enhance language learning experiences.</p>
@@ -522,15 +581,6 @@
                     <h2>Honors & Awards</h2>
                     
                     <div class="award">
-                        <div class="award-icon">📄</div>
-                        <div>
-                            <h4>The Presidents' Prize for the Best Pre-Doctoral Paper</h4>
-                            <p>The Fifty First LACUS Forum (July 2025)<br>
-                            The University of Western Ontario, London, Canada</p>
-                        </div>
-                    </div>
-
-                    <div class="award">
                         <div class="award-icon">🏆</div>
                         <div>
                             <h4>First Prize - National Collegiate UN SDGs Youth Advocates Contest</h4>
@@ -633,6 +683,7 @@
                         <div>
                             <h3>Academic Affiliation</h3>
                             <p><strong>Ph.D. Student</strong><br>
+                            Email: d12142001@ntu.edu.tw<br>
                             Graduate Institute of Linguistics<br>
                             National Taiwan University<br>
                             Taiwan</p>
@@ -690,6 +741,26 @@
             // Scroll to top
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
+
+        function toggleMobileMenu() {
+            const mobileMenu = document.getElementById('mobileMenu');
+            mobileMenu.classList.toggle('active');
+        }
+
+        function closeMobileMenu() {
+            const mobileMenu = document.getElementById('mobileMenu');
+            mobileMenu.classList.remove('active');
+        }
+
+        // Close mobile menu when clicking outside
+        document.addEventListener('click', function(event) {
+            const mobileMenu = document.getElementById('mobileMenu');
+            const menuBtn = document.querySelector('.mobile-menu-btn');
+            
+            if (!mobileMenu.contains(event.target) && !menuBtn.contains(event.target)) {
+                mobileMenu.classList.remove('active');
+            }
+        });
 
         // Add smooth scrolling for mobile menu (if implemented)
         document.addEventListener('DOMContentLoaded', function() {
