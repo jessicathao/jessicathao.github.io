@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contact Me | Thao Le</title>
+    <title>Contact | Thao Le</title>
     <link rel="stylesheet" href="css/style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -30,44 +30,83 @@
     </header>
 
     <main>
-        <section class="post-header">
+        <section class="contact-section">
             <div class="container">
-                <h1>Get in Touch</h1>
-                <p>I'd love to hear from you!</p>
+                <div class="contact-content">
+                    <div class="contact-info">
+                        <h1>Get in Touch</h1>
+                        <p>I'd love to hear from you! Whether you have questions about studying in Taiwan, PhD life, English learning, or just want to connect - feel free to reach out.</p>
+
+                        <div class="contact-details">
+                            <div class="contact-item">
+                                <h3>Email</h3>
+                                <p><a href="mailto:jessie.thachthao@gmail.com">jessie.thachthao@gmail.com</a> (Primary)</p>
+                                <p><a href="mailto:D12142001@ntu.edu.tw">D12142001@ntu.edu.tw</a> (Academic)</p>
+                            </div>
+                            <div class="contact-item">
+                                <h3>Current Location</h3>
+                                <p>Taipei, Taiwan</p>
+                                <p>National Taiwan University</p>
+                                <p>Graduate Institute of Linguistics</p>
+                            </div>
+                            <div class="contact-item">
+                                <h3>Professional Networks</h3>
+                                <div class="contact-social">
+                                    <a href="#">LinkedIn</a>
+                                    <a href="#">ResearchGate</a>
+                                    <a href="#">Google Scholar</a>
+                                </div>
+                            </div>
+                            <div class="contact-item">
+                                <h3>Response Time</h3>
+                                <p>I typically respond within 24-48 hours</p>
+                            </div>
+                        </div>
+
+                        <div class="contact-note">
+                            <h3>Let's Collaborate!</h3>
+                            <p>I'm always open to:</p>
+                            <ul>
+                                <li>Research collaborations in linguistics, AI & education</li>
+                                <li>Speaking opportunities at conferences or events</li>
+                                <li>Guest posts or interviews about PhD life & studying abroad</li>
+                                <li>Mentoring Vietnamese students interested in Taiwan</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="contact-form-container">
+                        <h2>Send a Message</h2>
+                        <form class="contact-form" id="contact-form">
+                            <div class="form-group">
+                                <label for="name">Name</label>
+                                <input type="text" id="name" name="name" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="email">Email</label>
+                                <input type="email" id="email" name="email" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="subject">Subject</label>
+                                <select id="subject" name="subject" required>
+                                    <option value="">Select a topic</option>
+                                    <option value="phd">PhD & Research Questions</option>
+                                    <option value="english">English Learning Help</option>
+                                    <option value="taiwan">Studying in Taiwan</option>
+                                    <option value="collaboration">Collaboration Opportunity</option>
+                                    <option value="speaking">Speaking/Interview Request</option>
+                                    <option value="other">Other</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="message">Message</label>
+                                <textarea id="message" name="message" rows="5" placeholder="Tell me about yourself and how I can help..." required></textarea>
+                            </div>
+                            <button type="submit" class="btn btn-primary">Send Message</button>
+                        </form>
+                    </div>
+                </div>
             </div>
-        </section>
-
-        <section class="post-body">
-            <h2>Let's Connect</h2>
-            <p>Whether you have questions about PhD life, need advice on English learning, want to discuss research collaborations, or just want to say hello, I'm always happy to connect with fellow students, researchers, and language enthusiasts.</p>
-
-            <h2>Contact Information</h2>
-            <p><strong>Email:</strong> <a href="mailto:jessie.thachthao@gmail.com">jessie.thachthao@gmail.com</a></p>
-            
-            <h2>What I Can Help With</h2>
-            <ul>
-                <li><strong>PhD & Research Questions:</strong> Navigating graduate school, academic writing, conference presentations</li>
-                <li><strong>English Learning:</strong> IELTS preparation, academic English, teaching strategies</li>
-                <li><strong>Studying in Taiwan:</strong> Scholarship applications, university life, cultural adaptation</li>
-                <li><strong>Research Collaborations:</strong> AI in education, sociolinguistics, multilingualism</li>
-                <li><strong>Speaking Invitations:</strong> Guest lectures, workshop facilitation, panel discussions</li>
-            </ul>
-
-            <h2>Response Time</h2>
-            <p>I typically respond to emails within 2-3 business days. If you don't hear back from me within a week, please feel free to send a follow-up message.</p>
-
-            <h2>Connect on Social Media</h2>
-            <p>You can also find me on:</p>
-            <ul>
-                <li><strong>LinkedIn:</strong> [Add your LinkedIn profile URL]</li>
-                <li><strong>Twitter:</strong> [Add your Twitter handle]</li>
-                <li><strong>ResearchGate:</strong> [Add your ResearchGate profile]</li>
-            </ul>
-
-            <h2>Subscribe to My Newsletter</h2>
-            <p>Want to stay updated with my latest blog posts, research updates, and tips? Subscribe to my newsletter on the <a href="index.html#newsletter">homepage</a>.</p>
-
-            <p><em>I look forward to connecting with you!</em></p>
         </section>
     </main>
 
