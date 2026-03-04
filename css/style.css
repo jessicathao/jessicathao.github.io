@@ -159,13 +159,14 @@ img {
    ============================================ */
 
 .hero {
-    /* Painted sky: deep blue at top → pale sky → warm golden horizon → paper */
+    /* Pure Ghibli sky: clear cornflower → bright sky blue → airy pale → white */
     background: linear-gradient(180deg,
-        #4A7FA8 0%,
-        #7BB8D8 18%,
-        #A8D4EC 42%,
-        #C8E8F8 60%,
-        #E2EED8 78%,
+        #3E80AE 0%,
+        #6DB5D8 15%,
+        #9DCFEC 34%,
+        #C2E5F8 55%,
+        #E4F3FC 74%,
+        #F3F9FE 87%,
         #FAFAFA 100%
     );
     padding: 5rem 0 0;
@@ -177,14 +178,14 @@ img {
     flex-direction: column;
 }
 
-/* ── Sun / atmospheric warm glow ── */
+/* ── Soft sunlight glow (pure cool-white, no warmth) ── */
 .hero-sky-glow {
     position: absolute;
-    top: 18%;
-    left: 58%;
-    width: 560px;
-    height: 560px;
-    background: radial-gradient(ellipse, rgba(255,210,100,0.38) 0%, transparent 62%);
+    top: 8%;
+    left: 60%;
+    width: 520px;
+    height: 520px;
+    background: radial-gradient(ellipse, rgba(255,255,255,0.55) 0%, rgba(210,235,255,0.25) 45%, transparent 68%);
     pointer-events: none;
     z-index: 0;
 }
@@ -386,12 +387,24 @@ img {
     line-height: 0;
     margin-top: auto;
     flex-shrink: 0;
+    overflow: visible; /* allow tree sway at edges */
 }
 
 .hero-hills svg {
     display: block;
     width: 100%;
     height: auto;
+    overflow: visible; /* SVG default is hidden — open it for sway */
+}
+
+/* GPU hints for animated SVG groups */
+.tree-far-sway,
+.tree-near-sway,
+.flowers-meadow,
+.water-shimmer-a,
+.water-shimmer-b,
+.svg-birds {
+    will-change: transform;
 }
 
 /* ══════════════════════════════════════════
@@ -461,24 +474,94 @@ img {
     top: 0;
 }
 
-.hero-bird::before { left: 0;  transform-origin: right center; animation: wingFlap 0.55s ease-in-out infinite; }
-.hero-bird::after  { right: 0; transform-origin: left center;  animation: wingFlap 0.55s ease-in-out infinite reverse; transform: scaleX(-1); }
+/* Left wing flaps normally; right wing flaps with its mirror scaleX(-1) preserved */
+.hero-bird::before { left: 0;  transform-origin: right center; animation: wingFlap 0.50s ease-in-out infinite; }
+.hero-bird::after  { right: 0; transform-origin: left center;  animation: wingFlapR 0.50s ease-in-out infinite; }
 
 .hb-1 { top: 10%; left: -60px; animation-duration: 24s; animation-delay: 0s; }
 .hb-2 { top: 16%; left: -60px; animation-duration: 32s; animation-delay: 9s; }
 .hb-3 { top: 7%;  left: -60px; animation-duration: 28s; animation-delay: 18s; }
 
 @keyframes birdFly {
-    from { transform: translateX(0)           translateY(0);     }
-    20%  { transform: translateX(20vw)        translateY(-10px); }
-    50%  { transform: translateX(50vw)        translateY(-4px);  }
-    75%  { transform: translateX(75vw)        translateY(-12px); }
-    to   { transform: translateX(calc(100vw + 80px)) translateY(-6px);  }
+    from { transform: translateX(0)                    translateY(0);     }
+    20%  { transform: translateX(20vw)                 translateY(-10px); }
+    50%  { transform: translateX(50vw)                 translateY(-4px);  }
+    75%  { transform: translateX(75vw)                 translateY(-12px); }
+    to   { transform: translateX(calc(100vw + 80px))   translateY(-6px);  }
 }
 
 @keyframes wingFlap {
     0%, 100% { transform: rotate(0deg);    }
-    50%       { transform: rotate(-18deg); }
+    50%       { transform: rotate(-20deg); }
+}
+
+/* Right wing: keep scaleX(-1) mirror throughout the flap */
+@keyframes wingFlapR {
+    0%, 100% { transform: scaleX(-1) rotate(0deg);    }
+    50%       { transform: scaleX(-1) rotate(-20deg); }
+}
+
+/* ══════════════════════════════════════════
+   SVG LANDSCAPE ANIMATIONS
+   ══════════════════════════════════════════ */
+
+/* Tree canopy gentle wind sway — pivots from base */
+.tree-far-sway  {
+    transform-box: fill-box;
+    transform-origin: bottom center;
+    animation: treeSway 7s ease-in-out infinite;
+}
+.tree-near-sway {
+    transform-box: fill-box;
+    transform-origin: bottom center;
+    animation: treeSway 9s ease-in-out infinite;
+    animation-delay: -3.5s;
+}
+
+@keyframes treeSway {
+    0%, 100% { transform: rotate(0deg);    }
+    25%       { transform: rotate(0.7deg); }
+    75%       { transform: rotate(-0.5deg); }
+}
+
+/* Meadow flowers — gentle bob up and tiny pulse */
+.flowers-meadow {
+    transform-box: fill-box;
+    transform-origin: center bottom;
+    animation: flowerBob 4.5s ease-in-out infinite;
+}
+
+@keyframes flowerBob {
+    0%, 100% { transform: translateY(0)     scale(1);    }
+    40%       { transform: translateY(-2px) scale(1.03); }
+    70%       { transform: translateY(-1px) scale(1.01); }
+}
+
+/* Water shimmer — slow slide to suggest flowing current */
+.water-shimmer-a {
+    animation: waterFlow 3.8s ease-in-out infinite;
+}
+.water-shimmer-b {
+    animation: waterFlow 5.2s ease-in-out infinite;
+    animation-delay: -2s;
+}
+
+@keyframes waterFlow {
+    0%         { transform: translateX(-18px); opacity: 0;    }
+    12%        { opacity: 0.32; }
+    80%        { opacity: 0.30; }
+    100%       { transform: translateX(22px);  opacity: 0;    }
+}
+
+/* SVG landscape birds — gentle up-down drift (like soaring thermals) */
+.svg-birds {
+    animation: birdSoar 5.5s ease-in-out infinite;
+}
+
+@keyframes birdSoar {
+    0%, 100% { transform: translateY(0);    }
+    45%       { transform: translateY(-4px); }
+    75%       { transform: translateY(-2px); }
 }
 
 /* ── Mobile ── */

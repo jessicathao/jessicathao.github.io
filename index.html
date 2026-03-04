@@ -85,11 +85,11 @@
                 </div>
             </div>
 
-            <!-- Ghibli landscape — trees, stream, forest hills, meadow -->
+            <!-- Ghibli landscape — sky, trees, Aster flowers, stream, meadow, birds -->
             <div class="hero-hills" aria-hidden="true">
                 <svg viewBox="0 0 1440 310" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
 
-                    <!-- ① Distant hazy hills -->
+                    <!-- ① Distant hazy hills (pale blue-sage) -->
                     <path d="M0,85 C280,48 560,75 840,55 C1080,38 1300,62 1440,50 L1440,310 L0,310 Z"
                           fill="#B8D4C2" opacity="0.55"/>
 
@@ -97,38 +97,110 @@
                     <path d="M0,118 C220,82 440,110 660,92 C880,74 1100,102 1320,88 C1390,84 1430,90 1440,88 L1440,310 L0,310 Z"
                           fill="#7BB87A"/>
 
-                    <!-- ③ Far tree canopy — rounded deciduous (Totoro forest feel) -->
+                    <!-- ③ Far tree canopy + flowers — animated sway group -->
+                    <g class="tree-far-sway">
                     <path d="M-5,122 Q25,82 55,122 Q90,98 122,122 Q155,80 185,122 Q220,96 252,122 Q285,84 315,122 Q350,98 382,122 Q415,80 445,122 Q480,95 512,122 Q545,82 575,122 Q610,97 642,122 Q675,80 705,122 Q740,96 772,122 Q805,82 835,122 Q870,97 902,122 Q935,80 965,122 Q1000,96 1032,122 Q1065,82 1095,122 Q1130,97 1162,122 Q1195,80 1225,122 Q1260,96 1292,122 Q1325,82 1355,122 Q1390,97 1422,122 L1445,122 L1445,310 L-5,310 Z"
                           fill="#2A5E2C" opacity="0.90"/>
+                    <!-- ✿ Far Aster amellus flowers (sway with trees) -->
+                    <circle cx="55"  cy="90"  r="2"   fill="#D96BB8" opacity="0.88"/><circle cx="55"  cy="90"  r="0.7" fill="#E8C830"/>
+                    <circle cx="185" cy="84"  r="2"   fill="#E080C0" opacity="0.85"/><circle cx="185" cy="84"  r="0.7" fill="#E8C830"/>
+                    <circle cx="445" cy="86"  r="2"   fill="#D96BB8" opacity="0.88"/><circle cx="445" cy="86"  r="0.7" fill="#E8C830"/>
+                    <circle cx="705" cy="88"  r="2"   fill="#E080C0" opacity="0.85"/><circle cx="705" cy="88"  r="0.7" fill="#E8C830"/>
+                    <circle cx="965" cy="86"  r="2"   fill="#D96BB8" opacity="0.88"/><circle cx="965" cy="86"  r="0.7" fill="#E8C830"/>
+                    <circle cx="1225" cy="88" r="2"   fill="#E080C0" opacity="0.85"/><circle cx="1225" cy="88" r="0.7" fill="#E8C830"/>
+                    <circle cx="122" cy="86"  r="2"   fill="#9052C2" opacity="0.88"/><circle cx="122" cy="86"  r="0.7" fill="#E8C830"/>
+                    <circle cx="315" cy="88"  r="2"   fill="#B070DA" opacity="0.85"/><circle cx="315" cy="88"  r="0.7" fill="#E8C830"/>
+                    <circle cx="575" cy="86"  r="2"   fill="#9052C2" opacity="0.88"/><circle cx="575" cy="86"  r="0.7" fill="#E8C830"/>
+                    <circle cx="835" cy="88"  r="2"   fill="#B070DA" opacity="0.85"/><circle cx="835" cy="88"  r="0.7" fill="#E8C830"/>
+                    <circle cx="1095" cy="86" r="2"   fill="#9052C2" opacity="0.88"/><circle cx="1095" cy="86" r="0.7" fill="#E8C830"/>
+                    <circle cx="1355" cy="88" r="2"   fill="#B070DA" opacity="0.85"/><circle cx="1355" cy="88" r="0.7" fill="#E8C830"/>
+                    <circle cx="252" cy="90"  r="2"   fill="#F0EEFF" opacity="0.95"/><circle cx="252" cy="90"  r="0.7" fill="#C9A227"/>
+                    <circle cx="512" cy="88"  r="2"   fill="#F0EEFF" opacity="0.95"/><circle cx="512" cy="88"  r="0.7" fill="#C9A227"/>
+                    <circle cx="772" cy="90"  r="2"   fill="#F0EEFF" opacity="0.95"/><circle cx="772" cy="90"  r="0.7" fill="#C9A227"/>
+                    <circle cx="1032" cy="88" r="2"   fill="#F0EEFF" opacity="0.95"/><circle cx="1032" cy="88" r="0.7" fill="#C9A227"/>
+                    <circle cx="1292" cy="90" r="2"   fill="#F0EEFF" opacity="0.95"/><circle cx="1292" cy="90" r="0.7" fill="#C9A227"/>
+                    </g><!-- /tree-far-sway -->
 
                     <!-- ④ Stream / river -->
                     <path d="M-10,148 C180,140 360,152 540,145 C720,138 900,150 1080,144 C1260,138 1380,146 1450,143 L1450,168 C1380,170 1260,164 1080,170 C900,176 720,164 540,170 C360,176 180,165 -10,172 Z"
                           fill="#5AAAD0" opacity="0.82"/>
-                    <!-- water shimmer highlights -->
-                    <path d="M60,152 C220,149 400,154 580,151 C760,148 940,153 1120,150 L1120,156 C940,158 760,154 580,157 C400,160 220,155 60,158 Z"
-                          fill="rgba(255,255,255,0.30)"/>
-                    <path d="M800,144 C940,141 1100,146 1260,143 C1360,141 1420,144 1450,143 L1450,149 C1420,150 1360,148 1260,150 C1100,152 940,148 800,150 Z"
+                    <!-- Water shimmer — animated slide to suggest flowing water -->
+                    <path class="water-shimmer-a" d="M60,152 C220,149 400,154 580,151 C760,148 940,153 1120,150 L1120,156 C940,158 760,154 580,157 C400,160 220,155 60,158 Z"
+                          fill="rgba(255,255,255,0.32)"/>
+                    <path class="water-shimmer-b" d="M800,144 C940,141 1100,146 1260,143 C1360,141 1420,144 1450,143 L1450,149 C1420,150 1360,148 1260,150 C1100,152 940,148 800,150 Z"
                           fill="rgba(255,255,255,0.22)"/>
 
-                    <!-- ⑤ Near forest hills -->
+                    <!-- ⑤ Near forest hills (static base) -->
                     <path d="M0,175 C160,158 320,175 480,162 C640,149 800,168 960,156 C1120,144 1280,162 1440,152 L1440,310 L0,310 Z"
                           fill="#3D8B3C"/>
 
-                    <!-- ⑥ Near tree canopy — taller, darker, closer -->
+                    <!-- ⑥ Near tree canopy + flowers — animated sway group -->
+                    <g class="tree-near-sway">
                     <path d="M-5,180 Q22,138 48,180 Q74,152 100,180 Q128,135 155,180 Q182,150 208,180 Q236,135 262,180 Q290,152 316,180 Q344,135 370,180 Q398,150 424,180 Q452,132 478,180 Q506,150 532,180 Q560,135 586,180 Q614,150 640,180 Q668,132 694,180 Q722,150 748,180 Q776,135 802,180 Q830,150 856,180 Q884,132 910,180 Q938,150 964,180 Q992,135 1018,180 Q1046,150 1072,180 Q1100,132 1126,180 Q1154,150 1180,180 Q1208,135 1234,180 Q1262,150 1288,180 Q1316,132 1342,180 Q1370,150 1396,180 Q1422,138 1445,180 L1445,310 L-5,310 Z"
                           fill="#1E4D1E"/>
+                    <!-- ✿ Near Aster amellus flowers (sway with trees) -->
+                    <circle cx="48"   cy="143" r="3.5" fill="#E060B0" opacity="0.92"/><circle cx="48"   cy="143" r="1.2" fill="#E8C830"/>
+                    <circle cx="262"  cy="140" r="3.5" fill="#D96BB8" opacity="0.90"/><circle cx="262"  cy="140" r="1.2" fill="#E8C830"/>
+                    <circle cx="478"  cy="138" r="3.5" fill="#E080C8" opacity="0.90"/><circle cx="478"  cy="138" r="1.2" fill="#E8C830"/>
+                    <circle cx="694"  cy="143" r="3.5" fill="#D96BB8" opacity="0.92"/><circle cx="694"  cy="143" r="1.2" fill="#E8C830"/>
+                    <circle cx="910"  cy="138" r="3.5" fill="#E060B0" opacity="0.90"/><circle cx="910"  cy="138" r="1.2" fill="#E8C830"/>
+                    <circle cx="1126" cy="143" r="3.5" fill="#D96BB8" opacity="0.92"/><circle cx="1126" cy="143" r="1.2" fill="#E8C830"/>
+                    <circle cx="1342" cy="140" r="3.5" fill="#E080C8" opacity="0.90"/><circle cx="1342" cy="140" r="1.2" fill="#E8C830"/>
+                    <circle cx="155"  cy="138" r="3.5" fill="#8848C0" opacity="0.90"/><circle cx="155"  cy="138" r="1.2" fill="#E8C830"/>
+                    <circle cx="370"  cy="140" r="3.5" fill="#B070DA" opacity="0.88"/><circle cx="370"  cy="140" r="1.2" fill="#E8C830"/>
+                    <circle cx="586"  cy="138" r="3.5" fill="#8848C0" opacity="0.90"/><circle cx="586"  cy="138" r="1.2" fill="#E8C830"/>
+                    <circle cx="802"  cy="143" r="3.5" fill="#B070DA" opacity="0.88"/><circle cx="802"  cy="143" r="1.2" fill="#E8C830"/>
+                    <circle cx="1018" cy="138" r="3.5" fill="#8848C0" opacity="0.90"/><circle cx="1018" cy="138" r="1.2" fill="#E8C830"/>
+                    <circle cx="1234" cy="143" r="3.5" fill="#B070DA" opacity="0.88"/><circle cx="1234" cy="143" r="1.2" fill="#E8C830"/>
+                    <circle cx="100"  cy="146" r="3"   fill="#F2EEFF" opacity="0.96"/><circle cx="100"  cy="146" r="1.1" fill="#C9A227"/>
+                    <circle cx="424"  cy="143" r="3"   fill="#F2EEFF" opacity="0.96"/><circle cx="424"  cy="143" r="1.1" fill="#C9A227"/>
+                    <circle cx="748"  cy="146" r="3"   fill="#F2EEFF" opacity="0.96"/><circle cx="748"  cy="146" r="1.1" fill="#C9A227"/>
+                    <circle cx="1072" cy="143" r="3"   fill="#F2EEFF" opacity="0.96"/><circle cx="1072" cy="143" r="1.1" fill="#C9A227"/>
+                    <circle cx="1396" cy="146" r="3"   fill="#F2EEFF" opacity="0.96"/><circle cx="1396" cy="146" r="1.1" fill="#C9A227"/>
+                    </g><!-- /tree-near-sway -->
 
                     <!-- ⑦ Foreground bright meadow -->
                     <path d="M0,212 C200,200 400,214 600,204 C800,194 1000,208 1200,200 C1330,196 1410,204 1440,200 L1440,310 L0,310 Z"
                           fill="#52A44E"/>
 
-                    <!-- ⑧ Foreground lighter grass highlight -->
-                    <path d="M0,228 C240,220 480,230 720,222 C960,214 1200,226 1440,218 L1440,310 L0,310 Z"
-                          fill="#6BBD66" opacity="0.55"/>
+                    <!-- ✿ Meadow flowers — gentle independent bob -->
+                    <g class="flowers-meadow">
+                    <circle cx="90"   cy="215" r="5"   fill="#E060B0" opacity="0.92"/><circle cx="90"   cy="215" r="1.8" fill="#E8D030"/>
+                    <circle cx="200"  cy="220" r="4.5" fill="#8848C0" opacity="0.90"/><circle cx="200"  cy="220" r="1.6" fill="#E8D030"/>
+                    <circle cx="340"  cy="213" r="5"   fill="#F2EEFF" opacity="0.96"/><circle cx="340"  cy="213" r="1.8" fill="#C9A227"/>
+                    <circle cx="490"  cy="218" r="5"   fill="#D96BB8" opacity="0.92"/><circle cx="490"  cy="218" r="1.8" fill="#E8D030"/>
+                    <circle cx="620"  cy="214" r="4.5" fill="#B070DA" opacity="0.88"/><circle cx="620"  cy="214" r="1.6" fill="#E8D030"/>
+                    <circle cx="760"  cy="219" r="5"   fill="#F2EEFF" opacity="0.96"/><circle cx="760"  cy="219" r="1.8" fill="#C9A227"/>
+                    <circle cx="890"  cy="213" r="5"   fill="#E060B0" opacity="0.92"/><circle cx="890"  cy="213" r="1.8" fill="#E8D030"/>
+                    <circle cx="1020" cy="218" r="4.5" fill="#8848C0" opacity="0.90"/><circle cx="1020" cy="218" r="1.6" fill="#E8D030"/>
+                    <circle cx="1160" cy="214" r="5"   fill="#D96BB8" opacity="0.92"/><circle cx="1160" cy="214" r="1.8" fill="#E8D030"/>
+                    <circle cx="1310" cy="219" r="5"   fill="#F2EEFF" opacity="0.96"/><circle cx="1310" cy="219" r="1.8" fill="#C9A227"/>
+                    <circle cx="1420" cy="215" r="4.5" fill="#B070DA" opacity="0.88"/><circle cx="1420" cy="215" r="1.6" fill="#E8D030"/>
+                    <circle cx="145"  cy="224" r="4"   fill="#8848C0" opacity="0.85"/><circle cx="145"  cy="224" r="1.4" fill="#E8D030"/>
+                    <circle cx="420"  cy="222" r="4"   fill="#D96BB8" opacity="0.88"/><circle cx="420"  cy="222" r="1.4" fill="#E8D030"/>
+                    <circle cx="680"  cy="222" r="4"   fill="#E080C8" opacity="0.85"/><circle cx="680"  cy="222" r="1.4" fill="#E8D030"/>
+                    <circle cx="960"  cy="224" r="4"   fill="#F2EEFF" opacity="0.92"/><circle cx="960"  cy="224" r="1.4" fill="#C9A227"/>
+                    <circle cx="1240" cy="222" r="4"   fill="#8848C0" opacity="0.85"/><circle cx="1240" cy="222" r="1.4" fill="#E8D030"/>
+                    </g><!-- /flowers-meadow -->
 
-                    <!-- ⑨ Fade to page bg (#FAFAFA) -->
-                    <path d="M0,252 C280,242 560,255 840,246 C1080,238 1280,250 1440,243 L1440,310 L0,310 Z"
+                    <!-- ⑧ Foreground lighter grass highlight -->
+                    <path d="M0,232 C240,224 480,234 720,226 C960,218 1200,230 1440,222 L1440,310 L0,310 Z"
+                          fill="#6BBD66" opacity="0.50"/>
+
+                    <!-- ⑨ Fade to page bg -->
+                    <path d="M0,255 C280,245 560,258 840,248 C1080,240 1280,252 1440,246 L1440,310 L0,310 Z"
                           fill="#FAFAFA"/>
+
+                    <!-- 🐦 SVG birds — gentle float -->
+                    <g class="svg-birds">
+                    <path d="M200,32 C204,28 208,25 212,28 C216,25 220,28 224,32" stroke="#1B3828" stroke-width="1.8" fill="none" stroke-linecap="round" opacity="0.52"/>
+                    <path d="M218,21 C222,17 227,14 231,17 C235,14 239,17 243,21" stroke="#1B3828" stroke-width="1.6" fill="none" stroke-linecap="round" opacity="0.46"/>
+                    <path d="M188,44 C192,40 195,38 198,40 C201,38 204,40 208,44" stroke="#1B3828" stroke-width="1.4" fill="none" stroke-linecap="round" opacity="0.38"/>
+                    <path d="M1132,36 C1136,32 1140,29 1144,32 C1148,29 1152,32 1156,36" stroke="#1B3828" stroke-width="1.8" fill="none" stroke-linecap="round" opacity="0.50"/>
+                    <path d="M1150,24 C1154,20 1158,17 1162,20 C1166,17 1170,20 1174,24" stroke="#1B3828" stroke-width="1.6" fill="none" stroke-linecap="round" opacity="0.44"/>
+                    <path d="M1118,52 C1122,48 1125,46 1128,48 C1131,46 1134,48 1138,52" stroke="#1B3828" stroke-width="1.4" fill="none" stroke-linecap="round" opacity="0.36"/>
+                    <path d="M840,18 C844,14 848,12 852,14 C856,12 860,14 864,18" stroke="#1B3828" stroke-width="1.5" fill="none" stroke-linecap="round" opacity="0.40"/>
+                    </g><!-- /svg-birds -->
 
                 </svg>
             </div>
