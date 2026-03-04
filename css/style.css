@@ -78,12 +78,15 @@ img {
    ============================================ */
 
 .header {
-    background: var(--bg-color);
-    box-shadow: var(--shadow-sm);
+    /* Gradient border-bottom: forest green → sky blue → gold */
+    background:
+        linear-gradient(var(--bg-color), var(--bg-color)) padding-box,
+        linear-gradient(90deg, var(--primary-color) 0%, var(--sky-color) 55%, var(--accent-color) 100%) border-box;
+    border-bottom: 2px solid transparent;
+    box-shadow: 0 2px 12px rgba(44, 95, 46, 0.08);
     position: sticky;
     top: 0;
     z-index: 1000;
-    border-bottom: 1px solid var(--border-color);
 }
 
 .nav {
@@ -878,19 +881,19 @@ section {
    ============================================ */
 
 .newsletter {
-    background: linear-gradient(160deg, #142E15 0%, #1E4620 42%, #295C2B 78%, #142E15 100%);
+    background: linear-gradient(160deg, #2C5F2E 0%, #3E7D40 40%, #52A44E 75%, #3E7D40 100%);
     color: white;
     text-align: center;
     position: relative;
     overflow: hidden;
 }
 
-/* Firefly dot pattern in the forest newsletter */
+/* Subtle dot pattern */
 .newsletter::before {
     content: '';
     position: absolute;
     inset: 0;
-    background-image: radial-gradient(rgba(255,220,120,0.10) 1.5px, transparent 1.5px);
+    background-image: radial-gradient(rgba(255,255,255,0.12) 1.5px, transparent 1.5px);
     background-size: 28px 28px;
     pointer-events: none;
 }
@@ -941,7 +944,7 @@ section {
    ============================================ */
 
 .footer {
-    background: linear-gradient(160deg, #0B1F0D 0%, #142E15 55%, #1C3E1E 100%);
+    background: linear-gradient(160deg, #1E4A3A 0%, #2A6250 40%, #3A7A62 70%, #1E4A3A 100%);
     color: white;
     padding: 3rem 0 1.5rem;
 }
@@ -1314,7 +1317,7 @@ section {
    ============================================ */
 
 .about-hero {
-    background: linear-gradient(135deg, #1E4620 0%, #2C5F2E 50%, #3E7D40 100%);
+    background: linear-gradient(135deg, #2C5F2E 0%, #3E7D40 50%, #52A44E 100%);
     color: white;
     padding: 5rem 0;
     text-align: center;
@@ -1447,7 +1450,7 @@ section {
 }
 
 .about-cta {
-    background: linear-gradient(145deg, #142E15 0%, #1E4620 100%);
+    background: linear-gradient(145deg, #2C5F2E 0%, #3E7D40 100%);
     color: white;
     padding: 4rem 0;
     text-align: center;
