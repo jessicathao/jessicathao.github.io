@@ -1,432 +1,909 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Thao's Blog | PhD Life, English Learning & Living in Taiwan</title>
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Thach Thao · Cosmic Journal</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@400;500;600;700&family=Nunito:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  /* ==================================================
+     RESET + TOKENS
+  ================================================== */
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+  :root {
+    --dark:    #1A2332;
+    --muted:   #4A5568;
+    --soft:    #6B7A92;
+    --blue:    #4A90E2;
+    --blue-2:  #6FA8DC;
+    --lavender:#B8A9E8;
+    --mint:    #A8D8C9;
+    --peach:   #FFD6BD;
+    --pink:    #FFB5E8;
+    --yellow:  #FFE9A8;
+  }
+
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: 'Nunito', sans-serif;
+    color: var(--muted);
+    background:
+      radial-gradient(ellipse at 18% 18%, #EAF3FB 0%, transparent 55%),
+      radial-gradient(ellipse at 82% 28%, #EFE8F7 0%, transparent 55%),
+      radial-gradient(ellipse at 50% 92%, #F0F8F4 0%, transparent 60%),
+      linear-gradient(135deg, #F4F8FB 0%, #EFE8F7 50%, #FFFEF9 100%);
+    background-attachment: fixed;
+    line-height: 1.6;
+    overflow-x: hidden;
+  }
+
+  h1, h2, h3, h4 { font-family: 'Comfortaa', sans-serif; color: var(--dark); }
+  a { color: inherit; }
+
+  /* ==================================================
+     PAGE-LEVEL DECORATIONS (clouds, sparkles)
+  ================================================== */
+  .page-bg { position: fixed; inset: 0; z-index: 0; pointer-events: none; overflow: hidden; }
+  .cloud {
+    position: absolute;
+    border-radius: 50%;
+    background: radial-gradient(circle at 30% 30%, rgba(255,255,255,0.85), rgba(220, 235, 250, 0.4) 60%, transparent 80%);
+    filter: blur(8px);
+    animation: cloudDrift var(--dur, 60s) linear infinite;
+    animation-delay: var(--delay, 0s);
+  }
+  @keyframes cloudDrift {
+    from { transform: translateX(-30vw); }
+    to   { transform: translateX(130vw); }
+  }
+  .spark {
+    position: absolute;
+    border-radius: 50%;
+    background: #fff;
+    box-shadow: 0 0 6px 1px rgba(255,255,255,0.85);
+    animation: tw var(--dur, 3s) ease-in-out infinite;
+    animation-delay: var(--delay, 0s);
+  }
+  .spark.p { background: #FFD6E5; box-shadow: 0 0 8px 2px rgba(255,190,215,0.6); }
+  .spark.b { background: #D6E8FF; box-shadow: 0 0 8px 2px rgba(180,210,255,0.6); }
+  .spark.y { background: #FFF4C2; box-shadow: 0 0 8px 2px rgba(255,235,160,0.6); }
+  @keyframes tw { 0%,100%{opacity:.25;transform:scale(0.8);} 50%{opacity:1;transform:scale(1.2);} }
+
+  .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; position: relative; z-index: 2; }
+  section { position: relative; z-index: 2; padding: 80px 0; }
+  .eyebrow {
+    display: inline-flex; align-items: center; gap: 8px;
+    padding: 6px 14px; border-radius: 999px;
+    background: rgba(255,255,255,0.7);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255,255,255,0.9);
+    color: var(--blue);
+    font-weight: 600; font-size: 11.5px; letter-spacing: 0.12em;
+    text-transform: uppercase;
+    box-shadow: 0 4px 14px rgba(160,190,220,0.18);
+    font-family: 'Nunito', sans-serif;
+  }
+  .eyebrow .d { width: 6px; height: 6px; border-radius: 50%; background: var(--blue); box-shadow: 0 0 8px var(--blue); }
+  .section-title { font-size: clamp(28px, 4vw, 40px); font-weight: 700; margin-top: 14px; letter-spacing: -0.01em; }
+  .section-sub { margin-top: 8px; color: var(--soft); font-size: 16px; font-family: 'Nunito', sans-serif; }
+  .center { text-align: center; }
+  .center .eyebrow + .section-title { margin-top: 16px; }
+
+  /* ==================================================
+     HEADER
+  ================================================== */
+  .site-header {
+    position: sticky; top: 0; z-index: 100;
+    background: rgba(255,255,255,0.85);
+    backdrop-filter: blur(16px) saturate(140%);
+    -webkit-backdrop-filter: blur(16px) saturate(140%);
+    border-bottom: 1px solid rgba(111,168,220,0.18);
+    transition: background .3s, box-shadow .3s, padding .3s;
+  }
+  .site-header.scrolled { background: rgba(255,255,255,0.96); box-shadow: 0 8px 24px rgba(120,150,200,0.12); }
+  .header-inner { max-width: 1200px; margin: 0 auto; padding: 16px 24px; display: flex; align-items: center; justify-content: space-between; gap: 24px; }
+  .site-header.scrolled .header-inner { padding: 12px 24px; }
+
+  .logo { display: inline-flex; align-items: center; gap: 10px; text-decoration: none; font-weight: 700; font-size: 18px; color: var(--dark); flex-shrink: 0; font-family: 'Comfortaa', sans-serif; }
+  .logo .spinner { width: 26px; height: 26px; border-radius: 50%;
+    background: linear-gradient(135deg, #DCE9F7, #E8E0F5);
+    display: inline-flex; align-items: center; justify-content: center; font-size: 13px;
+    box-shadow: 0 0 0 3px rgba(255,255,255,0.85), 0 4px 10px rgba(74,144,226,0.25);
+    animation: rot 10s linear infinite;
+  }
+  @keyframes rot { to { transform: rotate(360deg); } }
+  .logo .last { color: var(--blue); }
+  .logo .sep { color: var(--soft); opacity: 0.45; margin: 0 1px; font-weight: 400; }
+  .logo .nick { color: var(--lavender); font-size: 0.78em; font-weight: 500; }
+  .logo .shell { font-size: 13px; animation: bob 4s ease-in-out infinite; display: inline-block; transform-origin: center; }
+  @keyframes bob { 0%,100%{transform:translateY(0) rotate(-10deg);} 50%{transform:translateY(-3px) rotate(-4deg);} }
+
+  nav.primary { display: flex; gap: 4px; align-items: center; }
+  nav.primary a {
+    position: relative; padding: 8px 13px; border-radius: 999px;
+    font-weight: 600; font-size: 13px; color: var(--dark);
+    text-decoration: none; transition: color .25s, background .25s;
+    white-space: nowrap; font-family: 'Nunito', sans-serif;
+  }
+  nav.primary a:hover { color: var(--blue); background: linear-gradient(135deg, rgba(74,144,226,0.1), rgba(184,169,232,0.1)); }
+  nav.primary a.active { color: #fff; background: linear-gradient(135deg, var(--blue), var(--blue-2)); box-shadow: 0 6px 16px rgba(74,144,226,0.35); }
+
+  .hamburger { display: none; width: 40px; height: 40px; align-items: center; justify-content: center;
+    border-radius: 50%; background: rgba(74,144,226,0.08); border: 1px solid rgba(74,144,226,0.2);
+    color: var(--blue); font-size: 17px; cursor: pointer; transition: background .25s; }
+  .hamburger:hover { background: rgba(74,144,226,0.16); }
+  .drawer { display: none; position: absolute; top: 100%; left: 0; right: 0;
+    background: rgba(255,255,255,0.98); backdrop-filter: blur(16px);
+    border-bottom: 1px solid rgba(111,168,220,0.25); box-shadow: 0 12px 28px rgba(120,150,200,0.18);
+    padding: 12px 16px; }
+  .drawer.open { display: block; }
+  .drawer a { display: block; padding: 11px 14px; border-radius: 12px; font-weight: 600; font-size: 14px; color: var(--dark); text-decoration: none; font-family: 'Nunito', sans-serif; }
+  .drawer a:hover, .drawer a.active { background: linear-gradient(135deg, rgba(74,144,226,0.1), rgba(184,169,232,0.1)); color: var(--blue); }
+
+  @media (max-width: 1000px) {
+    nav.primary { display: none; }
+    .hamburger { display: inline-flex; }
+  }
+
+  /* ==================================================
+     HERO
+  ================================================== */
+  .hero { padding: 60px 0 80px; }
+  .hero-inner { display: flex; flex-direction: column; align-items: center; text-align: center; }
+  .orbit { position: relative; width: min(520px, 92vw); aspect-ratio: 1/1; display: flex; align-items: center; justify-content: center; }
+  .ring-rotate { position: absolute; inset: 14%; border-radius: 50%; border: 1.5px dashed rgba(180,145,220,0.45); animation: rot 40s linear infinite; }
+  .ring-rotate::after { content: ""; position: absolute; inset: 6%; border-radius: 50%; border: 1px dashed rgba(184,200,255,0.55); }
+  .photo-halo { position: absolute; inset: 28%; border-radius: 50%;
+    background: conic-gradient(from 0deg, rgba(74,144,226,0.45), rgba(184,169,232,0.45), rgba(168,216,201,0.45), rgba(255,181,232,0.45), rgba(74,144,226,0.45));
+    filter: blur(14px); animation: rot 18s linear infinite; }
+  .profile { position: relative; width: 200px; height: 200px; border-radius: 50%; z-index: 4;
+    background: radial-gradient(circle at 32% 28%, #FFFFFF 0%, #DCE9F7 50%, #B8A9E8 100%);
+    box-shadow: 0 0 0 6px rgba(255,255,255,0.85), 0 0 0 9px rgba(74,144,226,0.3),
+      0 0 40px rgba(184,169,232,0.5), 0 20px 50px rgba(120,150,200,0.35);
+    display: flex; align-items: center; justify-content: center; overflow: hidden;
+  }
+  .profile img { width: 100%; height: 100%; object-fit: cover; object-position: center top; border-radius: 50%; }
+  .profile::after { content: ""; position: absolute; inset: 0; border-radius: 50%;
+    background: linear-gradient(135deg, rgba(255,255,255,0.2) 0%, transparent 40%); pointer-events: none; }
+
+  .saturn-ring { position: absolute; width: 280px; height: 60px; border-radius: 50%;
+    border: 3px solid rgba(184,169,232,0.7); transform: rotate(-15deg); z-index: 3;
+    box-shadow: 0 0 16px rgba(184,169,232,0.4), inset 0 0 8px rgba(255,255,255,0.5);
+  }
+  .saturn-ring::before { content: ""; position: absolute; inset: -8px; border-radius: 50%; border: 2px solid rgba(111,168,220,0.55); }
+
+  .greet { position: absolute; padding: 9px 16px; border-radius: 999px;
+    background: rgba(255,255,255,0.8); backdrop-filter: blur(8px);
+    border: 1px solid rgba(255,255,255,0.95);
+    font-weight: 600; font-size: 14px; color: var(--dark); white-space: nowrap;
+    box-shadow: 0 8px 20px rgba(160,190,220,0.25); z-index: 5;
+    animation: bobUp var(--bd, 4s) ease-in-out infinite; animation-delay: var(--ddl, 0s);
+    font-family: 'Comfortaa', sans-serif;
+  }
+  @keyframes bobUp { 0%,100% { transform: translate(var(--tx,0), 0); } 50% { transform: translate(var(--tx,0), -8px); } }
+  .greet.g1 { top: 2%; left: 50%; --tx: -50%; }
+  .greet.g2 { top: 22%; right: 0; --bd: 4.6s; --ddl: -0.6s; }
+  .greet.g3 { bottom: 22%; right: 0; --bd: 4.2s; --ddl: -1.2s; }
+  .greet.g4 { bottom: 2%; left: 50%; --tx: -50%; --bd: 4.8s; --ddl: -1.8s; }
+  .greet.g5 { bottom: 22%; left: 0; --bd: 4.4s; --ddl: -2.4s; }
+  .greet.g6 { top: 22%; left: 0; --bd: 4s; --ddl: -3s; }
+  .greet .flag { font-size: 12px; opacity: 0.6; margin-right: 4px; font-weight: 500; }
+
+  .hero-tag { margin: 28px 0 16px; }
+  .hero-heading { font-family: 'Comfortaa', sans-serif; font-weight: 700; font-size: clamp(34px, 5.5vw, 58px); color: var(--dark); letter-spacing: -0.01em; line-height: 1.15; }
+  .wave { display: inline-block; transform-origin: 70% 70%; animation: hi 2.5s ease-in-out infinite; }
+  @keyframes hi { 0%,60%,100%{transform:rotate(0)} 10%{transform:rotate(14deg)} 20%{transform:rotate(-8deg)} 30%{transform:rotate(14deg)} 40%{transform:rotate(-4deg)} 50%{transform:rotate(10deg)} }
+  .hero-tagline { margin-top: 14px; font-weight: 600; font-size: clamp(15px, 1.6vw, 18px); color: var(--lavender); font-family: 'Comfortaa', sans-serif; }
+  .hero-tagline .sep { margin: 0 8px; color: rgba(180,150,220,0.5); }
+  .hero-intro { margin-top: 18px; max-width: 620px; font-size: 16px; line-height: 1.75; color: var(--muted); text-wrap: pretty; }
+
+  .cta-primary {
+    margin-top: 30px; display: inline-flex; align-items: center; gap: 10px;
+    padding: 15px 30px; border-radius: 999px; font-weight: 700; font-size: 15px;
+    color: #fff; background: linear-gradient(135deg, var(--blue), var(--blue-2));
+    border: none; cursor: pointer; text-decoration: none;
+    box-shadow: 0 12px 28px rgba(74,144,226,0.4), 0 0 0 4px rgba(255,255,255,0.7);
+    transition: transform .25s, box-shadow .25s; position: relative; overflow: hidden;
+    font-family: 'Comfortaa', sans-serif;
+  }
+  .cta-primary::before { content: ""; position: absolute; inset: 0;
+    background: linear-gradient(120deg, transparent 30%, rgba(255,255,255,0.45) 50%, transparent 70%);
+    transform: translateX(-100%); transition: transform .8s; }
+  .cta-primary:hover { transform: translateY(-2px) scale(1.02);
+    box-shadow: 0 18px 38px rgba(74,144,226,0.55), 0 0 0 4px rgba(255,255,255,0.9), 0 0 30px rgba(111,168,220,0.5); }
+  .cta-primary:hover::before { transform: translateX(100%); }
+  .cta-primary .ar { transition: transform .25s; }
+  .cta-primary:hover .ar { transform: translateX(4px); }
+
+  /* ==================================================
+     CARDS (shared)
+  ================================================== */
+  .grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; }
+  .grid-2 { display: grid; grid-template-columns: repeat(2, 1fr); gap: 28px; }
+  .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+  @media (max-width: 1024px) {
+    .grid-4 { grid-template-columns: repeat(2, 1fr); }
+    .grid-3 { grid-template-columns: repeat(2, 1fr); }
+  }
+  @media (max-width: 640px) {
+    .grid-4, .grid-3, .grid-2 { grid-template-columns: 1fr; }
+  }
+
+  .post-card {
+    --tint: var(--lavender); --glow: rgba(184,169,232,0.35);
+    position: relative; border-radius: 25px;
+    background: rgba(255,255,255,0.72);
+    backdrop-filter: blur(14px);
+    border: 1px solid rgba(255,255,255,0.95);
+    box-shadow: 0 12px 30px var(--glow), inset 0 1px 0 rgba(255,255,255,0.9);
+    overflow: hidden; cursor: pointer; text-decoration: none; color: inherit;
+    display: flex; flex-direction: column;
+    transition: transform .35s cubic-bezier(.2,.8,.2,1), box-shadow .35s;
+  }
+  .post-card:hover { transform: translateY(-6px); box-shadow: 0 22px 46px var(--glow), inset 0 1px 0 rgba(255,255,255,0.95); }
+
+  .post-top { position: relative; height: 180px; overflow: hidden; flex-shrink: 0;
+    background: linear-gradient(135deg, var(--t1, #E6B8FF) 0%, var(--t2, #DDA0DD) 100%); }
+  .post-top::after { content: ""; position: absolute; inset: 0;
+    background: radial-gradient(circle at 20% 20%, rgba(255,255,255,0.55) 0%, transparent 45%); }
+  .post-top span.ts { position: absolute; width: 4px; height: 4px; border-radius: 50%; background: #fff;
+    box-shadow: 0 0 6px 1px rgba(255,255,255,0.9); animation: tw 2.6s ease-in-out infinite; }
+
+  /* shooting star on hover */
+  .post-card .shoot {
+    position: absolute; top: 22%; left: -120px; width: 100px; height: 2px;
+    border-radius: 999px;
+    background: linear-gradient(90deg, rgba(255,255,255,0) 0%, rgba(255,255,255,0.7) 60%, #fff 100%);
+    filter: drop-shadow(0 0 5px rgba(255,255,255,0.9));
+    transform: rotate(18deg); opacity: 0; pointer-events: none; z-index: 3;
+  }
+  .post-card .shoot::after {
+    content: ""; position: absolute; right: 0; top: 50%;
+    width: 6px; height: 6px; background: #fff; border-radius: 50%;
+    transform: translateY(-50%); box-shadow: 0 0 10px 2px rgba(255,255,255,0.9);
+  }
+  .post-card:hover .shoot { animation: shootStar 1.4s ease-in 0.1s 1; }
+  @keyframes shootStar {
+    0%   { transform: translate(0,0) rotate(18deg); opacity: 0; }
+    15%  { opacity: 1; }
+    100% { transform: translate(520px, 80px) rotate(18deg); opacity: 0; }
+  }
+
+  .planet-mini { position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%);
+    width: 110px; height: 110px; border-radius: 50%; transition: transform .5s; }
+  .post-card:hover .planet-mini { transform: translate(-50%,-50%) rotate(8deg) scale(1.06); }
+
+  .pl-saturn { background: radial-gradient(circle at 30% 30%, #F6EAFE, #D9C2F2 55%, #A87FD0);
+    box-shadow: inset -8px -10px 18px rgba(120,90,160,0.35), inset 7px 9px 13px rgba(255,255,255,0.6),
+      0 8px 20px rgba(170,130,210,0.4), 0 0 30px rgba(220,200,245,0.5); position: relative; }
+  .pl-saturn::after { content: ""; position: absolute; top: 50%; left: 50%; width: 200%; height: 28px;
+    transform: translate(-50%,-50%) rotate(-18deg); border-radius: 50%;
+    border: 5px solid rgba(255,181,232,0.85); box-shadow: 0 0 14px rgba(255,181,232,0.55); }
+
+  .pl-moon { background: radial-gradient(circle at 32% 30%, #FFFBF0, #FFF1D6 60%, #E8C685);
+    box-shadow: inset -8px -10px 18px rgba(200,160,100,0.3), inset 7px 8px 13px rgba(255,255,255,0.75),
+      0 0 26px rgba(255,240,200,0.7); position: relative; }
+  .pl-moon::before, .pl-moon::after { content: ""; position: absolute; border-radius: 50%; background: rgba(220,180,130,0.45); }
+  .pl-moon::before { width: 16px; height: 16px; top: 28%; left: 56%; }
+  .pl-moon::after { width: 10px; height: 10px; top: 60%; left: 32%; }
+
+  .pl-earth { background: radial-gradient(circle at 30% 28%, #E9FBF4, #B6E5F2 45%, #6FA8CD);
+    box-shadow: inset -8px -10px 16px rgba(80,130,170,0.4), inset 6px 7px 12px rgba(255,255,255,0.7),
+      0 0 26px rgba(180,220,250,0.7); position: relative; overflow: hidden; }
+  .pl-earth::before { content: ""; position: absolute; width: 28px; height: 16px; background: #A8DDB5;
+    border-radius: 60% 40% 50% 50%; top: 22%; left: 16%;
+    box-shadow: 20px 24px 0 -3px #9FD3AC, -3px 32px 0 -5px #B6E0BE; }
+
+  .pl-galaxy { width: 120px; height: 120px; overflow: hidden; animation: rot 35s linear infinite;
+    box-shadow: 0 0 30px rgba(255,156,238,0.55), 0 8px 22px rgba(255,100,200,0.3); position: relative; }
+  .pl-galaxy::before { content: ""; position: absolute; inset: 0; border-radius: 50%;
+    background: conic-gradient(from 0deg, rgba(255,181,232,0.95), rgba(221,160,221,0.85), rgba(184,200,255,0.85), rgba(255,233,168,0.7), rgba(255,156,238,0.85), rgba(255,181,232,0.95));
+    filter: blur(7px); }
+  .pl-galaxy::after { content: ""; position: absolute; inset: 0; border-radius: 50%;
+    background: radial-gradient(circle at 50% 50%, rgba(255,255,255,0.95) 0%, transparent 18%),
+      radial-gradient(circle at 30% 40%, rgba(255,255,255,0.9) 0 1.5px, transparent 2px),
+      radial-gradient(circle at 70% 35%, rgba(255,255,255,0.9) 0 1.5px, transparent 2px),
+      radial-gradient(circle at 60% 70%, rgba(255,255,255,0.9) 0 1.5px, transparent 2px); }
+
+  .post-body { padding: 18px 20px 20px; flex: 1; display: flex; flex-direction: column; }
+  .post-meta { display: flex; align-items: center; gap: 10px; margin-bottom: 8px; flex-wrap: wrap; }
+  .post-badge { padding: 4px 10px; border-radius: 999px; font-size: 11px; font-weight: 700;
+    background: var(--bg, rgba(184,169,232,0.18)); color: var(--fg, #6B4C9A); border: 1px solid var(--bd, rgba(184,169,232,0.4)); letter-spacing: 0.04em;
+    font-family: 'Comfortaa', sans-serif; }
+  .post-date { font-size: 12px; color: var(--soft); }
+  .post-title { font-family: 'Comfortaa', sans-serif; font-weight: 700; font-size: 16px; line-height: 1.35; color: var(--dark); margin-bottom: 8px; text-wrap: balance; }
+  .post-excerpt { font-size: 13.5px; line-height: 1.65; color: var(--muted); opacity: 0.85; margin-bottom: 14px; flex: 1; }
+  .post-readmore { font-weight: 700; font-size: 13px; color: var(--fg, #6B4C9A); display: inline-flex; align-items: center; gap: 6px; transition: gap .25s; font-family: 'Comfortaa', sans-serif; }
+  .post-card:hover .post-readmore { gap: 10px; }
+
+  /* themes */
+  .t-saturn { --tint: #B399D9; --glow: rgba(184,145,220,0.35); --t1: #E6B8FF; --t2: #C9A0E0; --bg: rgba(184,145,220,0.18); --fg: #6B4C9A; --bd: rgba(184,145,220,0.4); }
+  .t-moon { --tint: #D9B96A; --glow: rgba(255,220,150,0.4); --t1: #FFFEF9; --t2: #FFF9B1; --bg: rgba(220,180,80,0.18); --fg: #9C7A2F; --bd: rgba(220,180,80,0.4); }
+  .t-earth { --tint: #8FB8D9; --glow: rgba(140,190,220,0.35); --t1: #B4D7FF; --t2: #D4F4DD; --bg: rgba(143,184,217,0.2); --fg: #3F7CA8; --bd: rgba(143,184,217,0.4); }
+  .t-galaxy { --tint: #FF8FD5; --glow: rgba(255,156,220,0.4); --t1: #FFB5E8; --t2: #FF9CEE; --bg: rgba(255,143,213,0.18); --fg: #C44A99; --bd: rgba(255,143,213,0.4); }
+
+  /* ==================================================
+     CATEGORY NAV
+  ================================================== */
+  .cat-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px; margin-top: 32px; }
+  @media (max-width: 768px) { .cat-grid { grid-template-columns: repeat(2, 1fr); } }
+  @media (max-width: 420px) { .cat-grid { grid-template-columns: 1fr; } }
+
+  .cat {
+    position: relative; padding: 24px 22px; border-radius: 22px;
+    background: var(--cbg, rgba(255,255,255,0.85));
+    border: 1px solid var(--cbd, rgba(255,255,255,0.95));
+    box-shadow: 0 10px 26px var(--cgl, rgba(120,150,200,0.18)), inset 0 1px 0 rgba(255,255,255,0.9);
+    text-decoration: none; color: var(--dark);
+    transition: transform .3s, box-shadow .3s;
+    display: flex; flex-direction: column; gap: 6px;
+    overflow: hidden;
+  }
+  .cat:hover { transform: translateY(-4px); box-shadow: 0 18px 38px var(--cgl, rgba(120,150,200,0.28)); }
+  .cat::after {
+    content: ""; position: absolute; right: -24px; bottom: -24px; width: 80px; height: 80px;
+    border-radius: 50%; background: var(--corb, rgba(74,144,226,0.15));
+    filter: blur(2px);
+  }
+  .cat .ico { font-size: 26px; line-height: 1; margin-bottom: 8px; filter: drop-shadow(0 4px 8px rgba(120,150,200,0.2)); }
+  .cat .nm { font-family: 'Comfortaa', sans-serif; font-weight: 700; font-size: 16px; color: var(--dark); }
+  .cat .ct { font-size: 12.5px; color: var(--soft); position: relative; z-index: 1; }
+
+  .c-phd { --cbg: linear-gradient(135deg, #F0E6FA 0%, #E8DCFA 100%); --cgl: rgba(184,145,220,0.35); --corb: rgba(184,145,220,0.3); }
+  .c-eng { --cbg: linear-gradient(135deg, #FFFEF4 0%, #FFF5C4 100%); --cgl: rgba(220,180,80,0.3);  --corb: rgba(255,233,168,0.5); }
+  .c-tw  { --cbg: linear-gradient(135deg, #E5F2FF 0%, #DEF1E2 100%); --cgl: rgba(140,190,220,0.3); --corb: rgba(168,216,201,0.5); }
+  .c-res { --cbg: linear-gradient(135deg, #FFE8F4 0%, #FFD8EC 100%); --cgl: rgba(255,156,220,0.3); --corb: rgba(255,181,232,0.5); }
+
+  /* ==================================================
+     ABOUT
+  ================================================== */
+  .about-card { position: relative; border-radius: 30px;
+    background: rgba(255,255,255,0.95); backdrop-filter: blur(16px);
+    box-shadow: 0 30px 60px rgba(120,150,200,0.18), inset 0 1px 0 rgba(255,255,255,1);
+  }
+  .about-card::before { content: ""; position: absolute; top: 0; left: 0; right: 0; height: 4px;
+    border-radius: 30px 30px 0 0; background: linear-gradient(90deg, var(--blue), var(--lavender) 55%, var(--mint));
+    box-shadow: 0 2px 14px rgba(120,150,220,0.35); }
+  .about-inner { display: flex; align-items: center; gap: 48px; padding: 48px; }
+  .about-photo { position: relative; flex-shrink: 0; width: 220px; height: 220px; animation: floaty 7s ease-in-out infinite; }
+  @keyframes floaty { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-10px)} }
+  .about-photo::before { content: ""; position: absolute; inset: -16px; border-radius: 50%;
+    background: conic-gradient(from 0deg, rgba(74,144,226,0.45), rgba(184,169,232,0.45), rgba(168,216,201,0.45), rgba(74,144,226,0.45));
+    filter: blur(18px); animation: rot 22s linear infinite; }
+  .about-photo .ph2 { position: relative; width: 100%; height: 100%; border-radius: 50%;
+    background: radial-gradient(circle at 32% 28%, #FFF, #DCE9F7 50%, #B8A9E8);
+    box-shadow: 0 0 0 6px #fff, 0 0 0 8px rgba(74,144,226,0.3), 0 18px 38px rgba(120,150,200,0.3);
+    display: flex; align-items: center; justify-content: center; overflow: hidden; }
+  .about-photo .ph2 img { width: 100%; height: 100%; object-fit: cover; object-position: center top; border-radius: 50%; }
+  .about-photo .ph2 span { font-family: 'Comfortaa', sans-serif; font-size: 70px; font-weight: 700; color: #fff;
+    text-shadow: 0 3px 14px rgba(80,100,160,0.4); }
+
+  /* glint sparkles around photo */
+  .glint {
+    position: absolute; width: 10px; height: 10px; z-index: 2;
+    animation: twinkle var(--dur, 3s) ease-in-out infinite; animation-delay: var(--delay, 0s);
+  }
+  .glint::before, .glint::after {
+    content: ""; position: absolute; inset: 0;
+    background: linear-gradient(180deg, transparent 45%, rgba(74,144,226,0.8) 50%, transparent 55%);
+  }
+  .glint::after { transform: rotate(90deg); }
+  @keyframes twinkle { 0%,100%{opacity:.3;transform:scale(.8);} 50%{opacity:1;transform:scale(1.2);} }
+  .about-photo .glint.g1 { top: -4px; left: 30%; --dur: 2.6s; }
+  .about-photo .glint.g2 { bottom: 8px; right: -6px; --dur: 3.2s; --delay: -1s; }
+  .about-photo .glint.g3 { top: 50%; left: -10px; --dur: 2.8s; --delay: -1.6s; }
+
+  .about-content h2 { font-size: clamp(26px, 3.4vw, 36px); font-weight: 700; line-height: 1.15; }
+  .about-role { display: inline-flex; align-items: center; gap: 8px; margin-top: 12px; padding: 5px 14px; border-radius: 999px;
+    background: linear-gradient(90deg, rgba(74,144,226,0.1), rgba(184,169,232,0.1));
+    border: 1px solid rgba(120,150,220,0.18); color: #3F6FB0; font-weight: 700; font-size: 12px; letter-spacing: 0.04em;
+    font-family: 'Comfortaa', sans-serif; }
+  .about-role .pin { width: 6px; height: 6px; border-radius: 50%; background: #4A90E2; flex-shrink: 0; }
+  .about-content p { margin-top: 16px; font-size: 15px; line-height: 1.75; color: var(--muted); }
+  .about-content .hl { color: var(--blue); font-weight: 600;
+    background: linear-gradient(180deg, transparent 65%, rgba(74,144,226,0.18) 65%); padding: 0 2px; }
+  .chips { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 18px; }
+  .chip { padding: 5px 12px; border-radius: 999px; background: rgba(255,255,255,0.8);
+    border: 1px solid rgba(120,150,220,0.22); font-weight: 700; font-size: 12px;
+    font-family: 'Comfortaa', sans-serif; }
+  .chip.b1 { color: #2E66B5; border-color: rgba(74,144,226,0.35); }
+  .chip.b2 { color: #6B5BB0; border-color: rgba(184,169,232,0.4); }
+  .chip.b3 { color: #2F8266; border-color: rgba(168,216,201,0.55); }
+
+  @media (max-width: 820px) {
+    .about-inner { flex-direction: column; gap: 28px; padding: 36px 24px; text-align: center; }
+    .chips { justify-content: center; }
+  }
+
+  /* ==================================================
+     STATS
+  ================================================== */
+  .stats-map { position: relative; max-width: 1000px; margin: 32px auto 0; height: 480px; }
+  @media (max-width: 760px) { .stats-map { height: 700px; } }
+  .stats-map svg.lines { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; overflow: visible; }
+  .stats-map svg.lines line { stroke: rgba(255,255,255,0.85); stroke-width: 1.6; stroke-dasharray: 2 6; stroke-linecap: round;
+    filter: drop-shadow(0 0 4px rgba(255,255,255,0.7)); }
+  .stat-node { position: absolute; transform: translate(-50%,-50%); text-align: center; width: 200px; }
+  .stat-star { width: 120px; height: 120px; margin: 0 auto; border-radius: 50%; position: relative;
+    display: flex; align-items: center; justify-content: center; cursor: pointer;
+    transition: transform .35s, filter .35s; animation: pulseS 4s ease-in-out infinite; animation-delay: var(--pd, 0s); }
+  @keyframes pulseS { 0%,100%{filter:brightness(1)} 50%{filter:brightness(1.08)} }
+  .stat-node:hover .stat-star { transform: scale(1.07); filter: brightness(1.15); }
+  .stat-star::before { content: ""; position: absolute; inset: -12px; border-radius: 50%;
+    background: var(--halo); filter: blur(14px); z-index: -1;
+    animation: haloP 3.4s ease-in-out infinite; }
+  @keyframes haloP { 0%,100%{transform:scale(1);opacity:.7} 50%{transform:scale(1.1);opacity:1} }
+  .stat-star::after { content: ""; position: absolute; inset: 6%; border-radius: 50%;
+    background: linear-gradient(135deg, rgba(255,255,255,0.55) 0%, transparent 45%); }
+  .stat-num { font-family: 'Comfortaa', sans-serif; font-weight: 700; font-size: 34px; color: #fff; letter-spacing: -0.02em;
+    text-shadow: 0 2px 10px rgba(120,80,160,0.35); position: relative; z-index: 2; }
+  .stat-num .pl { font-size: 24px; opacity: 0.95; }
+  .stat-label { margin-top: 14px; font-weight: 700; font-size: 13.5px; color: var(--dark);
+    text-shadow: 0 2px 14px rgba(255,255,255,0.7); font-family: 'Nunito', sans-serif; }
+
+  .s-pink .stat-star { background: radial-gradient(circle at 32% 30%, #FFFBFD, #FFB5E8 50%, #FF8AD0);
+    box-shadow: inset -8px -10px 18px rgba(220,100,170,0.35), inset 8px 10px 14px rgba(255,255,255,0.75),
+      0 0 26px rgba(255,181,232,0.7), 0 0 50px rgba(255,181,232,0.45); --halo: rgba(255,181,232,0.55); }
+  .s-purple .stat-star { background: radial-gradient(circle at 32% 30%, #FFF8FE, #DDA0DD 50%, #B881D8);
+    box-shadow: inset -8px -10px 18px rgba(140,90,180,0.35), inset 8px 10px 14px rgba(255,255,255,0.7),
+      0 0 26px rgba(221,160,221,0.7), 0 0 50px rgba(221,160,221,0.45); --halo: rgba(221,160,221,0.55); }
+  .s-blue .stat-star { background: radial-gradient(circle at 32% 30%, #F8FCFF, #B4D7FF 50%, #80B5EA);
+    box-shadow: inset -8px -10px 18px rgba(80,130,200,0.35), inset 8px 10px 14px rgba(255,255,255,0.7),
+      0 0 26px rgba(180,215,255,0.7), 0 0 50px rgba(180,215,255,0.45); --halo: rgba(180,215,255,0.6); }
+  .s-yellow .stat-star { background: radial-gradient(circle at 32% 30%, #FFFEF4, #FFF9B1 45%, #F2DE6E);
+    box-shadow: inset -8px -10px 18px rgba(200,170,60,0.3), inset 8px 10px 14px rgba(255,255,255,0.8),
+      0 0 26px rgba(255,249,177,0.85), 0 0 50px rgba(255,249,177,0.55); --halo: rgba(255,249,177,0.75); }
+  .s-yellow .stat-num { color: #8B6914; text-shadow: 0 2px 10px rgba(255,255,255,0.6); }
+
+  .stat-node.p1 { top: 22%; left: 22%; --pd: 0s; }
+  .stat-node.p2 { top: 18%; left: 72%; --pd: -0.8s; }
+  .stat-node.p3 { top: 70%; left: 30%; --pd: -1.6s; }
+  .stat-node.p4 { top: 75%; left: 75%; --pd: -2.4s; }
+  @media (max-width: 760px) {
+    .stat-node.p1 { top: 9%; left: 30%; }
+    .stat-node.p2 { top: 33%; left: 72%; }
+    .stat-node.p3 { top: 60%; left: 28%; }
+    .stat-node.p4 { top: 86%; left: 70%; }
+    .stat-node { width: 170px; }
+    .stat-star { width: 100px; height: 100px; }
+    .stat-num { font-size: 28px; }
+  }
+
+  /* ==================================================
+     FOOTER
+  ================================================== */
+  .site-footer { position: relative; margin-top: 80px;
+    background: linear-gradient(135deg, #DDECF8 0%, #E8E0F5 60%, #E5F0EC 100%);
+    padding: 80px 24px 28px; overflow: hidden; isolation: isolate; }
+  .wave-top { position: absolute; top: -1px; left: 0; right: 0; height: 60px; line-height: 0; pointer-events: none; }
+  .wave-top svg { width: 100%; height: 100%; display: block; }
+  .footer-grid { display: grid; grid-template-columns: 1.4fr 1fr 1fr; gap: 48px;
+    padding-bottom: 40px; border-bottom: 1px solid rgba(120,150,220,0.18); max-width: 1200px; margin: 0 auto; }
+  @media (max-width: 880px) { .footer-grid { grid-template-columns: 1fr 1fr; } .col.brand { grid-column: 1 / -1; } }
+  @media (max-width: 560px) { .footer-grid { grid-template-columns: 1fr; gap: 32px; } }
+  .col h3 { font-family: 'Nunito', sans-serif; font-weight: 700; font-size: 12.5px; letter-spacing: 0.14em;
+    text-transform: uppercase; color: var(--blue); margin-bottom: 18px; display: inline-flex; align-items: center; gap: 8px; }
+  .col h3::before { content: ""; width: 16px; height: 1.5px; background: linear-gradient(90deg, var(--blue), var(--lavender)); border-radius: 999px; }
+  .brand .name2 { font-family: 'Comfortaa', sans-serif; font-weight: 700; font-size: 22px; color: var(--dark); margin-bottom: 12px; display: inline-flex; align-items: center; gap: 10px; }
+  .brand .bio2 { font-size: 14px; line-height: 1.7; max-width: 36ch; color: var(--muted); margin-bottom: 18px; }
+  .ocean-row { display: inline-flex; align-items: center; gap: 12px; padding: 10px 14px; border-radius: 999px;
+    background: rgba(255,255,255,0.6); border: 1px solid rgba(255,255,255,0.85);
+    box-shadow: 0 4px 14px rgba(120,150,200,0.1); }
+  .ocean-row span { font-size: 17px; animation: bob 4s ease-in-out infinite; animation-delay: var(--d, 0s); }
+  .links { display: flex; flex-direction: column; gap: 10px; }
+  .links a { font-size: 14px; color: var(--muted); text-decoration: none; font-weight: 500;
+    display: inline-flex; align-items: center; gap: 8px; transition: color .2s, gap .25s; width: fit-content; }
+  .links a::before { content: "→"; color: var(--blue-2); font-weight: 700; opacity: 0; transform: translateX(-6px); transition: opacity .25s, transform .25s; font-size: 12px; }
+  .links a:hover { color: var(--blue); gap: 12px; }
+  .links a:hover::before { opacity: 1; transform: translateX(0); }
+  .connect-email { display: inline-flex; align-items: center; gap: 8px; padding: 10px 12px; border-radius: 14px;
+    background: rgba(255,255,255,0.7); border: 1px solid rgba(120,150,220,0.2); color: var(--dark);
+    font-size: 13px; font-weight: 500; text-decoration: none; margin-bottom: 14px; word-break: break-all;
+    transition: border-color .25s, transform .25s; }
+  .connect-email:hover { border-color: var(--blue); transform: translateY(-1px); }
+  .connect-email .ic2 { width: 26px; height: 26px; border-radius: 50%; background: linear-gradient(135deg, #DCE9F7, #E8E0F5);
+    display: inline-flex; align-items: center; justify-content: center; font-size: 13px; flex-shrink: 0; }
+  .socials { display: flex; gap: 8px; flex-wrap: wrap; }
+  .socials a { display: inline-flex; align-items: center; gap: 7px; padding: 8px 12px; border-radius: 999px;
+    background: rgba(255,255,255,0.7); border: 1px solid rgba(120,150,220,0.2);
+    color: var(--muted); font-size: 12.5px; font-weight: 600; text-decoration: none; font-family: 'Nunito', sans-serif;
+    transition: transform .25s, color .2s, background .25s, border-color .25s, box-shadow .25s; }
+  .socials a svg { width: 14px; height: 14px; }
+  .socials a:hover { transform: translateY(-2px); color: #fff; background: linear-gradient(135deg, var(--blue), var(--blue-2));
+    border-color: transparent; box-shadow: 0 8px 18px rgba(74,144,226,0.4); }
+  .bottom { padding-top: 22px; display: flex; justify-content: space-between; align-items: center; gap: 14px;
+    flex-wrap: wrap; font-size: 12.5px; color: var(--soft); max-width: 1200px; margin: 0 auto; }
+  .bottom .tag2 .heart { color: var(--blue); animation: hb 2.4s ease-in-out infinite; display: inline-block; }
+  @keyframes hb { 0%,100%{transform:scale(1)} 50%{transform:scale(1.2)} }
+  @media (max-width: 560px) { .bottom { justify-content: center; text-align: center; } }
+
+  /* ==================================================
+     SCROLL TOP
+  ================================================== */
+  .scroll-top { position: fixed; bottom: 24px; right: 24px; z-index: 90;
+    width: 48px; height: 48px; border-radius: 50%; border: none; cursor: pointer;
+    background: linear-gradient(135deg, var(--blue), var(--blue-2)); color: #fff;
+    font-size: 18px; display: flex; align-items: center; justify-content: center;
+    box-shadow: 0 12px 28px rgba(74,144,226,0.4), 0 0 0 4px rgba(255,255,255,0.7);
+    opacity: 0; transform: translateY(12px) scale(0.9); transition: opacity .3s, transform .3s, box-shadow .25s;
+    pointer-events: none;
+  }
+  .scroll-top.show { opacity: 1; transform: translateY(0) scale(1); pointer-events: auto; }
+  .scroll-top:hover { box-shadow: 0 18px 38px rgba(74,144,226,0.55), 0 0 0 4px rgba(255,255,255,0.9), 0 0 24px rgba(111,168,220,0.5); }
+
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after { animation: none !important; transition: none !important; }
+  }
+</style>
 </head>
 <body>
-    <header class="header">
-        <nav class="nav container">
-            <a href="index.html" class="logo">Thach Thao</a>
-            <button class="nav-toggle" aria-label="Toggle navigation">
-                <span></span>
-                <span></span>
-                <span></span>
-            </button>
-                        <ul class="nav-menu">
-                <li><a href="index.html" class="nav-link active">Home</a></li>
-                <li><a href="about.html" class="nav-link">About</a></li>
-                <li><a href="contact.html" class="nav-link">Contact</a></li>
-                <li><a href="phd-tips.html" class="nav-link">PhD & Research</a></li>
-                <li><a href="english-learning.html" class="nav-link">English Learning</a></li>
-                <li><a href="living-abroad.html" class="nav-link">Life in Taiwan</a></li>
-            </ul>
-        </nav>
-    </header>
 
-    <main>
-        <!-- Hero Section — Ghibli landscape -->
-        <section class="hero">
+<!-- ============= PAGE BG ============= -->
+<div class="page-bg" aria-hidden="true">
+  <span class="cloud" style="top: 8%;  width: 300px; height: 100px; --dur: 75s;"></span>
+  <span class="cloud" style="top: 28%; width: 240px; height: 80px;  --dur: 95s; --delay: -30s;"></span>
+  <span class="cloud" style="top: 52%; width: 280px; height: 90px;  --dur: 110s; --delay: -60s;"></span>
+  <span class="cloud" style="top: 76%; width: 220px; height: 70px;  --dur: 85s;  --delay: -20s;"></span>
 
-            <!-- Warm atmospheric sun glow -->
-            <div class="hero-sky-glow" aria-hidden="true"></div>
+  <span class="spark" style="top: 6%; left: 10%; width: 4px; height: 4px;"></span>
+  <span class="spark p" style="top: 14%; left: 78%; width: 5px; height: 5px; --dur: 3.4s;"></span>
+  <span class="spark b" style="top: 32%; left: 22%; width: 4px; height: 4px; --delay: -1s;"></span>
+  <span class="spark y" style="top: 44%; left: 88%; width: 5px; height: 5px; --dur: 2.6s; --delay: -0.5s;"></span>
+  <span class="spark" style="top: 58%; left: 6%;  width: 4px; height: 4px; --delay: -1.5s;"></span>
+  <span class="spark p" style="top: 70%; left: 90%; width: 5px; height: 5px; --dur: 3s; --delay: -2s;"></span>
+  <span class="spark b" style="top: 84%; left: 18%; width: 4px; height: 4px; --delay: -2.4s;"></span>
+  <span class="spark y" style="top: 92%; left: 70%; width: 5px; height: 5px; --dur: 3.4s;"></span>
+</div>
 
-            <!-- Drifting clouds -->
-            <div class="hero-clouds" aria-hidden="true">
-                <div class="cloud cloud-1"><span></span><span></span></div>
-                <div class="cloud cloud-2"><span></span><span></span></div>
-                <div class="cloud cloud-3"><span></span><span></span></div>
-                <div class="cloud cloud-4"><span></span></div>
-                <div class="cloud cloud-5"><span></span></div>
-            </div>
+<!-- ============= HEADER ============= -->
+<header class="site-header" id="siteHeader">
+  <div class="header-inner">
+    <a href="index.html" class="logo">
+      <span class="spinner" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 18 18" xmlns="http://www.w3.org/2000/svg"><g transform="translate(9,9)"><ellipse cx="0" cy="-4" rx="1.4" ry="3.5" fill="#A855F7" transform="rotate(0)"/><ellipse cx="0" cy="-4" rx="1.4" ry="3.5" fill="#9333EA" transform="rotate(30)"/><ellipse cx="0" cy="-4" rx="1.4" ry="3.5" fill="#A855F7" transform="rotate(60)"/><ellipse cx="0" cy="-4" rx="1.4" ry="3.5" fill="#9333EA" transform="rotate(90)"/><ellipse cx="0" cy="-4" rx="1.4" ry="3.5" fill="#A855F7" transform="rotate(120)"/><ellipse cx="0" cy="-4" rx="1.4" ry="3.5" fill="#9333EA" transform="rotate(150)"/><ellipse cx="0" cy="-4" rx="1.4" ry="3.5" fill="#A855F7" transform="rotate(180)"/><ellipse cx="0" cy="-4" rx="1.4" ry="3.5" fill="#9333EA" transform="rotate(210)"/><ellipse cx="0" cy="-4" rx="1.4" ry="3.5" fill="#A855F7" transform="rotate(240)"/><ellipse cx="0" cy="-4" rx="1.4" ry="3.5" fill="#9333EA" transform="rotate(270)"/><ellipse cx="0" cy="-4" rx="1.4" ry="3.5" fill="#A855F7" transform="rotate(300)"/><ellipse cx="0" cy="-4" rx="1.4" ry="3.5" fill="#9333EA" transform="rotate(330)"/><circle r="2.5" fill="#F5C518"/><circle r="1.2" fill="#C89010"/></g></svg></span>
+      Thach <span class="last">Thao</span><span class="sep"> · </span><span class="nick">Jessica</span>
+      <span class="shell" aria-hidden="true">🐚</span>
+    </a>
+    <nav class="primary" aria-label="Primary">
+      <a href="index.html" class="active">Home</a>
+      <a href="about.html">Profile</a>
+      <a href="phd-tips.html">PhD &amp; Research</a>
+      <a href="english-learning.html">English Learning</a>
+      <a href="living-abroad.html">Life in Taiwan</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+    <button class="hamburger" aria-label="Open menu" id="menuBtn">☰</button>
+    <div class="drawer" id="drawer">
+      <a href="index.html" class="active">Home</a>
+      <a href="about.html">Profile</a>
+      <a href="contact.html">Contact</a>
+      <a href="phd-tips.html">PhD &amp; Research</a>
+      <a href="english-learning.html">English Learning</a>
+      <a href="living-abroad.html">Life in Taiwan</a>
+      <a href="contact.html">Contact</a>
+    </div>
+  </div>
+</header>
 
-            <!-- Language bubbles floating in sky -->
-            <div class="hero-langs" aria-hidden="true">
-                <span class="lang-b lb-1">🇨🇳 你好</span>
-                <span class="lang-b lb-2">🇻🇳 Xin chào</span>
-                <span class="lang-b lb-3">🇯🇵 こんにちは</span>
-                <span class="lang-b lb-4">🇬🇧 Hello</span>
-                <span class="lang-b lb-5">🇰🇷 안녕하세요</span>
-                <span class="lang-b lb-6">🇫🇷 Bonjour</span>
-            </div>
+<!-- ============= HERO ============= -->
+<section class="hero" id="home">
+  <div class="container">
+    <div class="hero-inner">
+      <span class="eyebrow hero-tag"><span class="d"></span>🌟 LINGUISTICS · AI · TAIWAN 🇹🇼</span>
 
-            <!-- Floating leaves, fireflies & birds -->
-            <div class="hero-floats" aria-hidden="true">
-                <span class="ghibli-leaf gl-1">🍃</span>
-                <span class="ghibli-leaf gl-2">🍂</span>
-                <span class="ghibli-leaf gl-3">🌸</span>
-                <span class="ghibli-leaf gl-4">🍃</span>
-                <span class="ghibli-firefly gf-1"></span>
-                <span class="ghibli-firefly gf-2"></span>
-                <span class="ghibli-firefly gf-3"></span>
-                <span class="ghibli-firefly gf-4"></span>
-                <span class="ghibli-firefly gf-5"></span>
-                <span class="ghibli-firefly gf-6"></span>
-                <span class="ghibli-firefly gf-7"></span>
-                <span class="ghibli-firefly gf-8"></span>
-                <!-- Flying bird silhouettes -->
-                <span class="hero-bird hb-1"></span>
-                <span class="hero-bird hb-2"></span>
-                <span class="hero-bird hb-3"></span>
-            </div>
+      <div class="orbit" aria-label="Multilingual greetings orbit">
+        <span class="ring-rotate" aria-hidden="true"></span>
+        <span class="photo-halo" aria-hidden="true"></span>
+        <span class="saturn-ring" aria-hidden="true"></span>
 
-            <!-- Main content -->
-            <div class="container">
-                <div class="hero-content">
-                    <div class="hero-badge">🌿 Linguistics · AI · Taiwan 🇹🇼</div>
-                    <h1>Hi, I'm <span class="hero-name">Thach Thao</span>! 👋</h1>
-                    <p>A Vietnamese Ph.D. student in Linguistics at National Taiwan University. I share my journey through academia, tips for learning English, insights on research life, and adventures of living abroad in Taiwan. Join me as I navigate the exciting world of multilingualism, AI in education, and cross-cultural experiences.</p>
-                    <a href="#featured" class="btn btn-primary">Explore My Blog</a>
-                </div>
-            </div>
-
-            <!-- Ghibli landscape — sky, trees, Aster flowers, stream, meadow, birds -->
-            <div class="hero-hills" aria-hidden="true">
-                <svg viewBox="0 0 1440 310" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
-
-                    <!-- ① Distant hazy hills (pale blue-sage) -->
-                    <path d="M0,85 C280,48 560,75 840,55 C1080,38 1300,62 1440,50 L1440,310 L0,310 Z"
-                          fill="#B8D4C2" opacity="0.55"/>
-
-                    <!-- ② Far rolling green hills -->
-                    <path d="M0,118 C220,82 440,110 660,92 C880,74 1100,102 1320,88 C1390,84 1430,90 1440,88 L1440,310 L0,310 Z"
-                          fill="#7BB87A"/>
-
-                    <!-- ③ Far tree canopy + flowers — animated sway group -->
-                    <g class="tree-far-sway">
-                    <path d="M-5,122 Q25,82 55,122 Q90,98 122,122 Q155,80 185,122 Q220,96 252,122 Q285,84 315,122 Q350,98 382,122 Q415,80 445,122 Q480,95 512,122 Q545,82 575,122 Q610,97 642,122 Q675,80 705,122 Q740,96 772,122 Q805,82 835,122 Q870,97 902,122 Q935,80 965,122 Q1000,96 1032,122 Q1065,82 1095,122 Q1130,97 1162,122 Q1195,80 1225,122 Q1260,96 1292,122 Q1325,82 1355,122 Q1390,97 1422,122 L1445,122 L1445,310 L-5,310 Z"
-                          fill="#2A5E2C" opacity="0.90"/>
-                    <!-- ✿ Far Aster amellus flowers (sway with trees) -->
-                    <circle cx="55"  cy="90"  r="2"   fill="#D96BB8" opacity="0.88"/><circle cx="55"  cy="90"  r="0.7" fill="#E8C830"/>
-                    <circle cx="185" cy="84"  r="2"   fill="#E080C0" opacity="0.85"/><circle cx="185" cy="84"  r="0.7" fill="#E8C830"/>
-                    <circle cx="445" cy="86"  r="2"   fill="#D96BB8" opacity="0.88"/><circle cx="445" cy="86"  r="0.7" fill="#E8C830"/>
-                    <circle cx="705" cy="88"  r="2"   fill="#E080C0" opacity="0.85"/><circle cx="705" cy="88"  r="0.7" fill="#E8C830"/>
-                    <circle cx="965" cy="86"  r="2"   fill="#D96BB8" opacity="0.88"/><circle cx="965" cy="86"  r="0.7" fill="#E8C830"/>
-                    <circle cx="1225" cy="88" r="2"   fill="#E080C0" opacity="0.85"/><circle cx="1225" cy="88" r="0.7" fill="#E8C830"/>
-                    <circle cx="122" cy="86"  r="2"   fill="#9052C2" opacity="0.88"/><circle cx="122" cy="86"  r="0.7" fill="#E8C830"/>
-                    <circle cx="315" cy="88"  r="2"   fill="#B070DA" opacity="0.85"/><circle cx="315" cy="88"  r="0.7" fill="#E8C830"/>
-                    <circle cx="575" cy="86"  r="2"   fill="#9052C2" opacity="0.88"/><circle cx="575" cy="86"  r="0.7" fill="#E8C830"/>
-                    <circle cx="835" cy="88"  r="2"   fill="#B070DA" opacity="0.85"/><circle cx="835" cy="88"  r="0.7" fill="#E8C830"/>
-                    <circle cx="1095" cy="86" r="2"   fill="#9052C2" opacity="0.88"/><circle cx="1095" cy="86" r="0.7" fill="#E8C830"/>
-                    <circle cx="1355" cy="88" r="2"   fill="#B070DA" opacity="0.85"/><circle cx="1355" cy="88" r="0.7" fill="#E8C830"/>
-                    <circle cx="252" cy="90"  r="2"   fill="#F0EEFF" opacity="0.95"/><circle cx="252" cy="90"  r="0.7" fill="#C9A227"/>
-                    <circle cx="512" cy="88"  r="2"   fill="#F0EEFF" opacity="0.95"/><circle cx="512" cy="88"  r="0.7" fill="#C9A227"/>
-                    <circle cx="772" cy="90"  r="2"   fill="#F0EEFF" opacity="0.95"/><circle cx="772" cy="90"  r="0.7" fill="#C9A227"/>
-                    <circle cx="1032" cy="88" r="2"   fill="#F0EEFF" opacity="0.95"/><circle cx="1032" cy="88" r="0.7" fill="#C9A227"/>
-                    <circle cx="1292" cy="90" r="2"   fill="#F0EEFF" opacity="0.95"/><circle cx="1292" cy="90" r="0.7" fill="#C9A227"/>
-                    </g><!-- /tree-far-sway -->
-
-                    <!-- ④ Stream / river -->
-                    <path d="M-10,148 C180,140 360,152 540,145 C720,138 900,150 1080,144 C1260,138 1380,146 1450,143 L1450,168 C1380,170 1260,164 1080,170 C900,176 720,164 540,170 C360,176 180,165 -10,172 Z"
-                          fill="#5AAAD0" opacity="0.82"/>
-                    <!-- Water shimmer — animated slide to suggest flowing water -->
-                    <path class="water-shimmer-a" d="M60,152 C220,149 400,154 580,151 C760,148 940,153 1120,150 L1120,156 C940,158 760,154 580,157 C400,160 220,155 60,158 Z"
-                          fill="rgba(255,255,255,0.32)"/>
-                    <path class="water-shimmer-b" d="M800,144 C940,141 1100,146 1260,143 C1360,141 1420,144 1450,143 L1450,149 C1420,150 1360,148 1260,150 C1100,152 940,148 800,150 Z"
-                          fill="rgba(255,255,255,0.22)"/>
-
-                    <!-- ⑤ Near forest hills (static base) -->
-                    <path d="M0,175 C160,158 320,175 480,162 C640,149 800,168 960,156 C1120,144 1280,162 1440,152 L1440,310 L0,310 Z"
-                          fill="#3D8B3C"/>
-
-                    <!-- ⑥ Near tree canopy + flowers — animated sway group -->
-                    <g class="tree-near-sway">
-                    <path d="M-5,180 Q22,138 48,180 Q74,152 100,180 Q128,135 155,180 Q182,150 208,180 Q236,135 262,180 Q290,152 316,180 Q344,135 370,180 Q398,150 424,180 Q452,132 478,180 Q506,150 532,180 Q560,135 586,180 Q614,150 640,180 Q668,132 694,180 Q722,150 748,180 Q776,135 802,180 Q830,150 856,180 Q884,132 910,180 Q938,150 964,180 Q992,135 1018,180 Q1046,150 1072,180 Q1100,132 1126,180 Q1154,150 1180,180 Q1208,135 1234,180 Q1262,150 1288,180 Q1316,132 1342,180 Q1370,150 1396,180 Q1422,138 1445,180 L1445,310 L-5,310 Z"
-                          fill="#1E4D1E"/>
-                    <!-- ✿ Near Aster amellus flowers (sway with trees) -->
-                    <circle cx="48"   cy="143" r="3.5" fill="#E060B0" opacity="0.92"/><circle cx="48"   cy="143" r="1.2" fill="#E8C830"/>
-                    <circle cx="262"  cy="140" r="3.5" fill="#D96BB8" opacity="0.90"/><circle cx="262"  cy="140" r="1.2" fill="#E8C830"/>
-                    <circle cx="478"  cy="138" r="3.5" fill="#E080C8" opacity="0.90"/><circle cx="478"  cy="138" r="1.2" fill="#E8C830"/>
-                    <circle cx="694"  cy="143" r="3.5" fill="#D96BB8" opacity="0.92"/><circle cx="694"  cy="143" r="1.2" fill="#E8C830"/>
-                    <circle cx="910"  cy="138" r="3.5" fill="#E060B0" opacity="0.90"/><circle cx="910"  cy="138" r="1.2" fill="#E8C830"/>
-                    <circle cx="1126" cy="143" r="3.5" fill="#D96BB8" opacity="0.92"/><circle cx="1126" cy="143" r="1.2" fill="#E8C830"/>
-                    <circle cx="1342" cy="140" r="3.5" fill="#E080C8" opacity="0.90"/><circle cx="1342" cy="140" r="1.2" fill="#E8C830"/>
-                    <circle cx="155"  cy="138" r="3.5" fill="#8848C0" opacity="0.90"/><circle cx="155"  cy="138" r="1.2" fill="#E8C830"/>
-                    <circle cx="370"  cy="140" r="3.5" fill="#B070DA" opacity="0.88"/><circle cx="370"  cy="140" r="1.2" fill="#E8C830"/>
-                    <circle cx="586"  cy="138" r="3.5" fill="#8848C0" opacity="0.90"/><circle cx="586"  cy="138" r="1.2" fill="#E8C830"/>
-                    <circle cx="802"  cy="143" r="3.5" fill="#B070DA" opacity="0.88"/><circle cx="802"  cy="143" r="1.2" fill="#E8C830"/>
-                    <circle cx="1018" cy="138" r="3.5" fill="#8848C0" opacity="0.90"/><circle cx="1018" cy="138" r="1.2" fill="#E8C830"/>
-                    <circle cx="1234" cy="143" r="3.5" fill="#B070DA" opacity="0.88"/><circle cx="1234" cy="143" r="1.2" fill="#E8C830"/>
-                    <circle cx="100"  cy="146" r="3"   fill="#F2EEFF" opacity="0.96"/><circle cx="100"  cy="146" r="1.1" fill="#C9A227"/>
-                    <circle cx="424"  cy="143" r="3"   fill="#F2EEFF" opacity="0.96"/><circle cx="424"  cy="143" r="1.1" fill="#C9A227"/>
-                    <circle cx="748"  cy="146" r="3"   fill="#F2EEFF" opacity="0.96"/><circle cx="748"  cy="146" r="1.1" fill="#C9A227"/>
-                    <circle cx="1072" cy="143" r="3"   fill="#F2EEFF" opacity="0.96"/><circle cx="1072" cy="143" r="1.1" fill="#C9A227"/>
-                    <circle cx="1396" cy="146" r="3"   fill="#F2EEFF" opacity="0.96"/><circle cx="1396" cy="146" r="1.1" fill="#C9A227"/>
-                    </g><!-- /tree-near-sway -->
-
-                    <!-- ⑦ Foreground bright meadow -->
-                    <path d="M0,212 C200,200 400,214 600,204 C800,194 1000,208 1200,200 C1330,196 1410,204 1440,200 L1440,310 L0,310 Z"
-                          fill="#52A44E"/>
-
-                    <!-- ✿ Meadow flowers — gentle independent bob -->
-                    <g class="flowers-meadow">
-                    <circle cx="90"   cy="215" r="5"   fill="#E060B0" opacity="0.92"/><circle cx="90"   cy="215" r="1.8" fill="#E8D030"/>
-                    <circle cx="200"  cy="220" r="4.5" fill="#8848C0" opacity="0.90"/><circle cx="200"  cy="220" r="1.6" fill="#E8D030"/>
-                    <circle cx="340"  cy="213" r="5"   fill="#F2EEFF" opacity="0.96"/><circle cx="340"  cy="213" r="1.8" fill="#C9A227"/>
-                    <circle cx="490"  cy="218" r="5"   fill="#D96BB8" opacity="0.92"/><circle cx="490"  cy="218" r="1.8" fill="#E8D030"/>
-                    <circle cx="620"  cy="214" r="4.5" fill="#B070DA" opacity="0.88"/><circle cx="620"  cy="214" r="1.6" fill="#E8D030"/>
-                    <circle cx="760"  cy="219" r="5"   fill="#F2EEFF" opacity="0.96"/><circle cx="760"  cy="219" r="1.8" fill="#C9A227"/>
-                    <circle cx="890"  cy="213" r="5"   fill="#E060B0" opacity="0.92"/><circle cx="890"  cy="213" r="1.8" fill="#E8D030"/>
-                    <circle cx="1020" cy="218" r="4.5" fill="#8848C0" opacity="0.90"/><circle cx="1020" cy="218" r="1.6" fill="#E8D030"/>
-                    <circle cx="1160" cy="214" r="5"   fill="#D96BB8" opacity="0.92"/><circle cx="1160" cy="214" r="1.8" fill="#E8D030"/>
-                    <circle cx="1310" cy="219" r="5"   fill="#F2EEFF" opacity="0.96"/><circle cx="1310" cy="219" r="1.8" fill="#C9A227"/>
-                    <circle cx="1420" cy="215" r="4.5" fill="#B070DA" opacity="0.88"/><circle cx="1420" cy="215" r="1.6" fill="#E8D030"/>
-                    <circle cx="145"  cy="224" r="4"   fill="#8848C0" opacity="0.85"/><circle cx="145"  cy="224" r="1.4" fill="#E8D030"/>
-                    <circle cx="420"  cy="222" r="4"   fill="#D96BB8" opacity="0.88"/><circle cx="420"  cy="222" r="1.4" fill="#E8D030"/>
-                    <circle cx="680"  cy="222" r="4"   fill="#E080C8" opacity="0.85"/><circle cx="680"  cy="222" r="1.4" fill="#E8D030"/>
-                    <circle cx="960"  cy="224" r="4"   fill="#F2EEFF" opacity="0.92"/><circle cx="960"  cy="224" r="1.4" fill="#C9A227"/>
-                    <circle cx="1240" cy="222" r="4"   fill="#8848C0" opacity="0.85"/><circle cx="1240" cy="222" r="1.4" fill="#E8D030"/>
-                    </g><!-- /flowers-meadow -->
-
-                    <!-- ⑧ Foreground lighter grass highlight -->
-                    <path d="M0,232 C240,224 480,234 720,226 C960,218 1200,230 1440,222 L1440,310 L0,310 Z"
-                          fill="#6BBD66" opacity="0.50"/>
-
-                    <!-- ⑨ Fade to page bg -->
-                    <path d="M0,255 C280,245 560,258 840,248 C1080,240 1280,252 1440,246 L1440,310 L0,310 Z"
-                          fill="#FAFAFA"/>
-
-                    <!-- 🐦 SVG birds — gentle float -->
-                    <g class="svg-birds">
-                    <path d="M200,32 C204,28 208,25 212,28 C216,25 220,28 224,32" stroke="#1B3828" stroke-width="1.8" fill="none" stroke-linecap="round" opacity="0.52"/>
-                    <path d="M218,21 C222,17 227,14 231,17 C235,14 239,17 243,21" stroke="#1B3828" stroke-width="1.6" fill="none" stroke-linecap="round" opacity="0.46"/>
-                    <path d="M188,44 C192,40 195,38 198,40 C201,38 204,40 208,44" stroke="#1B3828" stroke-width="1.4" fill="none" stroke-linecap="round" opacity="0.38"/>
-                    <path d="M1132,36 C1136,32 1140,29 1144,32 C1148,29 1152,32 1156,36" stroke="#1B3828" stroke-width="1.8" fill="none" stroke-linecap="round" opacity="0.50"/>
-                    <path d="M1150,24 C1154,20 1158,17 1162,20 C1166,17 1170,20 1174,24" stroke="#1B3828" stroke-width="1.6" fill="none" stroke-linecap="round" opacity="0.44"/>
-                    <path d="M1118,52 C1122,48 1125,46 1128,48 C1131,46 1134,48 1138,52" stroke="#1B3828" stroke-width="1.4" fill="none" stroke-linecap="round" opacity="0.36"/>
-                    <path d="M840,18 C844,14 848,12 852,14 C856,12 860,14 864,18" stroke="#1B3828" stroke-width="1.5" fill="none" stroke-linecap="round" opacity="0.40"/>
-                    </g><!-- /svg-birds -->
-
-                </svg>
-            </div>
-        </section>
-
-        <!-- Featured Posts -->
-        <section id="featured" class="featured-posts">
-            <div class="container">
-                <h2 class="section-title">Featured Posts</h2>
-                <div class="posts-grid">
-                    <article class="post-card featured">
-                        <div class="post-image">
-                            <img src="https://images.unsplash.com/photo-1456513080510-7bf3a84b82f8?w=800&h=500&fit=crop" alt="PhD research desk">
-                            <span class="post-category">PhD Life</span>
-                        </div>
-                        <div class="post-content">
-                            <time class="post-date">November 20, 2024</time>
-                            <h3><a href="post-phd-first-year.html">Surviving Your First Year as a PhD Student: Lessons from NTU</a></h3>
-                            <p>From navigating coursework to finding your research direction, here's everything I learned during my first year in the Linguistics PhD program at National Taiwan University...</p>
-                            <a href="post-phd-first-year.html" class="read-more">Read More →</a>
-                        </div>
-                    </article>
-
-                    <article class="post-card">
-                        <div class="post-image">
-                            <img src="https://images.unsplash.com/photo-1546410531-bb4caa6b424d?w=600&h=400&fit=crop" alt="English learning">
-                            <span class="post-category">English Learning</span>
-                        </div>
-                        <div class="post-content">
-                            <time class="post-date">November 15, 2024</time>
-                            <h3><a href="post-ielts-tips.html">How I Achieved IELTS 7.0: A Non-Native Speaker's Guide</a></h3>
-                            <p>Practical strategies and resources that helped me improve my English proficiency for academic success...</p>
-                            <a href="post-ielts-tips.html" class="read-more">Read More →</a>
-                        </div>
-                    </article>
-
-                    <article class="post-card">
-                        <div class="post-image">
-                            <img src="https://images.unsplash.com/photo-1470004914212-05527e49370b?w=600&h=400&fit=crop" alt="Taipei cityscape">
-                            <span class="post-category">Life in Taiwan</span>
-                        </div>
-                        <div class="post-content">
-                            <time class="post-date">November 10, 2024</time>
-                            <h3><a href="post-taiwan-student.html">A Vietnamese Student's Guide to Living in Taiwan</a></h3>
-                            <p>From scholarship applications to daily life, here's what you need to know about studying in Taiwan...</p>
-                            <a href="post-taiwan-student.html" class="read-more">Read More →</a>
-                        </div>
-                    </article>
-
-                    <article class="post-card">
-                        <div class="post-image">
-                            <img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?w=600&h=400&fit=crop" alt="AI and language">
-                            <span class="post-category">Research</span>
-                        </div>
-                        <div class="post-content">
-                            <time class="post-date">November 5, 2024</time>
-                            <h3><a href="post-ai-language.html">AI in Language Learning: What My Research Reveals</a></h3>
-                            <p>Insights from my systematic review on how AI is transforming English language education...</p>
-                            <a href="post-ai-language.html" class="read-more">Read More →</a>
-                        </div>
-                    </article>
-                </div>
-            </div>
-        </section>
-
-        <!-- Categories Section -->
-        <section class="categories">
-            <div class="container">
-                <h2 class="section-title">Browse by Category</h2>
-                <div class="category-grid">
-                    <a href="phd-tips.html" class="category-card">
-                        <div class="category-icon">🎓</div>
-                        <h3>PhD & Research</h3>
-                        <p>Academic writing, conference tips, and research life insights</p>
-                    </a>
-                    <a href="english-learning.html" class="category-card">
-                        <div class="category-icon">📚</div>
-                        <h3>English Learning</h3>
-                        <p>IELTS prep, academic English, and teaching strategies</p>
-                    </a>
-                    <a href="living-abroad.html" class="category-card">
-                        <div class="category-icon">🇹🇼</div>
-                        <h3>Life in Taiwan</h3>
-                        <p>Student life, culture, and adventures in Taiwan</p>
-                    </a>
-                    <a href="#" class="category-card">
-                        <div class="category-icon">🤖</div>
-                        <h3>AI & Linguistics</h3>
-                        <p>AI in education, computational linguistics, and LLMs</p>
-                    </a>
-                </div>
-            </div>
-        </section>
-
-        <!-- About Preview Section -->
-        <section class="about-preview">
-            <div class="container">
-                <div class="about-preview-content">
-                    <div class="about-preview-text">
-                        <h2>About Me</h2>
-                        <p>I'm <strong>Le Thi Thach Thao (Jessica)</strong>, a Ph.D. student in Linguistics at National Taiwan University. My research focuses on sociolinguistics, multilingualism, and AI literacy.</p>
-                        <p>With a background in TESOL (4.0 GPA from NKUST) and years of teaching English to students of all ages, I'm passionate about sharing knowledge and helping others succeed in their academic journeys.</p>
-                        <p>I've presented at international conferences including TESOL, JALT, and Linguapax Asia, and my work has been published in academic proceedings and journals.</p>
-                        <a href="about.html" class="btn btn-outline">Learn More About Me</a>
-                    </div>
-                    <div class="about-preview-stats">
-                        <div class="stat-item">
-                            <span class="stat-number">10+</span>
-                            <span class="stat-label">Conference Presentations</span>
-                        </div>
-                        <div class="stat-item">
-                            <span class="stat-number">4</span>
-                            <span class="stat-label">Publications</span>
-                        </div>
-                        <div class="stat-item">
-                            <span class="stat-number">110+</span>
-                            <span class="stat-label">Students Taught</span>
-                        </div>
-                        <div class="stat-item">
-                            <span class="stat-number">5+</span>
-                            <span class="stat-label">Years in Taiwan</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Recent Posts -->
-        <section class="recent-posts">
-            <div class="container">
-                <h2 class="section-title">Recent Posts</h2>
-                <div class="posts-grid three-columns">
-                    <article class="post-card">
-                        <div class="post-image">
-                            <img src="https://images.unsplash.com/photo-1434030216411-0b793f4b4173?w=600&h=400&fit=crop" alt="Academic writing">
-                            <span class="post-category">PhD Life</span>
-                        </div>
-                        <div class="post-content">
-                            <time class="post-date">October 28, 2024</time>
-                            <h3><a href="#">How to Write Your First Academic Paper</a></h3>
-                            <p>A step-by-step guide from literature review to publication...</p>
-                            <a href="#" class="read-more">Read More →</a>
-                        </div>
-                    </article>
-
-                    <article class="post-card">
-                        <div class="post-image">
-                            <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=600&h=400&fit=crop" alt="Conference presentation">
-                            <span class="post-category">Research</span>
-                        </div>
-                        <div class="post-content">
-                            <time class="post-date">October 20, 2024</time>
-                            <h3><a href="#">Presenting at International Conferences: Tips & Tricks</a></h3>
-                            <p>What I learned from presenting at TESOL, JALT, and more...</p>
-                            <a href="#" class="read-more">Read More →</a>
-                        </div>
-                    </article>
-
-                    <article class="post-card">
-                        <div class="post-image">
-                            <img src="https://images.unsplash.com/photo-1529156069898-49953e39b3ac?w=600&h=400&fit=crop" alt="Friends in Taiwan">
-                            <span class="post-category">Life in Taiwan</span>
-                        </div>
-                        <div class="post-content">
-                            <time class="post-date">October 15, 2024</time>
-                            <h3><a href="#">Building Community: Vietnamese Students in Taiwan</a></h3>
-                            <p>Finding support and friendship as an international student...</p>
-                            <a href="#" class="read-more">Read More →</a>
-                        </div>
-                    </article>
-                </div>
-            </div>
-        </section>
-
-        <!-- Newsletter Section -->
-        <section class="newsletter">
-            <div class="container">
-                <div class="newsletter-content">
-                    <h2>Stay Connected</h2>
-                    <p>Subscribe to get the latest posts on PhD life, English learning tips, and Taiwan adventures delivered to your inbox.</p>
-                    <form class="newsletter-form" id="newsletter-form">
-                        <input type="email" placeholder="Enter your email" required>
-                        <button type="submit" class="btn btn-primary">Subscribe</button>
-                    </form>
-                </div>
-            </div>
-        </section>
-    </main>
-
-    <footer class="footer">
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-section">
-                    <h3>Thach Thao</h3>
-                    <p>PhD student in Linguistics at NTU. Sharing insights on academic life, English learning, and living abroad in Taiwan.</p>
-                </div>
-                <div class="footer-section">
-                    <h4>Quick Links</h4>
-                    <ul>
-                        <li><a href="index.html">Home</a></li>
-                        <li><a href="phd-tips.html">PhD & Research</a></li>
-                        <li><a href="english-learning.html">English Learning</a></li>
-                        <li><a href="living-abroad.html">Life in Taiwan</a></li>
-                        <li><a href="about.html">About</a></li>
-                    </ul>
-                </div>
-                <div class="footer-section">
-                    <h4>Connect</h4>
-                    <div class="social-links">
-                        <a href="mailto:jessie.thachthao@gmail.com">Email</a>
-                        <a href="https://www.linkedin.com/in/thach-thao-jessica-85aab9131/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
-                        <a href="https://www.researchgate.net/profile/Le-Thi-Thach-Thao?ev=hdr_xprf" target="_blank" rel="noopener noreferrer">ResearchGate</a>
-                        <a href="https://scholar.google.com/citations?user=sKBD3EEAAAAJ&amp;hl=en" target="_blank" rel="noopener noreferrer">Google Scholar</a>
-                    </div>
-                </div>
-            </div>
-            <div class="footer-bottom">
-                <p>&copy; 2024 Thach Thao. All rights reserved.</p>
-            </div>
+        <div class="profile" role="img" aria-label="Thach Thao">
+          <img src="thach%20thao.jpg" alt="Thach Thao">
         </div>
-    </footer>
 
-    <script src="js/main.js"></script>
-    <!-- Ghibli mascots: Calcifer + soot sprite -->
-    <span class="ghibli-calcifer" aria-hidden="true" title="Calcifer">🔥</span>
-    <span class="ghibli-sticker-2" aria-hidden="true" title="Soot sprite">⚫</span>
-    <span class="ghibli-sticker-3" aria-hidden="true" title="Forest spirit">🌿</span>
+        <span class="greet g1"><span class="flag">EN</span>Hello</span>
+        <span class="greet g2"><span class="flag">中文</span>你好</span>
+        <span class="greet g3"><span class="flag">日本語</span>こんにちは</span>
+        <span class="greet g4"><span class="flag">VN</span>Xin chào</span>
+        <span class="greet g5"><span class="flag">한국어</span>안녕하세요</span>
+        <span class="greet g6"><span class="flag">FR</span>Bonjour</span>
+      </div>
+
+      <h1 class="hero-heading">Hi, I'm Thach Thao! <span class="wave" aria-hidden="true">👋</span></h1>
+      <p class="hero-tagline">🌟 Linguistics<span class="sep">·</span>AI<span class="sep">·</span>Taiwan 🇹🇼</p>
+      <p class="hero-intro">A Vietnamese Ph.D. student in Linguistics at National Taiwan University. I share my journey through academia, tips for learning English, insights on research life, and adventures of living abroad in Taiwan.</p>
+
+      <a href="#featured" class="cta-primary">Explore My Cosmic Journey <span class="ar">→</span></a>
+    </div>
+  </div>
+</section>
+
+<!-- ============= FEATURED POSTS ============= -->
+<section id="featured">
+  <div class="container">
+    <div class="center" style="margin-bottom: 36px;">
+      <span class="eyebrow"><span class="d"></span>FEATURED POSTS</span>
+      <h2 class="section-title">From the Cosmic Journal ✨</h2>
+      <p class="section-sub">Stories from a PhD orbit, academia, language, and life under Taiwan's sky.</p>
+    </div>
+
+    <div class="grid-4">
+      <a href="post-phd-first-year.html" class="post-card t-saturn">
+        <div class="post-top">
+          <span class="shoot"></span>
+          <span class="ts" style="top:18%;left:12%"></span><span class="ts" style="top:30%;left:78%;animation-delay:-.6s"></span>
+          <span class="ts" style="top:60%;left:18%;animation-delay:-1.2s"></span><span class="ts" style="top:80%;left:88%;animation-delay:-1.8s"></span>
+          <div class="planet-mini pl-saturn"></div>
+        </div>
+        <div class="post-body">
+          <div class="post-meta"><span class="post-badge">🎓 PhD Life</span><span class="post-date">Nov 20, 2024</span></div>
+          <h3 class="post-title">Surviving Your First Year as a PhD Student</h3>
+          <p class="post-excerpt">From navigating coursework to finding your research direction, the unexpected lessons that get you through.</p>
+          <span class="post-readmore">Read More →</span>
+        </div>
+      </a>
+
+      <a href="post-ielts-tips.html" class="post-card t-moon">
+        <div class="post-top">
+          <span class="shoot"></span>
+          <span class="ts" style="top:18%;left:12%"></span><span class="ts" style="top:30%;left:78%;animation-delay:-.6s"></span>
+          <span class="ts" style="top:60%;left:18%;animation-delay:-1.2s"></span><span class="ts" style="top:80%;left:88%;animation-delay:-1.8s"></span>
+          <div class="planet-mini pl-moon"></div>
+        </div>
+        <div class="post-body">
+          <div class="post-meta"><span class="post-badge">📚 English</span><span class="post-date">Nov 15, 2024</span></div>
+          <h3 class="post-title">How I Achieved IELTS 7.0: A Non-Native Speaker's Guide</h3>
+          <p class="post-excerpt">Practical strategies and resources that helped me, from listening habits to writing templates that finally clicked.</p>
+          <span class="post-readmore">Read More →</span>
+        </div>
+      </a>
+
+      <a href="post-taiwan-student.html" class="post-card t-earth">
+        <div class="post-top">
+          <span class="shoot"></span>
+          <span class="ts" style="top:18%;left:12%"></span><span class="ts" style="top:30%;left:78%;animation-delay:-.6s"></span>
+          <span class="ts" style="top:60%;left:18%;animation-delay:-1.2s"></span><span class="ts" style="top:80%;left:88%;animation-delay:-1.8s"></span>
+          <div class="planet-mini pl-earth"></div>
+        </div>
+        <div class="post-body">
+          <div class="post-meta"><span class="post-badge">🇹🇼 Taiwan</span><span class="post-date">Nov 10, 2024</span></div>
+          <h3 class="post-title">A Vietnamese Student's Guide to Living in Taiwan</h3>
+          <p class="post-excerpt">From scholarship applications to daily life, finding housing, navigating the MRT, and making a foreign city home.</p>
+          <span class="post-readmore">Read More →</span>
+        </div>
+      </a>
+
+      <a href="post-ai-language.html" class="post-card t-galaxy">
+        <div class="post-top">
+          <span class="shoot"></span>
+          <span class="ts" style="top:18%;left:12%"></span><span class="ts" style="top:30%;left:78%;animation-delay:-.6s"></span>
+          <span class="ts" style="top:60%;left:18%;animation-delay:-1.2s"></span><span class="ts" style="top:80%;left:88%;animation-delay:-1.8s"></span>
+          <div class="planet-mini pl-galaxy"></div>
+        </div>
+        <div class="post-body">
+          <div class="post-meta"><span class="post-badge">🤖 Research</span><span class="post-date">Nov 5, 2024</span></div>
+          <h3 class="post-title">AI in Language Learning: What My Research Reveals</h3>
+          <p class="post-excerpt">Insights from my systematic review, where AI tutors actually help learners, and where they fall short.</p>
+          <span class="post-readmore">Read More →</span>
+        </div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ============= CATEGORIES ============= -->
+<section id="categories">
+  <div class="container">
+    <div class="center">
+      <span class="eyebrow"><span class="d"></span>EXPLORE</span>
+      <h2 class="section-title">Browse by Category</h2>
+      <p class="section-sub">Pick a planet and dive in.</p>
+    </div>
+    <div class="cat-grid">
+      <a href="phd-tips.html" class="cat c-phd">
+        <span class="ico">🪐</span>
+        <span class="nm">PhD &amp; Research</span>
+        <span class="ct">Academic life, papers, conferences</span>
+      </a>
+      <a href="english-learning.html" class="cat c-eng">
+        <span class="ico">🌟</span>
+        <span class="nm">English Learning</span>
+        <span class="ct">IELTS, TESOL, study tips</span>
+      </a>
+      <a href="living-abroad.html" class="cat c-tw">
+        <span class="ico">🌙</span>
+        <span class="nm">Life in Taiwan</span>
+        <span class="ct">Scholarships, food, daily life</span>
+      </a>
+      <a href="#" class="cat c-res">
+        <span class="ico">🔭</span>
+        <span class="nm">AI &amp; Linguistics</span>
+        <span class="ct">Multilingualism, sociolinguistics</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ============= ABOUT ============= -->
+<section id="about">
+  <div class="container">
+    <div style="margin-bottom: 32px;">
+      <span class="eyebrow"><span class="d"></span>ABOUT ME</span>
+    </div>
+
+    <article class="about-card">
+      <span class="sticker" style="top:-22px;left:36px;transform:rotate(-12deg);" aria-hidden="true">🐚</span>
+      <span class="sticker" style="top:-18px;right:60px;--sz:24px;" aria-hidden="true">🌺</span>
+      <span class="sticker" style="bottom:-20px;right:80px;transform:rotate(8deg);" aria-hidden="true">🐠</span>
+      <span class="sticker" style="bottom:-14px;left:200px;--sz:22px;" aria-hidden="true">✨</span>
+      <span class="sticker" style="top:46%;right:-14px;--sz:20px;" aria-hidden="true">✨</span>
+
+      <div class="about-inner">
+        <div class="about-photo">
+          <span class="glint g1" aria-hidden="true"></span>
+          <span class="glint g2" aria-hidden="true"></span>
+          <span class="glint g3" aria-hidden="true"></span>
+          <div class="ph2">
+            <img src="images/thao.jpg" alt="Thach Thao · Jessica">
+          </div>
+        </div>
+        <div class="about-content">
+          <h2>About Me</h2>
+          <span class="about-role"><span class="pin"></span>PHD STUDENT · NTU LINGUISTICS</span>
+          <p>I'm <strong>Le Thi Thach Thao (Jessica)</strong>, a Ph.D. student in Linguistics at <strong>National Taiwan University</strong>. My research focuses on <span class="hl">sociolinguistics</span>, <span class="hl">multilingualism</span>, and <span class="hl">AI literacy</span>.</p>
+          <p>With a background in TESOL (4.0 GPA from NKUST) and years of teaching English, I'm passionate about sharing knowledge and helping others succeed in their academic journeys.</p>
+          <div class="chips">
+            <span class="chip b1">🎤 TESOL</span>
+            <span class="chip b2">🎤 JALT</span>
+            <span class="chip b3">🎤 Linguapax Asia</span>
+          </div>
+          <a href="about.html" class="cta-primary" style="margin-top: 24px;">View My Profile <span class="ar">→</span></a>
+        </div>
+      </div>
+    </article>
+  </div>
+</section>
+
+<!-- ============= STATS ============= -->
+<section id="stats">
+  <div class="container">
+    <div class="center">
+      <span class="eyebrow"><span class="d"></span>BY THE NUMBERS</span>
+      <h2 class="section-title">A constellation of small wins ✨</h2>
+      <p class="section-sub">Each star is a chapter, connect the dots and you get a journey.</p>
+    </div>
+
+    <div class="stats-map">
+      <svg class="lines" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true">
+        <line x1="22" y1="22" x2="72" y2="18"/>
+        <line x1="72" y1="18" x2="75" y2="75"/>
+        <line x1="75" y1="75" x2="30" y2="70"/>
+        <line x1="30" y1="70" x2="22" y2="22"/>
+        <line x1="22" y1="22" x2="75" y2="75"/>
+      </svg>
+
+      <div class="stat-node s-pink p1">
+        <div class="stat-star"><span class="stat-num">10<span class="pl">+</span></span></div>
+        <div class="stat-label">🎤 Presentations &amp; Talks</div>
+      </div>
+      <div class="stat-node s-purple p2">
+        <div class="stat-star"><span class="stat-num">4</span></div>
+        <div class="stat-label">📚 Publications</div>
+      </div>
+      <div class="stat-node s-blue p3">
+        <div class="stat-star"><span class="stat-num">200<span class="pl">+</span></span></div>
+        <div class="stat-label">👥 Students Taught</div>
+      </div>
+      <div class="stat-node s-yellow p4">
+        <div class="stat-star"><span class="stat-num">6<span class="pl">+</span></span></div>
+        <div class="stat-label">📅 Years in Taiwan</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============= FOOTER ============= -->
+<footer class="site-footer" id="contact">
+  <div class="wave-top" aria-hidden="true">
+    <svg viewBox="0 0 1440 60" preserveAspectRatio="none">
+      <path d="M0 30 Q 180 0, 360 30 T 720 30 T 1080 30 T 1440 30 V0 H0 Z" fill="#FFFEF9"/>
+    </svg>
+  </div>
+
+  <div class="footer-grid">
+    <div class="col brand">
+      <div class="name2">
+        <span style="font-size:20px;" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 18 18" xmlns="http://www.w3.org/2000/svg"><g transform="translate(9,9)"><ellipse cx="0" cy="-4" rx="1.4" ry="3.5" fill="#A855F7" transform="rotate(0)"/><ellipse cx="0" cy="-4" rx="1.4" ry="3.5" fill="#9333EA" transform="rotate(30)"/><ellipse cx="0" cy="-4" rx="1.4" ry="3.5" fill="#A855F7" transform="rotate(60)"/><ellipse cx="0" cy="-4" rx="1.4" ry="3.5" fill="#9333EA" transform="rotate(90)"/><ellipse cx="0" cy="-4" rx="1.4" ry="3.5" fill="#A855F7" transform="rotate(120)"/><ellipse cx="0" cy="-4" rx="1.4" ry="3.5" fill="#9333EA" transform="rotate(150)"/><ellipse cx="0" cy="-4" rx="1.4" ry="3.5" fill="#A855F7" transform="rotate(180)"/><ellipse cx="0" cy="-4" rx="1.4" ry="3.5" fill="#9333EA" transform="rotate(210)"/><ellipse cx="0" cy="-4" rx="1.4" ry="3.5" fill="#A855F7" transform="rotate(240)"/><ellipse cx="0" cy="-4" rx="1.4" ry="3.5" fill="#9333EA" transform="rotate(270)"/><ellipse cx="0" cy="-4" rx="1.4" ry="3.5" fill="#A855F7" transform="rotate(300)"/><ellipse cx="0" cy="-4" rx="1.4" ry="3.5" fill="#9333EA" transform="rotate(330)"/><circle r="2.5" fill="#F5C518"/><circle r="1.2" fill="#C89010"/></g></svg></span>
+        Thach <span style="color: var(--blue);">Thao</span><span style="color:#B8A9E8;font-size:0.8em;font-weight:500;margin-left:3px;"> · Jessica</span>
+      </div>
+      <p class="bio2">PhD student in Linguistics at NTU. Sharing insights on academic life, English learning, and living abroad in Taiwan.</p>
+      <div class="ocean-row" aria-hidden="true">
+        <span style="--d: 0s;">🐚</span>
+        <span style="--d: -1s;">🐟</span>
+        <span style="--d: -2s;">🌊</span>
+        <span style="--d: -3s;">⭐</span>
+      </div>
+    </div>
+
+    <div class="col">
+      <h3>Quick Links</h3>
+      <nav class="links">
+        <a href="index.html">Home</a>
+        <a href="phd-tips.html">PhD &amp; Research</a>
+        <a href="english-learning.html">English Learning</a>
+        <a href="living-abroad.html">Life in Taiwan</a>
+      <a href="contact.html">Contact</a>
+        <a href="about.html">Profile</a>
+      </nav>
+    </div>
+
+    <div class="col">
+      <h3>Connect</h3>
+      <a class="connect-email" href="mailto:jessie.thachthao@gmail.com">
+        <span class="ic2" aria-hidden="true">✉️</span>jessie.thachthao@gmail.com
+      </a>
+      <div class="socials">
+        <a href="https://www.linkedin.com/in/thach-thao-jessica-85aab9131/" target="_blank" rel="noopener noreferrer">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M4.98 3.5C4.98 4.88 3.87 6 2.5 6S0 4.88 0 3.5 1.12 1 2.5 1s2.48 1.12 2.48 2.5zM.22 8h4.56v14H.22V8zm7.84 0h4.37v1.92h.06c.61-1.15 2.1-2.36 4.32-2.36 4.62 0 5.47 3.04 5.47 6.99V22h-4.56v-6.27c0-1.5-.03-3.43-2.09-3.43-2.09 0-2.41 1.63-2.41 3.32V22H8.06V8z"/></svg>LinkedIn
+        </a>
+        <a href="https://www.researchgate.net/profile/Le-Thi-Thach-Thao?ev=hdr_xprf" target="_blank" rel="noopener noreferrer">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M19.586 0H4.414C1.978 0 0 1.978 0 4.414v15.172C0 22.022 1.978 24 4.414 24h15.172C22.022 24 24 22.022 24 19.586V4.414C24 1.978 22.022 0 19.586 0zM8.5 17.5h-2v-9h2v9zM7.5 7.5a1.2 1.2 0 1 1 0-2.4 1.2 1.2 0 0 1 0 2.4zm10.2 10c-1 .3-2.1.5-3.4.5-3.4 0-5.5-1.8-5.5-4.7 0-2.7 2.1-4.8 5.2-4.8 1.1 0 2.1.2 2.6.4l-.4 1.5c-.5-.2-1.2-.4-2.2-.4-2 0-3.4 1.2-3.4 3.2 0 2.1 1.4 3.2 3.2 3.2.5 0 .9 0 1.1-.1v-2.4h-1.4v-1.5h3.2v5.1z"/></svg>ResearchGate
+        </a>
+        <a href="https://scholar.google.com/citations?user=sKBD3EEAAAAJ&hl=en" target="_blank" rel="noopener noreferrer">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2L0 9l4.5 2.6V18c0 .8.5 1.5 1.2 1.8 1.7.7 4 1.2 6.3 1.2s4.6-.5 6.3-1.2c.7-.3 1.2-1 1.2-1.8v-6.4L24 9 12 2zm0 14c-1.6 0-3.2-.3-4.5-.8v-3.4L12 14l4.5-2.2v3.4c-1.3.5-2.9.8-4.5.8z"/></svg>Scholar
+        </a>
+        <a href="https://github.com/jessicathao" target="_blank" rel="noopener noreferrer">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.6.113.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0 1 12 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/></svg>GitHub
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <div class="bottom">
+    <span>© 2024 Thach Thao. All rights reserved.</span>
+    <span class="tag2">Built with <span class="heart" aria-hidden="true">💙</span> by a linguist who loves learning and sharing</span>
+  </div>
+</footer>
+
+<!-- ============= SCROLL TOP ============= -->
+<button class="scroll-top" id="scrollTop" aria-label="Back to top">↑</button>
+
+<script>
+  const header = document.getElementById('siteHeader');
+  const scrollTopBtn = document.getElementById('scrollTop');
+  const onScroll = () => {
+    header.classList.toggle('scrolled', window.scrollY > 12);
+    scrollTopBtn.classList.toggle('show', window.scrollY > 400);
+  };
+  window.addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
+
+  const btn = document.getElementById('menuBtn');
+  const drawer = document.getElementById('drawer');
+  btn.addEventListener('click', () => {
+    const open = drawer.classList.toggle('open');
+    btn.textContent = open ? '✕' : '☰';
+  });
+  drawer.addEventListener('click', e => {
+    if (e.target.tagName === 'A') { drawer.classList.remove('open'); btn.textContent = '☰'; }
+  });
+
+  const form = document.getElementById('newsForm');
+  const success = document.getElementById('newsSuccess');
+  form.addEventListener('submit', e => {
+    e.preventDefault();
+    const email = form.email.value.trim();
+    if (!email || !email.includes('@')) { form.email.focus(); form.email.style.borderColor = '#E89BA8'; return; }
+    form.classList.add('hide');
+    success.classList.add('show');
+  });
+
+  scrollTopBtn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+</script>
+
+<script data-goatcounter="https://jessicathao.goatcounter.com/count"
+        async src="//gc.zgo.at/count.js"></script>
+
 </body>
 </html>

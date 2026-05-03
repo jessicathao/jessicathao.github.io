@@ -1,103 +1,485 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>How I Achieved IELTS 7.0 | Thach Thao</title>
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>How I Achieved IELTS 7.0 on My First Attempt | Thach Thao</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+  <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@400;500;600;700&family=Nunito:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/cosmic.css">
+  <style>
+    .lang-tabs {
+      display: flex;
+      gap: 10px;
+      margin: 28px 0 4px;
+    }
+    .lang-tab {
+      background: rgba(255,255,255,0.7);
+      border: 2px solid rgba(184,169,232,0.35);
+      border-radius: 30px;
+      padding: 7px 22px;
+      font-family: 'Nunito', sans-serif;
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--soft);
+      cursor: pointer;
+      transition: all 0.22s;
+      letter-spacing: 0.01em;
+    }
+    .lang-tab:hover {
+      border-color: var(--lavender);
+      color: var(--dark);
+      background: rgba(184,169,232,0.1);
+    }
+    .lang-tab.active {
+      background: var(--lavender);
+      border-color: var(--lavender);
+      color: #fff;
+      box-shadow: 0 3px 12px rgba(184,169,232,0.35);
+    }
+    .score-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin: 20px 0;
+    }
+    .score-pill {
+      background: rgba(184,169,232,0.12);
+      border: 1.5px solid rgba(184,169,232,0.3);
+      border-radius: 12px;
+      padding: 10px 20px;
+      font-family: 'Nunito', sans-serif;
+      font-size: 14px;
+      color: var(--dark);
+    }
+    .score-pill strong {
+      color: var(--blue);
+      font-size: 18px;
+      display: block;
+      font-family: 'Comfortaa', sans-serif;
+    }
+    .score-pill.overall {
+      background: rgba(74,144,226,0.1);
+      border-color: rgba(74,144,226,0.35);
+    }
+    .score-pill.overall strong {
+      font-size: 22px;
+    }
+  </style>
 </head>
 <body>
-    <header class="header">
-        <nav class="nav container">
-            <a href="index.html" class="logo">Thach Thao</a>
-            <button class="nav-toggle" aria-label="Toggle navigation">
-                <span></span>
-                <span></span>
-                <span></span>
-            </button>
-                        <ul class="nav-menu">
-                <li><a href="index.html" class="nav-link">Home</a></li>
-                <li><a href="about.html" class="nav-link">About</a></li>
-                <li><a href="contact.html" class="nav-link">Contact</a></li>
-                <li><a href="phd-tips.html" class="nav-link">PhD & Research</a></li>
-                <li><a href="english-learning.html" class="nav-link active">English Learning</a></li>
-                <li><a href="living-abroad.html" class="nav-link">Life in Taiwan</a></li>
-            </ul>
-        </nav>
-    </header>
 
-    <main>
-        <section class="post-header">
-            <div class="container">
-                <span class="post-category" style="display: inline-block; margin-bottom: 1rem;">English Learning</span>
-                <h1>How I Achieved IELTS 7.0: A Non-Native Speaker's Guide</h1>
-                <div class="post-meta">
-                    <span>November 15, 2024</span>
-                    <span>|</span>
-                    <span>Coming Soon</span>
-                </div>
-            </div>
-        </section>
+<div class="page-bg" aria-hidden="true">
+  <span class="cloud" style="width:300px;height:190px;top:6%;left:-8%;--dur:72s;"></span>
+  <span class="cloud" style="width:220px;height:150px;top:52%;left:-5%;--dur:88s;--delay:-22s;"></span>
+  <span class="spark" style="top:14%;left:22%;width:5px;height:5px;--dur:3.1s;"></span>
+  <span class="spark p" style="top:38%;left:82%;width:4px;height:4px;--delay:-1s;"></span>
+  <span class="spark b" style="top:68%;left:12%;width:5px;height:5px;--dur:2.7s;--delay:-2s;"></span>
+  <span class="spark y" style="top:85%;left:70%;width:4px;height:4px;--delay:-1.6s;"></span>
+</div>
 
-        <section class="post-body">
-            <img src="https://images.unsplash.com/photo-1546410531-bb4caa6b424d?w=1200&h=600&fit=crop" alt="English learning">
-            
-            <p><strong>This post is coming soon!</strong></p>
-            
-            <p>I'm currently working on this comprehensive guide about IELTS preparation. This post will cover:</p>
-            
-            <ul>
-                <li>My study schedule and preparation timeline</li>
-                <li>Best resources for each section (Reading, Writing, Listening, Speaking)</li>
-                <li>Common mistakes to avoid</li>
-                <li>Test-day strategies</li>
-                <li>How to maintain your English proficiency after the test</li>
-            </ul>
+<header class="site-header" id="siteHeader">
+  <div class="header-inner">
+    <a href="index.html" class="logo">
+      <span class="spinner" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 18 18" xmlns="http://www.w3.org/2000/svg"><g transform="translate(9,9)"><ellipse cx="0" cy="-4" rx="1.4" ry="3.5" fill="#A855F7" transform="rotate(0)"/><ellipse cx="0" cy="-4" rx="1.4" ry="3.5" fill="#9333EA" transform="rotate(30)"/><ellipse cx="0" cy="-4" rx="1.4" ry="3.5" fill="#A855F7" transform="rotate(60)"/><ellipse cx="0" cy="-4" rx="1.4" ry="3.5" fill="#9333EA" transform="rotate(90)"/><ellipse cx="0" cy="-4" rx="1.4" ry="3.5" fill="#A855F7" transform="rotate(120)"/><ellipse cx="0" cy="-4" rx="1.4" ry="3.5" fill="#9333EA" transform="rotate(150)"/><ellipse cx="0" cy="-4" rx="1.4" ry="3.5" fill="#A855F7" transform="rotate(180)"/><ellipse cx="0" cy="-4" rx="1.4" ry="3.5" fill="#9333EA" transform="rotate(210)"/><ellipse cx="0" cy="-4" rx="1.4" ry="3.5" fill="#A855F7" transform="rotate(240)"/><ellipse cx="0" cy="-4" rx="1.4" ry="3.5" fill="#9333EA" transform="rotate(270)"/><ellipse cx="0" cy="-4" rx="1.4" ry="3.5" fill="#A855F7" transform="rotate(300)"/><ellipse cx="0" cy="-4" rx="1.4" ry="3.5" fill="#9333EA" transform="rotate(330)"/><circle r="2.5" fill="#F5C518"/><circle r="1.2" fill="#C89010"/></g></svg></span>
+      Thach <span class="last">Thao</span><span class="sep"> · </span><span class="nick">Jessica</span>
+      <span class="shell" aria-hidden="true">🐚</span>
+    </a>
+    <nav class="primary" aria-label="Primary">
+      <a href="index.html">Home</a>
+      <a href="about.html">Profile</a>
+      <a href="phd-tips.html">PhD &amp; Research</a>
+      <a href="english-learning.html" class="active">English Learning</a>
+      <a href="living-abroad.html">Life in Taiwan</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+    <button class="hamburger" aria-label="Open menu" id="menuBtn">☰</button>
+    <div class="drawer" id="drawer">
+      <a href="index.html">Home</a>
+      <a href="about.html">Profile</a>
+      <a href="phd-tips.html">PhD &amp; Research</a>
+      <a href="english-learning.html" class="active">English Learning</a>
+      <a href="living-abroad.html">Life in Taiwan</a>
+      <a href="contact.html">Contact</a>
+    </div>
+  </div>
+</header>
 
-            <p>Subscribe to my <a href="index.html">newsletter</a> to be notified when this post is published!</p>
-        </section>
-    </main>
+<main>
+  <div class="post-wrap">
 
-    <footer class="footer">
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-section">
-                    <h3>Thach Thao</h3>
-                    <p>PhD student in Linguistics at NTU. Sharing insights on academic life, English learning, and living abroad in Taiwan.</p>
-                </div>
-                <div class="footer-section">
-                    <h4>Quick Links</h4>
-                    <ul>
-                        <li><a href="index.html">Home</a></li>
-                        <li><a href="phd-tips.html">PhD & Research</a></li>
-                        <li><a href="english-learning.html">English Learning</a></li>
-                        <li><a href="living-abroad.html">Life in Taiwan</a></li>
-                        <li><a href="about.html">About</a></li>
-                    </ul>
-                </div>
-                <div class="footer-section">
-                    <h4>Connect</h4>
-                    <div class="social-links">
-                        <a href="mailto:jessie.thachthao@gmail.com">Email</a>
-                        <a href="https://www.linkedin.com/in/thach-thao-jessica-85aab9131/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
-                        <a href="https://www.researchgate.net/profile/Le-Thi-Thach-Thao?ev=hdr_xprf" target="_blank" rel="noopener noreferrer">ResearchGate</a>
-                        <a href="https://scholar.google.com/citations?user=sKBD3EEAAAAJ&amp;hl=en" target="_blank" rel="noopener noreferrer">Google Scholar</a>
-                    </div>
-                </div>
-            </div>
-            <div class="footer-bottom">
-                <p>&copy; 2024 Thach Thao. All rights reserved.</p>
-            </div>
-        </div>
-    </footer>
+    <div class="post-header-block">
+      <a href="english-learning.html" class="breadcrumb">← English Learning</a>
+      <div class="post-cat-badge">📚 English Learning</div>
+      <h1 id="post-title">How I Achieved IELTS 7.0 on My First Attempt</h1>
+      <div class="post-meta-row">
+        <span>November 15, 2024</span>
+        <span>10 min read</span>
+      </div>
+    </div>
 
-    <script src="js/main.js"></script>
-    <!-- Ghibli mascots: study spirits -->
-    <span class="ghibli-sticker" aria-hidden="true" title="Study owl">🦉</span>
-    <span class="ghibli-sticker-2" aria-hidden="true" title="Magic book">📖</span>
-    <span class="ghibli-sticker-3" aria-hidden="true" title="Star">⭐</span>
+    <div class="post-hero-img">
+      <img src="https://images.unsplash.com/photo-1434030216411-0b793f4b4173?w=1200&h=600&fit=crop" alt="Student writing notes for IELTS preparation">
+    </div>
+
+    <div class="lang-tabs">
+      <button class="lang-tab active" data-lang="en">🇺🇸 English</button>
+      <button class="lang-tab" data-lang="vi">🇻🇳 Tiếng Việt</button>
+    </div>
+
+    <!-- ===== ENGLISH CONTENT ===== -->
+    <div id="content-en" class="post-content">
+
+      <p>I won't open with "IELTS isn't hard if you study smart", because honestly, it is hard, and I think being upfront about that is more useful than pretending otherwise.</p>
+      <p>I sat the IELTS for the first time and walked away with an Overall Band 7.0. Not a perfect score, but enough to meet the requirements for my PhD application, and more importantly, I achieved it without enrolling in any expensive prep courses. This post is about what I actually did. No magic formula, just honesty.</p>
+
+      <blockquote>💡 A quick note: everything here is based purely on my own experience. What worked for me may not work exactly the same way for you, and that's completely okay. Take what's useful, leave what isn't.</blockquote>
+
+      <h2>My Scores</h2>
+      <p>Before getting into the details, here's the full breakdown so you have a realistic reference point:</p>
+      <div class="score-grid">
+        <div class="score-pill"><strong>7.5</strong>Listening</div>
+        <div class="score-pill"><strong>7.5</strong>Reading</div>
+        <div class="score-pill"><strong>6.5</strong>Writing</div>
+        <div class="score-pill"><strong>6.5</strong>Speaking</div>
+        <div class="score-pill overall"><strong>7.0</strong>Overall</div>
+      </div>
+      <p>Listening and Reading were my strengths. Writing and Speaking were the ones I had to fight for, and the lessons from those two skills are probably the most useful things in this post.</p>
+
+      <h2>1. I Started by Understanding the Test, Not Memorizing Vocabulary</h2>
+      <p>A lot of people begin IELTS prep by cramming vocabulary lists: 1,000 academic words, daily flashcards, and so on. I didn't do that.</p>
+      <p>The first thing I did was download real past papers (Cambridge IELTS Practice Tests) and attempt <strong>one complete test under timed conditions</strong> to see exactly where I stood. No preparation beforehand, just sit down and do it.</p>
+      <p>This gave me a clear picture of my weaknesses rather than studying everything vaguely. Diagnose first, then treat.</p>
+
+      <h2>2. Listening: More Input, Less Drilling</h2>
+      <p>My Listening score was relatively strong, and I think the main reason is that I had spent years consuming English content: podcasts, films, TED Talks, long before I ever thought about IELTS.</p>
+      <p>During the dedicated prep period, I added a few targeted strategies:</p>
+      <ul>
+        <li><strong>Shadowing:</strong> Playing audio with subtitles and reading along simultaneously, to get comfortable with varied accents and natural speaking speed</li>
+        <li><strong>Predicting answer types:</strong> Before the audio starts, read each question carefully and predict what kind of answer is needed: a number, a name, a place, a date</li>
+        <li><strong>Training against distraction:</strong> IELTS Listening plays only once. I drilled the discipline of staying fully present, because even a few seconds of drifting can cost you a whole section</li>
+      </ul>
+
+      <h2>3. Reading: Speed Without Carelessness</h2>
+      <p>Many people think reading fast means reading carelessly. In reality, <strong>strategic fast reading</strong> is a skill that can be deliberately trained.</p>
+      <p>What I practiced:</p>
+      <ul>
+        <li><strong>Skimming for main ideas:</strong> Reading headings, the first sentence of each paragraph, and the final sentence, completing a full passage overview in two to three minutes</li>
+        <li><strong>Scanning for specific information:</strong> Once I had a question in front of me, I didn't re-read the entire passage. I swept my eyes for relevant keywords</li>
+        <li><strong>Breaking the translation habit:</strong> This is a mental habit worth eliminating early. I trained myself to read and comprehend directly in English, without internally translating into my first language at every step</li>
+      </ul>
+      <p>I practiced with Cambridge past papers alongside real articles from <em>The Guardian</em>, <em>BBC</em>, and <em>The Economist</em>, because their writing style mirrors IELTS passages far more closely than most textbook materials.</p>
+
+      <h2>4. Writing: The Part I Struggled With Most</h2>
+      <p>A Band 6.5 in Writing was a result I could accept, but I know I could have scored higher with more preparation time.</p>
+      <p>Honestly, I started focusing on Writing only about one week before the exam. So rather than drilling dozens of essays, I wrote just one or two Task 1 responses across different formats: bar charts, line graphs, pie charts, processes, and maps, but I focused on quality over quantity:</p>
+      <ul>
+        <li>Practicing how to compare and synthesize data meaningfully, not simply list figures</li>
+        <li>Building a working vocabulary for describing trends: <em>rose sharply</em>, <em>remained relatively stable</em>, <em>accounted for the largest proportion</em></li>
+      </ul>
+      <p><strong>Task 2</strong> (argumentative essay) demands clearer thinking and more disciplined structure:</p>
+      <ul>
+        <li>I always spent five minutes outlining before writing: five minutes planning, thirty-five minutes writing. I never skipped this, even under time pressure</li>
+        <li>I practiced <strong>non-formulaic introductions</strong>: examiners read hundreds of essays, and opening with "Nowadays, it is widely believed that..." is exactly what they do not want to see again</li>
+        <li>I paid close attention to <strong>cohesion</strong> (using linking language logically) and <strong>coherence</strong> (ideas that build toward a clear, unified conclusion)</li>
+        <li>I asked for external feedback: I had a professor and experienced peers read my essays and identify recurring errors. Self-review alone is not sufficient, you need an outside perspective</li>
+      </ul>
+
+      <h2>5. Speaking: The Problem Was Not Vocabulary</h2>
+      <p>What pulled my Speaking score down was not a lack of words. It was <strong>hesitation</strong>: long pauses, unfinished sentences, a voice that lacked confidence.</p>
+      <p>Examiners assess you on four criteria:</p>
+      <ul>
+        <li><strong>Fluency and coherence:</strong> Speaking naturally without frequent breakdowns, with ideas that connect logically</li>
+        <li><strong>Lexical resource:</strong> Using a varied and accurate range of vocabulary</li>
+        <li><strong>Grammatical range and accuracy:</strong> Moving beyond simple sentence structures</li>
+        <li><strong>Pronunciation:</strong> Being consistently intelligible, accent-free is not the goal, clarity is</li>
+      </ul>
+      <p>What genuinely helped:</p>
+      <ul>
+        <li><strong>Daily out-loud practice:</strong> Answering Part 1 and Part 2 questions aloud, alone, with a two-minute timer running and a rule of no stopping</li>
+        <li><strong>Recording and listening back:</strong> Uncomfortable, but the only reliable method for catching your own errors</li>
+        <li><strong>Not memorizing scripted answers:</strong> Examiners recognize rehearsed responses immediately, and it directly damages your fluency and coherence scores</li>
+      </ul>
+      <p>There is something I want to share honestly: on exam day, I had a fever and a persistent cough. It was still during the COVID period, and I could tell the examiner was somewhat uncomfortable as I coughed mid-sentence, that disrupted my fluency more than anything else. I am not sharing this as an excuse, but as a reminder that even under far from ideal conditions, solid preparation can still carry you through.</p>
+
+      <h2>6. Managing Study Time Realistically</h2>
+      <p>I did not have large blocks of free time, I was managing coursework and other responsibilities simultaneously. So I had to be honest about what was actually achievable.</p>
+      <p>My schedule across the four weeks before the exam:</p>
+      <ul>
+        <li><strong>Weekdays:</strong> 30 minutes to 1.5 hours, focused on one specific skill per session. Honestly, some days I only managed 30 minutes, but I would encourage you to aim for at least one hour when possible, as anything less makes it difficult to build real momentum</li>
+        <li><strong>Weekends:</strong> One complete timed practice test under realistic exam conditions</li>
+        <li><strong>Final week:</strong> No new material, only reviewing recurring errors and prioritizing sleep</li>
+      </ul>
+      <p>The most important decision I made: I registered for the exam first, then built the study plan around that date. Waiting until you feel ready before booking is a trap. A fixed deadline creates a pressure that nothing else replicates.</p>
+
+      <h2>7. Exam Day: Mental State Matters More Than You Think</h2>
+      <p>The night before, I did not study. I slept early, ate a proper breakfast, and arrived at the test center twenty minutes ahead of time to settle in calmly.</p>
+      <p>During the exam, I kept one rule in mind: <strong>do not let a difficult question spiral into panic.</strong> If I was unsure of an answer, I flagged it and moved on, returning to it later. Stalling on one question while anxiety builds is how you lose multiple answers at once.</p>
+
+      <h2>Looking Back</h2>
+      <p>Reaching 7.0 on the first attempt was not the result of being more naturally gifted in English. It was the result of understanding the test format, practicing with focus rather than volume, and not giving up during the weeks when progress felt invisible.</p>
+      <blockquote>Do not practice just to get through the hours. Practice with a clear understanding of what you are doing and why.</blockquote>
+      <p>Good luck. You are more capable than you think.</p>
+
+      <hr>
+
+      <p><em>Are you preparing for IELTS right now? I'd love to hear where you're at, reach out at <a href="mailto:jessie.thachthao@gmail.com">jessie.thachthao@gmail.com</a> or through the <a href="contact.html">contact page</a>.</em></p>
+
+    </div><!-- end #content-en -->
+
+    <!-- ===== VIETNAMESE CONTENT ===== -->
+    <div id="content-vi" class="post-content" style="display:none">
+
+      <p>Mình sẽ không mở đầu bằng câu "IELTS không khó nếu bạn biết cách học", vì thực ra nó không dễ, và mình nghĩ nói thật thì có ích hơn.</p>
+      <p>Mình thi IELTS lần đầu tiên và đạt band 7.0. Không phải con số hoàn hảo, nhưng đủ để mình nộp hồ sơ chương trình tiến sĩ, và quan trọng hơn, mình đạt được nó mà không đăng ký lớp luyện thi tốn kém nào. Bài viết này là về những gì mình thực sự đã làm, không phải công thức thần kỳ, chỉ là thật.</p>
+
+      <blockquote>💡 Lưu ý nhỏ: tất cả những gì mình chia sẻ đều dựa trên trải nghiệm cá nhân. Những gì hiệu quả với mình chưa chắc sẽ phù hợp với bạn, và điều đó hoàn toàn bình thường. Hãy lấy những gì có ích, bỏ qua những gì không phù hợp.</blockquote>
+
+      <h2>Điểm số của mình</h2>
+      <p>Trước khi vào chi tiết, đây là kết quả của mình để bạn có cái nhìn thực tế:</p>
+      <div class="score-grid">
+        <div class="score-pill"><strong>7.5</strong>Listening</div>
+        <div class="score-pill"><strong>7.5</strong>Reading</div>
+        <div class="score-pill"><strong>6.5</strong>Writing</div>
+        <div class="score-pill"><strong>6.5</strong>Speaking</div>
+        <div class="score-pill overall"><strong>7.0</strong>Overall</div>
+      </div>
+      <p>Listening và Reading là thế mạnh. Writing và Speaking là phần mình phải chiến đấu nhiều nhất, và bài học từ hai kỹ năng đó có lẽ sẽ hữu ích nhất với bạn.</p>
+
+      <h2>1. Mình bắt đầu bằng cách hiểu cấu trúc đề thi, không phải học từ vựng</h2>
+      <p>Rất nhiều người bắt đầu luyện IELTS bằng cách nhồi nhét từ vựng: danh sách 1.000 từ học thuật, flashcard mỗi ngày, v.v. Mình không làm vậy.</p>
+      <p>Việc đầu tiên mình làm là tải đề thi thật (Cambridge IELTS Practice Tests) về và làm thử <strong>một bài hoàn chỉnh, đúng giờ</strong>, để xem mình đang ở đâu. Không cần chuẩn bị gì trước, cứ làm và xem kết quả.</p>
+      <p>Điều này giúp mình biết mình yếu ở đâu, thay vì luyện dàn trải vào mọi thứ. Chẩn đoán trước, điều trị sau.</p>
+
+      <h2>2. Listening: Nghe nhiều hơn luyện đề</h2>
+      <p>Điểm Listening của mình khá cao, và mình nghĩ lý do chính là vì mình đã nghe tiếng Anh <strong>liên tục trong nhiều năm</strong>: podcast, phim, TED Talks, chứ không chỉ ngồi luyện đề IELTS.</p>
+      <p>Trong giai đoạn ôn thi, mình có thêm một vài chiến thuật cụ thể:</p>
+      <ul>
+        <li><strong>Nghe và đọc theo (shadowing):</strong> Bật phụ đề, nghe và đọc song song để quen với tốc độ và giọng điệu đa dạng</li>
+        <li><strong>Luyện dự đoán đáp án:</strong> Trước khi audio bắt đầu, đọc kỹ câu hỏi và đoán từ loại cần điền (số, tên, địa điểm...)</li>
+        <li><strong>Không để mất tập trung:</strong> IELTS Listening chỉ phát một lần. Mình luyện thói quen không được phép "lơ đãng" dù chỉ vài giây</li>
+      </ul>
+
+      <h2>3. Reading: Đọc nhanh không phải là đọc ẩu</h2>
+      <p>Nhiều người nghĩ đọc nhanh nghĩa là đọc qua loa. Thực ra, đọc nhanh <strong>có chiến lược</strong> là kỹ năng hoàn toàn có thể luyện được.</p>
+      <p>Những gì mình luyện:</p>
+      <ul>
+        <li><strong>Skimming để nắm ý chính:</strong> Đọc tiêu đề, câu đầu mỗi đoạn, câu kết, trong 2 đến 3 phút cho toàn bài</li>
+        <li><strong>Scanning để tìm thông tin cụ thể:</strong> Khi đã có câu hỏi, mình không đọc lại toàn bài, mà quét mắt tìm từ khóa liên quan</li>
+        <li><strong>Không dịch trong đầu:</strong> Đây là thói quen cần phá vỡ. Mình luyện đọc và hiểu trực tiếp bằng tiếng Anh, không qua bước "dịch sang tiếng Việt" ở giữa</li>
+      </ul>
+      <p>Mình luyện với bài đọc Cambridge và cả bài báo từ <em>The Guardian</em>, <em>BBC</em>, <em>The Economist</em>, vì chúng giống văn phong IELTS hơn các nguồn học thuật thông thường.</p>
+
+      <h2>4. Writing: Phần mình vật lộn nhiều nhất</h2>
+      <p>Band 6.5 Writing là kết quả mình chấp nhận được, nhưng mình biết mình đã có thể làm tốt hơn nếu có nhiều thời gian hơn.</p>
+      <p>Thật ra mình ôn Writing khá sát ngày thi, chỉ khoảng một tuần trước. Nên thay vì luyện hàng chục bài, mình chỉ viết 1 đến 2 bài Task 1 với các dạng khác nhau (biểu đồ cột, đường, tròn, quy trình, bản đồ), nhưng mình chú trọng vào chất lượng hơn số lượng:</p>
+      <ul>
+        <li>Tập trung vào cách so sánh và tổng hợp dữ liệu, không chỉ liệt kê số liệu đơn thuần</li>
+        <li>Xây dựng vốn ngôn ngữ mô tả xu hướng: <em>rose sharply</em>, <em>remained stable</em>, <em>accounted for</em></li>
+      </ul>
+      <p><strong>Task 2</strong> (luận điểm) là phần đòi hỏi tư duy rõ ràng và lập luận mạch lạc hơn:</p>
+      <ul>
+        <li>Luôn dành 5 phút lên outline, 35 phút viết, không bỏ bước này dù thấy mình đang vội</li>
+        <li>Luyện cách <strong>mở bài không rập khuôn</strong>: giám khảo đọc hàng trăm bài, câu mở "Nowadays, it is widely believed that..." là thứ họ không muốn thấy nữa</li>
+        <li>Chú trọng <strong>cohesion</strong> (dùng từ nối hợp lý) và <strong>coherence</strong> (luận điểm dẫn đến kết luận một cách logic)</li>
+        <li>Xin phản hồi từ bên ngoài: mình nhờ giáo sư và bạn bè có kinh nghiệm đọc bài và chỉ ra lỗi. Tự đọc lại không đủ, bạn cần con mắt từ người khác</li>
+      </ul>
+
+      <h2>5. Speaking: Vấn đề không phải là từ vựng</h2>
+      <p>Điều làm điểm Speaking của mình bị kéo xuống không phải là thiếu từ vựng. Mà là <strong>sự do dự</strong>: những khoảng dừng dài, câu bị bỏ dở, giọng thiếu tự tin.</p>
+      <p>Giám khảo đánh giá bạn dựa trên:</p>
+      <ul>
+        <li><strong>Fluency (lưu loát):</strong> Nói tự nhiên, không bị vấp nhiều</li>
+        <li><strong>Coherence (mạch lạc):</strong> Ý tưởng nối tiếp nhau hợp lý</li>
+        <li><strong>Lexical resource (vốn từ):</strong> Dùng từ đa dạng, chính xác</li>
+        <li><strong>Grammatical range (cú pháp):</strong> Không chỉ dùng câu đơn giản</li>
+      </ul>
+      <p>Những gì thực sự giúp mình:</p>
+      <ul>
+        <li><strong>Nói to mỗi ngày:</strong> luyện tự trả lời câu hỏi Part 1 và Part 2, đặt đồng hồ đúng 2 phút và nói không dừng</li>
+        <li><strong>Ghi âm lại và nghe:</strong> rất khó chịu, nhưng đây là cách duy nhất để tự phát hiện lỗi</li>
+        <li><strong>Không học thuộc lòng câu trả lời:</strong> giám khảo nhận ra ngay, và điều đó làm giảm điểm fluency rõ rệt</li>
+      </ul>
+      <p>Và có một điều mình muốn kể thật: ngày thi, mình bị cảm sốt và ho nhiều. Thời điểm đó còn ảnh hưởng của COVID, nên giám khảo cũng có phần e ngại khi mình ho giữa câu, điều đó ảnh hưởng nhất định đến sự lưu loát của mình. Mình kể điều này không phải để biện minh, mà để bạn biết rằng ngay cả trong điều kiện không lý tưởng, bạn vẫn có thể đạt được kết quả tốt nếu đã chuẩn bị kỹ.</p>
+
+      <h2>6. Quản lý thời gian ôn thi</h2>
+      <p>Mình không có nhiều thời gian tự do, vừa theo học, vừa lo nhiều việc khác, nên mình phải thực tế về những gì mình có thể làm.</p>
+      <p>Lịch ôn thi của mình trong 4 tuần trước kỳ thi:</p>
+      <ul>
+        <li><strong>Ngày thường:</strong> 30 phút đến 1,5 tiếng, tập trung vào một kỹ năng cụ thể. Mình thành thật mà nói, có ngày mình chỉ ngồi được 30 phút, nhưng mình khuyến khích bạn cố gắng duy trì ít nhất 1 tiếng nếu có thể, vì ít hơn thế thì khó tạo được đà</li>
+        <li><strong>Cuối tuần:</strong> làm một bài thi thử hoàn chỉnh, đúng giờ, đúng điều kiện</li>
+        <li><strong>Tuần cuối:</strong> không học mới, chỉ ôn lại các lỗi hay mắc và đảm bảo ngủ đủ giấc</li>
+      </ul>
+      <p>Quan trọng nhất: mình đặt ngày thi trước, rồi mới lên lịch ôn, không phải chờ cảm thấy sẵn sàng rồi mới đăng ký. Deadline thật sự tạo ra động lực mà không thứ gì thay thế được.</p>
+
+      <h2>7. Ngày thi: Tâm lý quan trọng hơn bạn nghĩ</h2>
+      <p>Đêm trước khi thi, mình không học thêm gì. Mình đi ngủ sớm, ăn sáng đầy đủ, và đến địa điểm thi sớm 20 phút để làm quen không gian.</p>
+      <p>Trong phòng thi, có một điều mình tự nhắc mình: <strong>đừng để một câu khó làm mình hoảng loạn.</strong> Nếu gặp câu không chắc, đánh dấu và tiếp tục, quay lại sau. Một câu bị kẹt có thể kéo theo cả trang nếu bạn cứ ngồi đó lo lắng.</p>
+
+      <h2>Nhìn lại</h2>
+      <p>Đạt 7.0 ngay lần đầu không phải vì mình giỏi tiếng Anh hơn người khác. Mà vì mình hiểu đề thi, luyện đúng chỗ, và không bỏ cuộc giữa chừng khi cảm thấy mệt mỏi.</p>
+      <blockquote>Đừng luyện để cho xong, hãy luyện để hiểu mình đang làm gì và tại sao.</blockquote>
+      <p>Chúc bạn đạt được band điểm mình muốn. Bạn làm được.</p>
+
+      <hr>
+
+      <p><em>Bạn đang ôn IELTS và muốn chia sẻ kinh nghiệm? Mình rất muốn nghe, hãy liên hệ qua email <a href="mailto:jessie.thachthao@gmail.com">jessie.thachthao@gmail.com</a> hoặc qua <a href="contact.html">trang liên hệ</a> nhé.</em></p>
+
+    </div><!-- end #content-vi -->
+  </div>
+
+  <section class="related-section">
+    <div class="container">
+      <h2>More English Learning Tips</h2>
+      <div class="related-grid">
+
+        <a href="#" class="cosmic-card">
+          <div class="cc-image">
+            <img src="https://images.unsplash.com/photo-1503676260728-1c00da094a0b?w=600&h=400&fit=crop" alt="Cambridge exams">
+            <span class="cc-badge">Cambridge</span>
+          </div>
+          <div class="cc-body">
+            <time class="cc-date">Coming Soon</time>
+            <h3 class="cc-title">Preparing Students for KET, PET &amp; FCE</h3>
+            <p class="cc-excerpt">Teacher secrets behind 100% Cambridge pass rates.</p>
+            <span class="cc-readmore">Coming Soon →</span>
+          </div>
+        </a>
+
+        <a href="post-ai-language.html" class="cosmic-card">
+          <div class="cc-image">
+            <img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?w=600&h=400&fit=crop" alt="AI language learning">
+            <span class="cc-badge">AI Tools</span>
+          </div>
+          <div class="cc-body">
+            <time class="cc-date">November 5, 2024</time>
+            <h3 class="cc-title">AI in Language Learning: What My Research Reveals</h3>
+            <p class="cc-excerpt">Research-backed insights on using AI tools to improve your English.</p>
+            <span class="cc-readmore">Read More →</span>
+          </div>
+        </a>
+
+        <a href="#" class="cosmic-card">
+          <div class="cc-image">
+            <img src="https://images.unsplash.com/photo-1571260899304-425eee4c7efc?w=600&h=400&fit=crop" alt="Speaking practice">
+            <span class="cc-badge">Speaking</span>
+          </div>
+          <div class="cc-body">
+            <time class="cc-date">Coming Soon</time>
+            <h3 class="cc-title">Improving Speaking Skills Without Native Speakers Around</h3>
+            <p class="cc-excerpt">Five solo techniques that made a real difference for me.</p>
+            <span class="cc-readmore">Coming Soon →</span>
+          </div>
+        </a>
+
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <div class="wave-top" aria-hidden="true">
+    <svg viewBox="0 0 1440 60" preserveAspectRatio="none">
+      <path d="M0 30 Q 180 0, 360 30 T 720 30 T 1080 30 T 1440 30 V0 H0 Z" fill="#F4F8FB"/>
+    </svg>
+  </div>
+  <div class="footer-grid">
+    <div class="col brand">
+      <div class="name2"><span style="font-size:20px;" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 18 18" xmlns="http://www.w3.org/2000/svg"><g transform="translate(9,9)"><ellipse cx="0" cy="-4" rx="1.4" ry="3.5" fill="#A855F7" transform="rotate(0)"/><ellipse cx="0" cy="-4" rx="1.4" ry="3.5" fill="#9333EA" transform="rotate(30)"/><ellipse cx="0" cy="-4" rx="1.4" ry="3.5" fill="#9333EA" transform="rotate(90)"/><ellipse cx="0" cy="-4" rx="1.4" ry="3.5" fill="#A855F7" transform="rotate(120)"/><ellipse cx="0" cy="-4" rx="1.4" ry="3.5" fill="#9333EA" transform="rotate(150)"/><ellipse cx="0" cy="-4" rx="1.4" ry="3.5" fill="#A855F7" transform="rotate(180)"/><ellipse cx="0" cy="-4" rx="1.4" ry="3.5" fill="#9333EA" transform="rotate(210)"/><ellipse cx="0" cy="-4" rx="1.4" ry="3.5" fill="#A855F7" transform="rotate(240)"/><ellipse cx="0" cy="-4" rx="1.4" ry="3.5" fill="#9333EA" transform="rotate(270)"/><ellipse cx="0" cy="-4" rx="1.4" ry="3.5" fill="#A855F7" transform="rotate(300)"/><ellipse cx="0" cy="-4" rx="1.4" ry="3.5" fill="#9333EA" transform="rotate(330)"/><circle r="2.5" fill="#F5C518"/><circle r="1.2" fill="#C89010"/></g></svg></span> Thach <span style="color:var(--blue);">Thao</span><span style="color:#B8A9E8;font-size:0.8em;font-weight:500;margin-left:3px;"> · Jessica</span></div>
+      <p class="bio2">PhD student in Linguistics at NTU. Sharing insights on academic life, English learning, and living abroad in Taiwan.</p>
+      <div class="ocean-row" aria-hidden="true">
+        <span style="--d:0s;">🐚</span>
+        <span style="--d:-1s;">🐟</span>
+        <span style="--d:-2s;">🌊</span>
+        <span style="--d:-3s;">⭐</span>
+      </div>
+    </div>
+    <div class="col">
+      <h3>Quick Links</h3>
+      <nav class="links">
+        <a href="index.html">Home</a>
+        <a href="phd-tips.html">PhD &amp; Research</a>
+        <a href="english-learning.html">English Learning</a>
+        <a href="living-abroad.html">Life in Taiwan</a>
+        <a href="contact.html">Contact</a>
+        <a href="about.html">Profile</a>
+      </nav>
+    </div>
+    <div class="col">
+      <h3>Connect</h3>
+      <a class="connect-email" href="mailto:jessie.thachthao@gmail.com">
+        <span class="ic2" aria-hidden="true">✉️</span>jessie.thachthao@gmail.com
+      </a>
+      <div class="socials">
+        <a href="https://www.linkedin.com/in/thach-thao-jessica-85aab9131/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+        <a href="https://www.researchgate.net/profile/Le-Thi-Thach-Thao?ev=hdr_xprf" target="_blank" rel="noopener noreferrer">ResearchGate</a>
+        <a href="https://scholar.google.com/citations?user=sKBD3EEAAAAJ&hl=en" target="_blank" rel="noopener noreferrer">Scholar</a>
+        <a href="https://github.com/jessicathao" target="_blank" rel="noopener noreferrer">GitHub</a>
+      </div>
+    </div>
+  </div>
+  <div class="bottom">
+    <span>© 2024 Thach Thao. All rights reserved.</span>
+    <span class="tag2">Built with <span class="heart" aria-hidden="true">💙</span> by a linguist who loves learning and sharing</span>
+  </div>
+</footer>
+
+<button class="scroll-top" id="scrollTop" aria-label="Back to top">↑</button>
+
+<script>
+  const header = document.getElementById('siteHeader');
+  const scrollTopBtn = document.getElementById('scrollTop');
+  const onScroll = () => {
+    header.classList.toggle('scrolled', window.scrollY > 12);
+    scrollTopBtn.classList.toggle('show', window.scrollY > 400);
+  };
+  window.addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
+
+  const btn = document.getElementById('menuBtn');
+  const drawer = document.getElementById('drawer');
+  btn.addEventListener('click', () => {
+    const open = drawer.classList.toggle('open');
+    btn.textContent = open ? '✕' : '☰';
+  });
+  drawer.addEventListener('click', e => {
+    if (e.target.tagName === 'A') { drawer.classList.remove('open'); btn.textContent = '☰'; }
+  });
+
+  scrollTopBtn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+
+  // Language tab switcher
+  const titles = {
+    en: 'How I Achieved IELTS 7.0 on My First Attempt',
+    vi: 'Lần Đầu Thi IELTS, Mình Đạt 7.0: Đây Là Những Gì Mình Đã Làm'
+  };
+  const postTitle = document.getElementById('post-title');
+  const contentEn = document.getElementById('content-en');
+  const contentVi = document.getElementById('content-vi');
+  const langTabs = document.querySelectorAll('.lang-tab');
+
+  langTabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      const lang = tab.dataset.lang;
+      langTabs.forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+      if (lang === 'en') {
+        contentEn.style.display = '';
+        contentVi.style.display = 'none';
+        postTitle.textContent = titles.en;
+      } else {
+        contentEn.style.display = 'none';
+        contentVi.style.display = '';
+        postTitle.textContent = titles.vi;
+      }
+      contentEn.closest('.post-wrap').scrollIntoView({ behavior: 'smooth', block: 'start' });
+    });
+  });
+</script>
+
+<script data-goatcounter="https://jessicathao.goatcounter.com/count"
+        async src="//gc.zgo.at/count.js"></script>
+
 </body>
 </html>

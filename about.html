@@ -1,224 +1,345 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>About | Thach Thao - PhD Student & English Educator</title>
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Profile | Thach Thao · Linguistics PhD Student</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+  <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@400;500;600;700&family=Nunito:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/cosmic.css">
 </head>
 <body>
-    <header class="header">
-        <nav class="nav container">
-            <a href="index.html" class="logo">Thach Thao</a>
-            <button class="nav-toggle" aria-label="Toggle navigation">
-                <span></span>
-                <span></span>
-                <span></span>
-            </button>
-                        <ul class="nav-menu">
-                <li><a href="index.html" class="nav-link">Home</a></li>
-                <li><a href="about.html" class="nav-link active">About</a></li>
-                <li><a href="contact.html" class="nav-link">Contact</a></li>
-                <li><a href="phd-tips.html" class="nav-link">PhD & Research</a></li>
-                <li><a href="english-learning.html" class="nav-link">English Learning</a></li>
-                <li><a href="living-abroad.html" class="nav-link">Life in Taiwan</a></li>
-            </ul>
-        </nav>
-    </header>
 
-    <main>
-        <section class="about-section">
-            <div class="container">
-                <div class="about-content">
-                    <div class="about-image">
-                        <img src="thach thao.jpg" alt="Thach Thao profile photo">
-                    </div>
-                    <div class="about-text">
-                        <h1>Hi, I'm Thao!</h1>
-                        <p class="about-intro">Le Thi Thach Thao (Jessica) - A Vietnamese researcher, English educator, and PhD student passionate about linguistics, multilingualism, and the intersection of AI and language education.</p>
+<div class="page-bg" aria-hidden="true">
+  <span class="cloud" style="width:320px;height:200px;top:8%;left:-10%;--dur:70s;"></span>
+  <span class="cloud" style="width:240px;height:160px;top:55%;left:-6%;--dur:90s;--delay:-20s;"></span>
+  <span class="spark" style="top:12%;left:20%;width:5px;height:5px;--dur:3.2s;"></span>
+  <span class="spark p" style="top:35%;left:80%;width:4px;height:4px;--delay:-1s;"></span>
+  <span class="spark b" style="top:65%;left:14%;width:5px;height:5px;--dur:2.8s;--delay:-2s;"></span>
+  <span class="spark y" style="top:82%;left:72%;width:4px;height:4px;--delay:-1.5s;"></span>
+</div>
 
-                        <h2>My Journey</h2>
-                        <p>Originally from Vietnam, I began my academic journey at Dalat University, where I earned my B.A. in English Language Studies. My curiosity about language and education led me to Taiwan, where I've been living and studying since 2019.</p>
+<header class="site-header" id="siteHeader">
+  <div class="header-inner">
+    <a href="index.html" class="logo">
+      <span class="spinner" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 18 18" xmlns="http://www.w3.org/2000/svg"><g transform="translate(9,9)"><ellipse cx="0" cy="-4" rx="1.4" ry="3.5" fill="#A855F7" transform="rotate(0)"/><ellipse cx="0" cy="-4" rx="1.4" ry="3.5" fill="#9333EA" transform="rotate(30)"/><ellipse cx="0" cy="-4" rx="1.4" ry="3.5" fill="#A855F7" transform="rotate(60)"/><ellipse cx="0" cy="-4" rx="1.4" ry="3.5" fill="#9333EA" transform="rotate(90)"/><ellipse cx="0" cy="-4" rx="1.4" ry="3.5" fill="#A855F7" transform="rotate(120)"/><ellipse cx="0" cy="-4" rx="1.4" ry="3.5" fill="#9333EA" transform="rotate(150)"/><ellipse cx="0" cy="-4" rx="1.4" ry="3.5" fill="#A855F7" transform="rotate(180)"/><ellipse cx="0" cy="-4" rx="1.4" ry="3.5" fill="#9333EA" transform="rotate(210)"/><ellipse cx="0" cy="-4" rx="1.4" ry="3.5" fill="#A855F7" transform="rotate(240)"/><ellipse cx="0" cy="-4" rx="1.4" ry="3.5" fill="#9333EA" transform="rotate(270)"/><ellipse cx="0" cy="-4" rx="1.4" ry="3.5" fill="#A855F7" transform="rotate(300)"/><ellipse cx="0" cy="-4" rx="1.4" ry="3.5" fill="#9333EA" transform="rotate(330)"/><circle r="2.5" fill="#F5C518"/><circle r="1.2" fill="#C89010"/></g></svg></span>
+      Thach <span class="last">Thao</span><span class="sep"> · </span><span class="nick">Jessica</span>
+      <span class="shell" aria-hidden="true">🐚</span>
+    </a>
+    <nav class="primary" aria-label="Primary">
+      <a href="index.html">Home</a>
+      <a href="about.html" class="active">Profile</a>
+      <a href="phd-tips.html">PhD &amp; Research</a>
+      <a href="english-learning.html">English Learning</a>
+      <a href="living-abroad.html">Life in Taiwan</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+    <button class="hamburger" aria-label="Open menu" id="menuBtn">☰</button>
+    <div class="drawer" id="drawer">
+      <a href="index.html">Home</a>
+      <a href="about.html" class="active">Profile</a>
+      <a href="contact.html">Contact</a>
+      <a href="phd-tips.html">PhD &amp; Research</a>
+      <a href="english-learning.html">English Learning</a>
+      <a href="living-abroad.html">Life in Taiwan</a>
+      <a href="contact.html">Contact</a>
+    </div>
+  </div>
+</header>
 
-                        <p>I completed my Master's in TESOL and Applied Linguistics at National Kaohsiung University of Science and Technology (NKUST) with a perfect 4.0 GPA, ranking as an Excellence student. My thesis explored "The Roles of Multilingualism and Sociocultural Contexts in Shaping the Literacy Development of Children of Vietnamese Immigrant Families in Taiwan."</p>
+<main>
+  <div class="page-hero" style="padding-bottom: 40px;">
+    <span class="eyebrow"><span class="d"></span>MY PROFILE</span>
+    <h1>Hi, I'm Thach Thao! 👋</h1>
+    <p>A Vietnamese researcher, English educator, and PhD student passionate about linguistics, multilingualism, and the intersection of AI and language education.</p>
+  </div>
 
-                        <p>Currently, I'm pursuing my Ph.D. in Linguistics at <strong>National Taiwan University (NTU)</strong>, where I research sociolinguistics, multilingualism, computational linguistics, AI literacy, and multimodal metaphor analysis under the guidance of Professor Chia-Rung Lu.</p>
+  <div class="about-wrap">
 
-                        <h2>Research Interests</h2>
-                        <ul class="about-list">
-                            <li><strong>Sociolinguistics & Multilingualism:</strong> Understanding how language shapes identity and community, especially among immigrant families</li>
-                            <li><strong>AI & Language Education:</strong> Exploring how AI tools like ChatGPT and LLMs can transform English learning</li>
-                            <li><strong>Computational Linguistics:</strong> Using Python and corpus tools for linguistic analysis</li>
-                            <li><strong>Multimodal Metaphor Analysis:</strong> Analyzing visual metaphors in climate change advertising</li>
-                        </ul>
-
-                        <h2>Academic Achievements</h2>
-                        <div class="achievements-grid">
-                            <div class="achievement-item">
-                                <h4>Publications</h4>
-                                <ul>
-                                    <li>Paper under review at a Q1 linguistics journal on Vietnamese immigrant children's translanguaging practices</li>
-                                    <li>Book chapter on "War on Waste: Metaphorical Warfare in Environmental Advertising" (accepted)</li>
-                                    <li>Conference proceedings on working memory and interpretation (2020)</li>
-                                </ul>
-                            </div>
-                            <div class="achievement-item">
-                                <h4>Conference Presentations</h4>
-                                <ul>
-                                    <li>LACUS 2025 - Western University, Canada (accepted)</li>
-                                    <li>AAAL 2025 - Denver, USA (accepted)</li>
-                                    <li>Linguapax Asia 2024 - Hiroshima, Japan</li>
-                                    <li>First Eurasian Congress of Linguists 2024 - Russia</li>
-                                    <li>TESOL 2024 - Tampa, Florida, USA</li>
-                                    <li>JALT 2023 - Tsukuba, Japan</li>
-                                </ul>
-                            </div>
-                        </div>
-
-                        <h2>Publications</h2>
-                        
-                        <h3>Journal Article</h3>
-                        <div class="publication-item">
-                            <p class="pub-title">Navigating multilingual worlds: Vietnamese immigrant children's translanguaging practices and family resilience in Taiwan</p>
-                            <p class="pub-details">Le, T. T. T. (2025). <em>Journal of Multilingual and Multicultural Development</em>, 1–21. <a href="https://doi.org/10.1080/01434632.2025.2551125" target="_blank">https://doi.org/10.1080/01434632.2025.2551125</a></p>
-                            <p class="pub-impact">Q1 Journal, Impact Factor: 3.9</p>
-                        </div>
-
-                        <h3>Book Chapters</h3>
-                        <div class="publication-item">
-                            <p class="pub-title">Empowering voices: Vietnamese mothers' agency in multilingual heritage preservation in Taiwan</p>
-                            <p class="pub-details">Thach-Thao, L. T., & Thanh-Nhan, Le. (2025). In press. To appear in the Scopus-indexed edited book of the 10th International Language Learning Conference (ILLC) 2025. UMP Press.</p>
-                        </div>
-
-                        <div class="publication-item">
-                            <p class="pub-title">From Warfare to Peace: Transforming Environmental Education Through Metaphor</p>
-                            <p class="pub-details">Thach-Thao, L. T., & Thanh-Nhan, Le. (2025). Under review. In F. E. Anderson, J. C. Maher, & B. J. Sethna (Eds.), <em>Language for Peace and Education</em>. Candlin & Mynard e-Publishing.</p>
-                        </div>
-
-                        <h3>Conference Proceedings</h3>
-                        <div class="publication-item">
-                            <p class="pub-title">The Effects of Improving Working Memory on Interpretation Process of English Major Students</p>
-                            <p class="pub-details">Thach-Thao, L. T., My, H. T. T., Anh, N. H. M., & Van, T. T. M. (2020, December). In the Proceedings of ELT for Life Long Learning in the New Decade: 5th International Conference of English Language Teaching (pp. 139-156). Ho Chi Minh City, Vietnam: Macmillan Education. ISBN: 978-604-73-8009-1.</p>
-                        </div>
-
-                        <h2>Conference Presentations</h2>
-                        
-                        <div class="conference-grid">
-                            <div class="conference-item">
-                                <h4>2025</h4>
-                                <ul>
-                                    <li><strong>ILLC 2025</strong> - The perception-preference paradox in AI platform adoption (September, Malaysia)</li>
-                                    <li><strong>LACUS 2025</strong> - University students' perceptions of ChatGPT and Deepseek (July, Canada - Virtual)</li>
-                                    <li><strong>AAAL 2025</strong> - Unraveling the Intercultural Identity of Vietnamese-Taiwanese Children (March, Denver, USA - Accepted)</li>
-                                </ul>
-                            </div>
-
-                            <div class="conference-item">
-                                <h4>2024</h4>
-                                <ul>
-                                    <li><strong>Linguapax Asia 2024</strong> - War on Waste: Metaphorical Warfare in Environmental Advertising (December, Hiroshima, Japan)</li>
-                                    <li><strong>First Eurasian Congress of Linguists</strong> - Strategic Use of Metaphors in Climate Change Ads (December, Russia - Virtual)</li>
-                                    <li><strong>CLDC 11</strong> - Decoding AI Discourse: Insights from TED Talks (May, NTU, Taiwan)</li>
-                                    <li><strong>TESOL 2024</strong> - Artificial Intelligence's Impacts on English Language Learning (April, Florida, USA - Virtual)</li>
-                                </ul>
-                            </div>
-
-                            <div class="conference-item">
-                                <h4>2023</h4>
-                                <ul>
-                                    <li><strong>JALT 2023</strong> - Analyzing Generic Moves and Lexical Bundles in Ted Talks (November, Japan - Virtual)</li>
-                                </ul>
-                            </div>
-                        </div>
-                        <h2>Teaching Experience</h2>
-                        <p>Teaching is my passion. I've had the privilege of teaching over 110 students across various settings:</p>
-                        <ul class="about-list">
-                            <li><strong>Georgia Educational Organization (2022-Present):</strong> Teaching K-6 students for GEPT and Cambridge exams (KET, PET, FCE) with 100% pass rates</li>
-                            <li><strong>Teaching Assistant at NKUST (2022-2024):</strong> Designed activities for Speaking classes, achieving 92/100 in teaching performance</li>
-                            <li><strong>Online English Tutor (2022):</strong> Worked with students from remote areas in Taiwan through the Digital Learning Companion Project</li>
-                        </ul>
-
-                        <h2>Awards & Scholarships</h2>
-                        <ul class="about-list">
-                            <li>Scholarship for Outstanding International Graduate Student - NTU (2024-Present)</li>
-                            <li>First Prize - National SDGs Youth Advocates English Proposal Contest (2022)</li>
-                            <li>Huayu Enrichment Scholarship - Taiwan Ministry of Education (2019-2020)</li>
-                            <li>Best Student Paper - Dalat University Research Conference (2019)</li>
-                        </ul>
-
-                        <h2>Languages & Skills</h2>
-                        <div class="skills-grid">
-                            <div class="skill-category">
-                                <h4>Languages</h4>
-                                <p>Vietnamese (Native) | English (IELTS 7.0) | Traditional Chinese (TOCFL B1)</p>
-                            </div>
-                            <div class="skill-category">
-                                <h4>Research Tools</h4>
-                                <p>Python | SPSS | NVivo | AntConc | LaTeX/Overleaf</p>
-                            </div>
-                            <div class="skill-category">
-                                <h4>Teaching Tools</h4>
-                                <p>Kahoot! | Quizlet | Canva | Adobe Photoshop</p>
-                            </div>
-                        </div>
-
-                        <h2>Why This Blog?</h2>
-                        <p>I created this blog to share my experiences and insights with fellow students, researchers, and anyone interested in language learning or living abroad. Whether you're preparing for IELTS, considering a PhD, or thinking about studying in Taiwan, I hope my stories and tips can help you on your journey.</p>
-
-                        <h2>Let's Connect!</h2>
-                        <p>I love connecting with fellow researchers, students, and language enthusiasts. Feel free to reach out through the <a href="contact.html">contact page</a> or email me directly.</p>
-
-                        <div class="about-social">
-                            <a href="mailto:jessie.thachthao@gmail.com" class="social-btn">Email Me</a>
-                            <a href="https://www.linkedin.com/in/thach-thao-jessica-85aab9131/" target="_blank" rel="noopener noreferrer" class="social-btn">LinkedIn</a>
-                            <a href="https://www.researchgate.net/profile/Le-Thi-Thach-Thao?ev=hdr_xprf" target="_blank" rel="noopener noreferrer" class="social-btn">ResearchGate</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-    </main>
-
-    <footer class="footer">
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-section">
-                    <h3>Thach Thao</h3>
-                    <p>PhD student in Linguistics at NTU. Sharing insights on academic life, English learning, and living abroad in Taiwan.</p>
-                </div>
-                <div class="footer-section">
-                    <h4>Quick Links</h4>
-                    <ul>
-                        <li><a href="index.html">Home</a></li>
-                        <li><a href="phd-tips.html">PhD & Research</a></li>
-                        <li><a href="english-learning.html">English Learning</a></li>
-                        <li><a href="living-abroad.html">Life in Taiwan</a></li>
-                        <li><a href="about.html">About</a></li>
-                    </ul>
-                </div>
-                <div class="footer-section">
-                    <h4>Connect</h4>
-                    <div class="social-links">
-                        <a href="mailto:jessie.thachthao@gmail.com">Email</a>
-                        <a href="https://www.linkedin.com/in/thach-thao-jessica-85aab9131/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
-                        <a href="https://www.researchgate.net/profile/Le-Thi-Thach-Thao?ev=hdr_xprf" target="_blank" rel="noopener noreferrer">ResearchGate</a>
-                        <a href="https://scholar.google.com/citations?user=sKBD3EEAAAAJ&amp;hl=en" target="_blank" rel="noopener noreferrer">Google Scholar</a>
-                    </div>
-                </div>
-            </div>
-            <div class="footer-bottom">
-                <p>&copy; 2024 Thach Thao. All rights reserved.</p>
-            </div>
+    <!-- Profile Card -->
+    <div class="about-profile-card">
+      <div class="about-profile-inner">
+        <div class="about-photo-wrap">
+          <img src="thach%20thao.jpg" alt="Thach Thao">
         </div>
-    </footer>
+        <div class="about-profile-text">
+          <h1>Le Thi Thach Thao</h1>
+          <div class="about-role-pill"><span class="pin"></span>PHD STUDENT · NTU LINGUISTICS</div>
+          <p class="intro">Originally from Vietnam, I've been living and studying in Taiwan since 2019. I completed my Master's in TESOL and Applied Linguistics at NKUST (4.0 GPA, Excellence ranking) and am currently pursuing my Ph.D. in Linguistics at <strong>National Taiwan University</strong> under Professor Chia-Rung Lu, researching sociolinguistics, multilingualism, and AI literacy.</p>
+          <div class="about-social-row">
+            <a href="mailto:jessie.thachthao@gmail.com" class="social-pill">✉️ Email</a>
+            <a href="https://www.linkedin.com/in/thach-thao-jessica-85aab9131/" target="_blank" rel="noopener noreferrer" class="social-pill">💼 LinkedIn</a>
+            <a href="https://www.researchgate.net/profile/Le-Thi-Thach-Thao?ev=hdr_xprf" target="_blank" rel="noopener noreferrer" class="social-pill">🔬 ResearchGate</a>
+            <a href="https://scholar.google.com/citations?user=sKBD3EEAAAAJ&hl=en" target="_blank" rel="noopener noreferrer" class="social-pill">🎓 Google Scholar</a>
+            <a href="https://github.com/jessicathao" target="_blank" rel="noopener noreferrer" class="social-pill">💻 GitHub</a>
+          </div>
+        </div>
+      </div>
+    </div>
 
-    <script src="js/main.js"></script>
-    <!-- Ghibli mascots: Jiji + Kiki -->
-    <span class="ghibli-sticker" aria-hidden="true" title="Jiji the cat">🐈‍⬛</span>
-    <span class="ghibli-sticker-2" aria-hidden="true" title="Kiki's broom">🧹</span>
-    <span class="ghibli-sticker-3" aria-hidden="true" title="Magic night">🌙</span>
+    <!-- Research Interests -->
+    <div class="about-section-card">
+      <h2><span class="sec-icon">🔭</span>Research Interests</h2>
+      <ul>
+        <li><strong>Sociolinguistics &amp; Multilingualism:</strong> Understanding how language shapes identity and community, especially among immigrant families</li>
+        <li><strong>AI &amp; Language Education:</strong> Exploring how AI tools like ChatGPT and LLMs can transform English learning</li>
+        <li><strong>Computational Linguistics:</strong> Using Python and corpus tools for linguistic analysis</li>
+        <li><strong>Multimodal Metaphor Analysis:</strong> Analyzing visual metaphors in climate change advertising</li>
+      </ul>
+    </div>
+
+    <!-- Publications -->
+    <div class="about-section-card">
+      <h2><span class="sec-icon">📚</span>Publications</h2>
+
+      <h3>Journal Article</h3>
+      <div class="pub-item">
+        <p class="pub-title">Navigating multilingual worlds: Vietnamese immigrant children's translanguaging practices and family resilience in Taiwan</p>
+        <p class="pub-details"><strong class="my-name">Le, T. T. T.</strong> (2025). <em>Journal of Multilingual and Multicultural Development</em>, 1–21. <a href="https://doi.org/10.1080/01434632.2025.2551125" target="_blank" rel="noopener noreferrer">https://doi.org/10.1080/01434632.2025.2551125</a></p>
+        <span class="pub-impact">⭐ Q1 Journal · Impact Factor: 3.9</span>
+      </div>
+
+      <h3>Book Chapters</h3>
+      <div class="pub-item">
+        <p class="pub-title">Empowering voices: Vietnamese mothers' agency in multilingual heritage preservation in Taiwan</p>
+        <p class="pub-details"><strong class="my-name">Thach-Thao, L. T.</strong>, &amp; Thanh-Nhan, Le. (2025). In press. To appear in the Scopus-indexed edited book of the 10th International Language Learning Conference (ILLC) 2025. UMP Press.</p>
+      </div>
+      <div class="pub-item">
+        <p class="pub-title"><a href="https://www.candlinandmynard.com/languageforpeace.html" target="_blank" rel="noopener noreferrer">From Warfare to Peace: Transforming Environmental Education Through Metaphor</a></p>
+        <p class="pub-details"><strong class="my-name">Thach-Thao, L. T.</strong>, &amp; Thanh-Nhan, Le. (2025). In F. E. Anderson, J. C. Maher, &amp; B. J. Sethna (Eds.), <em>Language for Peace and Education</em>. Candlin &amp; Mynard e-Publishing.</p>
+      </div>
+
+      <h3>Conference Proceedings</h3>
+      <div class="pub-item">
+        <p class="pub-title">The Effects of Improving Working Memory on Interpretation Process of English Major Students</p>
+        <p class="pub-details"><strong class="my-name">Thach-Thao, L. T.</strong>, My, H. T. T., Anh, N. H. M., &amp; Van, T. T. M. (2020, December). In the Proceedings of ELT for Life Long Learning in the New Decade: 5th International Conference of English Language Teaching (pp. 139–156). Ho Chi Minh City, Vietnam: Macmillan Education. ISBN: 978-604-73-8009-1.</p>
+      </div>
+    </div>
+
+    <!-- Conference Presentations -->
+    <div class="about-section-card">
+      <h2><span class="sec-icon">🎤</span>Conference Presentations</h2>
+      <div class="conf-list">
+
+        <!-- 2025 -->
+        <div class="conf-year-block">
+          <p class="conf-year-label">2025</p>
+
+          <div class="conf-entry">
+            <p class="conf-title">Asian-Pacific Indigenous and Minority Language Preservation through Generative AI: A Systematic Review</p>
+            <p class="conf-details"><strong class="my-name">Thach-Thao, L. T.</strong>, &amp; Thanh-Nhan, Le. (2025, November). Paper presented at the <em>Linguistic Society of New Zealand Annual Conference 2025</em>, Massey University, Wellington, New Zealand.</p>
+          </div>
+
+          <div class="conf-entry">
+            <p class="conf-title">The Perception-Preference Paradox in AI Platform Adoption: How Geopolitical Tensions and Subconscious Biases Shape Language Education Technology Choices</p>
+            <p class="conf-details">Thanh-Nhan, Le., &amp; <strong class="my-name">Thach-Thao, L. T.</strong> (2025, September). Presented at the <em>10th International Language Learning Conference (ILLC 2025)</em>, Universiti Sains Malaysia, Penang, Malaysia.</p>
+          </div>
+
+          <div class="conf-entry">
+            <p class="conf-title">University Students' Perceptions of ChatGPT and DeepSeek: An Extended TAM Study in Linguistics and Language Education</p>
+            <p class="conf-details"><strong class="my-name">Thach-Thao, L. T.</strong>, &amp; Thanh-Nhan, Le. (2025, July 16–18). Presented at <em>The 2025 Annual Conference of the Linguistic Association of Canada and the United States (LACUS)</em> [Virtual oral presentation], Western University, London, Ontario, Canada. (Corresponding Author)</p>
+          </div>
+        </div>
+
+        <!-- 2024 -->
+        <div class="conf-year-block">
+          <p class="conf-year-label">2024</p>
+
+          <div class="conf-entry">
+            <p class="conf-title">War on Waste: Metaphorical Warfare in Environmental Advertising</p>
+            <p class="conf-details"><strong class="my-name">Thach-Thao, L. T.</strong>, &amp; Thanh-Nhan, Le. (2024, December). Paper presented at the <em>Linguapax Asia 2024 International Symposium</em> [Oral presentation], Eikei University of Hiroshima, Hiroshima, Japan. (Corresponding Author)</p>
+          </div>
+
+          <div class="conf-entry">
+            <p class="conf-title">Strategic Use and Effectiveness of Metaphors and Metonymies in Non-Commercial Climate Change Advertisements</p>
+            <p class="conf-details"><strong class="my-name">Thach-Thao, L. T.</strong> (2024, December). Paper presented at the <em>First Eurasian Congress of Linguists</em> [Virtual oral presentation], Russian Academy of Sciences, Moscow, Russia. (Corresponding Author)</p>
+          </div>
+
+          <div class="conf-entry">
+            <p class="conf-title">Decoding AI Discourse: Insights from TED Talks on Themes, Language, and Communication Strategies</p>
+            <p class="conf-details"><strong class="my-name">Thach-Thao, L. T.</strong> (2024, May). Poster presented at <em>The 11th Conference on Language, Discourse, and Cognition (CLDC 11)</em>, National Taiwan University, Taiwan.</p>
+          </div>
+
+          <div class="conf-entry">
+            <p class="conf-title">Artificial Intelligence's Impacts on English Language Learning: A Systematic Review</p>
+            <p class="conf-details"><strong class="my-name">Thach-Thao, L. T.</strong>, &amp; Thanh-Nhan, Le. (2024, April). Paper presented at <em>TESOL 2024 International Convention &amp; English Language Expo</em> [Virtual oral presentation], Tampa, Florida, USA. (Corresponding Author)</p>
+          </div>
+        </div>
+
+        <!-- 2023 -->
+        <div class="conf-year-block">
+          <p class="conf-year-label">2023</p>
+
+          <div class="conf-entry">
+            <p class="conf-title">Analyzing Generic Moves and Lexical Bundles in TED Talks</p>
+            <p class="conf-details"><strong class="my-name">Thach-Thao, L. T.</strong>, Thanh-Nhan, Le., &amp; Shi-Jen, Huang. (2023, November). Paper presented at the <em>49th Annual International Conference on Language Teaching and Learning &amp; Educational Materials Exhibition (JALT)</em> [Virtual oral presentation], Tsukuba, Ibaraki, Japan. (Corresponding Author)</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Teaching Experience -->
+    <div class="about-section-card">
+      <h2><span class="sec-icon">🏫</span>Teaching Experience</h2>
+      <p>Teaching is my passion. I've had the privilege of teaching over 110 students across various settings:</p>
+      <ul>
+        <li><strong>Georgia Educational Organization, Joy English and Live ABC (2022–Present):</strong> Teaching K–6 students for GEPT and Cambridge exams (KET, PET, FCE), achieving full pass rates (A1 to B2 level)</li>
+        <li><strong>Teaching Assistant at NKUST (2022–2024):</strong> Designed activities for Speaking classes, achieving 92/100 in teaching performance</li>
+        <li><strong>Online English Tutor (2022):</strong> Worked with students from remote areas in Taiwan through the Digital Learning Companion Project</li>
+      </ul>
+    </div>
+
+    <!-- Invited Talks -->
+    <div class="about-section-card">
+      <h2><span class="sec-icon">🎙️</span>Invited Talks</h2>
+      <div class="pub-item">
+        <p class="pub-title">Guest Speaker, 2022 Annual Donors Gathering Event</p>
+        <p class="pub-details">Call Over Ridges Organization, Taipei City, Taiwan. January 2022.</p>
+      </div>
+      <div class="pub-item">
+        <p class="pub-title">Panelist, 2021 Asia Social Impact Incubation Program</p>
+        <p class="pub-details">Call Over Ridges Organization, Taipei City, Taiwan. November 2021.</p>
+      </div>
+    </div>
+
+    <!-- Awards -->
+    <div class="about-section-card">
+      <h2><span class="sec-icon">🏆</span>Honors &amp; Awards</h2>
+      <div class="pub-item">
+        <p class="pub-title">Co-Winner, The Presidents' Prize 2025</p>
+        <p class="pub-details">Awarded for the best pre-doctoral paper presented at <em>The Fifty-First LACUS Forum</em>.</p>
+      </div>
+      <div class="pub-item">
+        <p class="pub-title">First Prize, National Collegiate United Nations SDGs Youth Advocates English Proposal Contest</p>
+        <p class="pub-details">National Kaohsiung University of Science and Technology &amp; Ministry of Education, Taiwan. November 2022.</p>
+      </div>
+      <div class="pub-item">
+        <p class="pub-title">Third Prize, Green Pitch Competition</p>
+        <p class="pub-details">National Kaohsiung University of Science and Technology, Taiwan. March 2022.</p>
+      </div>
+      <div class="pub-item">
+        <p class="pub-title">Best Award "Most Likes" Video Creator, Taiwan TikTok Video Competition</p>
+        <p class="pub-details">Taiwan Tourism Bureau, Ministry of Transportation and Communications, Taiwan. November 2020.</p>
+      </div>
+      <div class="pub-item">
+        <p class="pub-title">Best Student Paper, Student Scientific Research Conference</p>
+        <p class="pub-details">Dalat University, Vietnam. June 2019.</p>
+      </div>
+      <div class="pub-item">
+        <p class="pub-title">Students Union Honor for Excellent Research</p>
+        <p class="pub-details">Dalat University, Vietnam. June 2019.</p>
+      </div>
+      <div class="pub-item">
+        <p class="pub-title">Top Honor for Excellence in Union Activities and Youth Movements</p>
+        <p class="pub-details">Dalat University, Vietnam. June 2019.</p>
+      </div>
+    </div>
+
+    <!-- Skills -->
+    <div class="about-section-card">
+      <h2><span class="sec-icon">🛠</span>Languages &amp; Skills</h2>
+      <div class="skills-three">
+        <div class="skill-block">
+          <h4>Languages</h4>
+          <p>Vietnamese (Native) · English (IELTS 7.0) · Traditional Chinese (TOCFL B1)</p>
+        </div>
+        <div class="skill-block">
+          <h4>Research Tools</h4>
+          <p>Python · SPSS · NVivo · AntConc · LaTeX / Overleaf</p>
+        </div>
+        <div class="skill-block">
+          <h4>Teaching Tools</h4>
+          <p>Kahoot! · Quizlet · Canva · Adobe Photoshop</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Why This Blog -->
+    <div class="about-section-card">
+      <h2><span class="sec-icon">💬</span>Why This Blog?</h2>
+      <p>I created this blog to share my experiences and insights with fellow students, researchers, and anyone interested in language learning or living abroad. Whether you're preparing for IELTS, considering a PhD, or thinking about studying in Taiwan, I hope my stories and tips can help you on your journey.</p>
+      <p>I love connecting with fellow researchers, students, and language enthusiasts. Feel free to reach out through the <a href="contact.html">contact page</a> or email me at <a href="mailto:jessie.thachthao@gmail.com">jessie.thachthao@gmail.com</a>.</p>
+    </div>
+
+  </div>
+</main>
+
+<footer class="site-footer">
+  <div class="wave-top" aria-hidden="true">
+    <svg viewBox="0 0 1440 60" preserveAspectRatio="none">
+      <path d="M0 30 Q 180 0, 360 30 T 720 30 T 1080 30 T 1440 30 V0 H0 Z" fill="#F4F8FB"/>
+    </svg>
+  </div>
+  <div class="footer-grid">
+    <div class="col brand">
+      <div class="name2"><span style="font-size:20px;" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 18 18" xmlns="http://www.w3.org/2000/svg"><g transform="translate(9,9)"><ellipse cx="0" cy="-4" rx="1.4" ry="3.5" fill="#A855F7" transform="rotate(0)"/><ellipse cx="0" cy="-4" rx="1.4" ry="3.5" fill="#9333EA" transform="rotate(30)"/><ellipse cx="0" cy="-4" rx="1.4" ry="3.5" fill="#A855F7" transform="rotate(60)"/><ellipse cx="0" cy="-4" rx="1.4" ry="3.5" fill="#9333EA" transform="rotate(90)"/><ellipse cx="0" cy="-4" rx="1.4" ry="3.5" fill="#A855F7" transform="rotate(120)"/><ellipse cx="0" cy="-4" rx="1.4" ry="3.5" fill="#9333EA" transform="rotate(150)"/><ellipse cx="0" cy="-4" rx="1.4" ry="3.5" fill="#A855F7" transform="rotate(180)"/><ellipse cx="0" cy="-4" rx="1.4" ry="3.5" fill="#9333EA" transform="rotate(210)"/><ellipse cx="0" cy="-4" rx="1.4" ry="3.5" fill="#A855F7" transform="rotate(240)"/><ellipse cx="0" cy="-4" rx="1.4" ry="3.5" fill="#9333EA" transform="rotate(270)"/><ellipse cx="0" cy="-4" rx="1.4" ry="3.5" fill="#A855F7" transform="rotate(300)"/><ellipse cx="0" cy="-4" rx="1.4" ry="3.5" fill="#9333EA" transform="rotate(330)"/><circle r="2.5" fill="#F5C518"/><circle r="1.2" fill="#C89010"/></g></svg></span> Thach <span style="color:var(--blue);">Thao</span><span style="color:#B8A9E8;font-size:0.8em;font-weight:500;margin-left:3px;"> · Jessica</span></div>
+      <p class="bio2">PhD student in Linguistics at NTU. Sharing insights on academic life, English learning, and living abroad in Taiwan.</p>
+      <div class="ocean-row" aria-hidden="true">
+        <span style="--d:0s;">🐚</span>
+        <span style="--d:-1s;">🐟</span>
+        <span style="--d:-2s;">🌊</span>
+        <span style="--d:-3s;">⭐</span>
+      </div>
+    </div>
+    <div class="col">
+      <h3>Quick Links</h3>
+      <nav class="links">
+        <a href="index.html">Home</a>
+        <a href="phd-tips.html">PhD &amp; Research</a>
+        <a href="english-learning.html">English Learning</a>
+        <a href="living-abroad.html">Life in Taiwan</a>
+      <a href="contact.html">Contact</a>
+        <a href="about.html">Profile</a>
+      </nav>
+    </div>
+    <div class="col">
+      <h3>Connect</h3>
+      <a class="connect-email" href="mailto:jessie.thachthao@gmail.com">
+        <span class="ic2" aria-hidden="true">✉️</span>jessie.thachthao@gmail.com
+      </a>
+      <div class="socials">
+        <a href="https://www.linkedin.com/in/thach-thao-jessica-85aab9131/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+        <a href="https://www.researchgate.net/profile/Le-Thi-Thach-Thao?ev=hdr_xprf" target="_blank" rel="noopener noreferrer">ResearchGate</a>
+        <a href="https://scholar.google.com/citations?user=sKBD3EEAAAAJ&hl=en" target="_blank" rel="noopener noreferrer">Scholar</a>
+        <a href="https://github.com/jessicathao" target="_blank" rel="noopener noreferrer">GitHub</a>
+      </div>
+    </div>
+  </div>
+  <div class="bottom">
+    <span>© 2024 Thach Thao. All rights reserved.</span>
+    <span class="tag2">Built with <span class="heart" aria-hidden="true">💙</span> by a linguist who loves learning and sharing</span>
+  </div>
+</footer>
+
+<button class="scroll-top" id="scrollTop" aria-label="Back to top">↑</button>
+
+<script>
+  const header = document.getElementById('siteHeader');
+  const scrollTopBtn = document.getElementById('scrollTop');
+  const onScroll = () => {
+    header.classList.toggle('scrolled', window.scrollY > 12);
+    scrollTopBtn.classList.toggle('show', window.scrollY > 400);
+  };
+  window.addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
+
+  const btn = document.getElementById('menuBtn');
+  const drawer = document.getElementById('drawer');
+  btn.addEventListener('click', () => {
+    const open = drawer.classList.toggle('open');
+    btn.textContent = open ? '✕' : '☰';
+  });
+  drawer.addEventListener('click', e => {
+    if (e.target.tagName === 'A') { drawer.classList.remove('open'); btn.textContent = '☰'; }
+  });
+
+  scrollTopBtn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+</script>
+
+<script data-goatcounter="https://jessicathao.goatcounter.com/count"
+        async src="//gc.zgo.at/count.js"></script>
+
 </body>
 </html>

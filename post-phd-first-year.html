@@ -1,215 +1,427 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Surviving Your First Year as a PhD Student | Thach Thao</title>
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Surviving Your First Year as a PhD Student | Thach Thao</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+  <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@400;500;600;700&family=Nunito:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/cosmic.css">
+  <style>
+    .lang-tabs {
+      display: flex;
+      gap: 10px;
+      margin: 28px 0 4px;
+    }
+    .lang-tab {
+      background: rgba(255,255,255,0.7);
+      border: 2px solid rgba(184,169,232,0.35);
+      border-radius: 30px;
+      padding: 7px 22px;
+      font-family: 'Nunito', sans-serif;
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--soft);
+      cursor: pointer;
+      transition: all 0.22s;
+      letter-spacing: 0.01em;
+    }
+    .lang-tab:hover {
+      border-color: var(--lavender);
+      color: var(--dark);
+      background: rgba(184,169,232,0.1);
+    }
+    .lang-tab.active {
+      background: var(--lavender);
+      border-color: var(--lavender);
+      color: #fff;
+      box-shadow: 0 3px 12px rgba(184,169,232,0.35);
+    }
+  </style>
 </head>
 <body>
-    <header class="header">
-        <nav class="nav container">
-            <a href="index.html" class="logo">Thach Thao</a>
-            <button class="nav-toggle" aria-label="Toggle navigation">
-                <span></span>
-                <span></span>
-                <span></span>
-            </button>
-                        <ul class="nav-menu">
-                <li><a href="index.html" class="nav-link">Home</a></li>
-                <li><a href="about.html" class="nav-link">About</a></li>
-                <li><a href="contact.html" class="nav-link">Contact</a></li>
-                <li><a href="phd-tips.html" class="nav-link active">PhD & Research</a></li>
-                <li><a href="english-learning.html" class="nav-link">English Learning</a></li>
-                <li><a href="living-abroad.html" class="nav-link">Life in Taiwan</a></li>
-            </ul>
-        </nav>
-    </header>
 
-    <main>
-        <section class="post-header">
-            <div class="container">
-                <span class="post-category" style="display: inline-block; margin-bottom: 1rem;">PhD Life</span>
-                <h1>Surviving Your First Year as a PhD Student: Lessons from NTU</h1>
-                <div class="post-meta">
-                    <span>November 20, 2024</span>
-                    <span>|</span>
-                    <span>8 min read</span>
-                </div>
-            </div>
-        </section>
+<div class="page-bg" aria-hidden="true">
+  <span class="cloud" style="width:300px;height:190px;top:6%;left:-8%;--dur:72s;"></span>
+  <span class="cloud" style="width:220px;height:150px;top:52%;left:-5%;--dur:88s;--delay:-22s;"></span>
+  <span class="spark" style="top:14%;left:22%;width:5px;height:5px;--dur:3.1s;"></span>
+  <span class="spark p" style="top:38%;left:82%;width:4px;height:4px;--delay:-1s;"></span>
+  <span class="spark b" style="top:68%;left:12%;width:5px;height:5px;--dur:2.7s;--delay:-2s;"></span>
+  <span class="spark y" style="top:85%;left:70%;width:4px;height:4px;--delay:-1.6s;"></span>
+</div>
 
-        <section class="post-body">
-            <img src="https://images.unsplash.com/photo-1456513080510-7bf3a84b82f8?w=1200&h=600&fit=crop" alt="PhD research desk">
-            
-            <p>Starting a PhD can feel overwhelming. You're navigating new coursework, trying to find your research direction, adjusting to a new academic culture, and potentially living in a new country. After completing my first year in the Linguistics PhD program at National Taiwan University, I want to share the lessons I learned that helped me not just survive, but thrive.</p>
+<header class="site-header" id="siteHeader">
+  <div class="header-inner">
+    <a href="index.html" class="logo">
+      <span class="spinner" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 18 18" xmlns="http://www.w3.org/2000/svg"><g transform="translate(9,9)"><ellipse cx="0" cy="-4" rx="1.4" ry="3.5" fill="#A855F7" transform="rotate(0)"/><ellipse cx="0" cy="-4" rx="1.4" ry="3.5" fill="#9333EA" transform="rotate(30)"/><ellipse cx="0" cy="-4" rx="1.4" ry="3.5" fill="#A855F7" transform="rotate(60)"/><ellipse cx="0" cy="-4" rx="1.4" ry="3.5" fill="#9333EA" transform="rotate(90)"/><ellipse cx="0" cy="-4" rx="1.4" ry="3.5" fill="#A855F7" transform="rotate(120)"/><ellipse cx="0" cy="-4" rx="1.4" ry="3.5" fill="#9333EA" transform="rotate(150)"/><ellipse cx="0" cy="-4" rx="1.4" ry="3.5" fill="#A855F7" transform="rotate(180)"/><ellipse cx="0" cy="-4" rx="1.4" ry="3.5" fill="#9333EA" transform="rotate(210)"/><ellipse cx="0" cy="-4" rx="1.4" ry="3.5" fill="#A855F7" transform="rotate(240)"/><ellipse cx="0" cy="-4" rx="1.4" ry="3.5" fill="#9333EA" transform="rotate(270)"/><ellipse cx="0" cy="-4" rx="1.4" ry="3.5" fill="#A855F7" transform="rotate(300)"/><ellipse cx="0" cy="-4" rx="1.4" ry="3.5" fill="#9333EA" transform="rotate(330)"/><circle r="2.5" fill="#F5C518"/><circle r="1.2" fill="#C89010"/></g></svg></span>
+      Thach <span class="last">Thao</span><span class="sep"> · </span><span class="nick">Jessica</span>
+      <span class="shell" aria-hidden="true">🐚</span>
+    </a>
+    <nav class="primary" aria-label="Primary">
+      <a href="index.html">Home</a>
+      <a href="about.html">Profile</a>
+      <a href="phd-tips.html" class="active">PhD &amp; Research</a>
+      <a href="english-learning.html">English Learning</a>
+      <a href="living-abroad.html">Life in Taiwan</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+    <button class="hamburger" aria-label="Open menu" id="menuBtn">☰</button>
+    <div class="drawer" id="drawer">
+      <a href="index.html">Home</a>
+      <a href="about.html">Profile</a>
+      <a href="phd-tips.html" class="active">PhD &amp; Research</a>
+      <a href="english-learning.html">English Learning</a>
+      <a href="living-abroad.html">Life in Taiwan</a>
+      <a href="contact.html">Contact</a>
+    </div>
+  </div>
+</header>
 
-            <h2>1. Accept That It's Normal to Feel Lost</h2>
-            <p>The first few months of my PhD, I felt like everyone around me knew exactly what they were doing except me. I later learned that almost every PhD student feels this way. This phenomenon, often called "imposter syndrome," is incredibly common in academia.</p>
-            
-            <p><strong>What helped me:</strong></p>
-            <ul>
-                <li>Talking openly with fellow PhD students about struggles and uncertainties</li>
-                <li>Remembering that I was admitted because the faculty believed in my potential</li>
-                <li>Keeping a "wins journal" to track small accomplishments</li>
-            </ul>
+<main>
+  <div class="post-wrap">
 
-            <h2>2. Build Your Support Network Early</h2>
-            <p>One of the best decisions I made was actively building relationships in my first semester. Your support network might include:</p>
-            <ul>
-                <li><strong>Peer PhD students:</strong> They understand your struggles better than anyone</li>
-                <li><strong>Senior students:</strong> They can provide invaluable advice about navigating the program</li>
-                <li><strong>Faculty members:</strong> Beyond your advisor, other faculty can offer different perspectives</li>
-                <li><strong>International student community:</strong> If you're studying abroad, connect with others who understand the unique challenges</li>
-            </ul>
+    <div class="post-header-block">
+      <a href="phd-tips.html" class="breadcrumb">← PhD &amp; Research</a>
+      <div class="post-cat-badge">🎓 PhD Life</div>
+      <h1 id="post-title">Surviving Your First Year as a PhD Student: Lessons from NTU</h1>
+      <div class="post-meta-row">
+        <span>November 20, 2024</span>
+        <span>8 min read</span>
+      </div>
+    </div>
 
-            <h2>3. Develop a Sustainable Work Routine</h2>
-            <p>The PhD is a marathon, not a sprint. I learned this the hard way after burning out in my first semester trying to work 12-hour days.</p>
+    <div class="post-hero-img">
+      <img src="images/Surviving%20Your%20First%20Year%20as%20a%20PhD%20Student%20Lessons%20from%20NTU.jpg" alt="Surviving Your First Year as a PhD Student – Lessons from NTU">
+    </div>
 
-            <p><strong>My sustainable routine includes:</strong></p>
-            <ul>
-                <li>Clear work hours (9 AM - 6 PM on weekdays)</li>
-                <li>Regular breaks using the Pomodoro technique</li>
-                <li>At least one full day off per week</li>
-                <li>Exercise 3-4 times per week</li>
-                <li>Dedicated time for hobbies and socializing</li>
-            </ul>
+    <div class="lang-tabs">
+      <button class="lang-tab active" data-lang="en">🇺🇸 English</button>
+      <button class="lang-tab" data-lang="vi">🇻🇳 Tiếng Việt</button>
+    </div>
 
-            <h2>4. Start Reading Strategically</h2>
-            <p>You cannot read everything, and that's okay. I struggled with this at first, trying to read every paper from start to finish. Here's what works better:</p>
-            <ul>
-                <li>Master the art of skimming: read abstract, introduction, and conclusion first</li>
-                <li>Use citation management tools (Zotero, Mendeley, EndNote)</li>
-                <li>Take notes as you read, focusing on key arguments and methodology</li>
-                <li>Create a literature map to visualize connections between sources</li>
-            </ul>
+    <div id="content-en" class="post-content">
 
-            <h2>5. Communicate Regularly with Your Advisor</h2>
-            <p>Regular communication with my advisor has been crucial. We meet biweekly, but I also:</p>
-            <ul>
-                <li>Send brief email updates on my progress</li>
-                <li>Prepare specific questions before each meeting</li>
-                <li>Follow up meetings with action item summaries</li>
-                <li>Ask for feedback early and often</li>
-            </ul>
+      <p>Starting a PhD can feel overwhelming. You're navigating new coursework, trying to find your research direction, adjusting to a new academic culture, and potentially living in a new country. After completing my first year in the Linguistics PhD program at National Taiwan University, I want to share the lessons I learned that helped me not just survive, but thrive.</p>
 
-            <h2>6. Learn to Say No</h2>
-            <p>Opportunities will come your way: teaching assistantships, conference presentations, committee memberships. While these can be valuable, taking on too much will derail your research.</p>
+      <h2>1. Accept That It's Normal to Feel Lost</h2>
+      <p>The first few months of my PhD, I felt like everyone around me knew exactly what they were doing except me. I later learned that almost every PhD student feels this way. This phenomenon, often called "imposter syndrome," is incredibly common in academia.</p>
+      <p><strong>What helped me:</strong></p>
+      <ul>
+        <li>Talking openly with fellow PhD students about struggles and uncertainties</li>
+        <li>Remembering that I was admitted because the faculty believed in my potential</li>
+        <li>Keeping a "wins journal" to track small accomplishments</li>
+      </ul>
 
-            <p><strong>My rule of thumb:</strong> If it doesn't directly support my dissertation or professional development, I carefully consider whether I have the bandwidth.</p>
+      <h2>2. Build Your Support Network Early</h2>
+      <p>One of the best decisions I made was actively building relationships in my first semester. Your support network might include:</p>
+      <ul>
+        <li><strong>Peer PhD students:</strong> They understand your struggles better than anyone</li>
+        <li><strong>Senior students:</strong> They can provide invaluable advice about navigating the program</li>
+        <li><strong>Faculty members:</strong> Beyond your advisor, other faculty can offer different perspectives</li>
+        <li><strong>International student community:</strong> If you're studying abroad, connect with others who understand the unique challenges</li>
+      </ul>
+      <p>That said, if you're a quiet or introverted person like me 😅, please don't force yourself to network in ways that drain you. It's completely okay if you're not the type to chat with everyone. YouTube channels, vlogs from PhD students around the world, and online communities can be just as grounding and supportive as in-person connections. Find what works for <em>you</em>.</p>
 
-            <h2>7. Embrace the Messy Middle</h2>
-            <p>Research is rarely linear. My research questions evolved significantly throughout my first year, and that's completely normal. Allow yourself to:</p>
-            <ul>
-                <li>Explore different directions</li>
-                <li>Change your mind</li>
-                <li>Make mistakes and learn from them</li>
-                <li>Iterate on your ideas</li>
-            </ul>
+      <h2>3. Develop a Sustainable Work Routine</h2>
+      <p>The PhD is a marathon, not a sprint. I learned this the hard way after burning out in my first semester trying to work 12-hour days. I still sometimes find myself working until 1–2 AM, and every time, I wake up exhausted the next day. So I genuinely try to protect my hours now, even when deadlines tempt me otherwise.</p>
+      <p><strong>What my routine actually looks like:</strong></p>
+      <ul>
+        <li><strong>Core hours 9 AM – 6 PM:</strong> I try to do most of my deep work within this window on weekdays, knowing that late nights cost me the next morning</li>
+        <li><strong>My own version of "Pomodoro":</strong> I know many people swear by the Pomodoro technique, but honestly it depends on the person. I usually focus intensely for the first hour, then take a real break, do laundry, make tea, go for a short walk, and then return to work feeling reset</li>
+        <li><strong>At least one full day off per week:</strong> I love to meditate, read books for pleasure, watch movies, or travel somewhere new. This isn't a luxury; it's necessary</li>
+        <li><strong>Light movement:</strong> I'm not an exercise person and I've accepted that about myself! I keep it simple; a slow walk around the park is enough to clear my head</li>
+        <li><strong>Time for hobbies:</strong> Whatever makes you feel like yourself again. Protect that time fiercely</li>
+      </ul>
 
-            <h2>8. Take Care of Your Mental Health</h2>
-            <p>The PhD journey can be emotionally challenging. Don't hesitate to:</p>
-            <ul>
-                <li>Use university counseling services</li>
-                <li>Practice mindfulness or meditation</li>
-                <li>Maintain connections with family and friends</li>
-                <li>Seek help when you're struggling</li>
-            </ul>
+      <h2>4. Start Reading Strategically</h2>
+      <p>You cannot read everything, and that's okay. I struggled with this at first, trying to read every paper from start to finish. Here's what works better:</p>
+      <ul>
+        <li>Master the art of skimming: read abstract, introduction, and conclusion first</li>
+        <li>Use citation management tools (Zotero, Mendeley, or EndNote)</li>
+        <li>Take notes as you read, focusing on key arguments and methodology</li>
+        <li>Create a literature map to visualize connections between sources</li>
+      </ul>
 
-            <h2>Looking Forward</h2>
-            <p>The first year of a PhD is about laying foundations: building relationships, developing good habits, and starting to define your research direction. It's okay if you don't have all the answers yet. Focus on consistent progress, stay curious, and be kind to yourself.</p>
+      <h2>5. Communicate Regularly with Your Advisor</h2>
+      <p>Regular communication with my advisor has been crucial. We meet weekly, and I've developed a few habits that make those meetings much more productive.</p>
+      <ul>
+        <li><strong>Brief email updates:</strong> I send short progress emails between meetings. My professor doesn't always reply, and that's okay! I've learned that she reads them before our meetings, so they still serve as a useful record and help her come prepared</li>
+        <li><strong>Specific questions prepared in advance:</strong> Vague check-ins waste everyone's time. I come with concrete questions or decisions I need guidance on</li>
+        <li><strong>Action item summaries after each meeting:</strong> I send a short follow-up note outlining what we discussed and what I'll do next, which keeps me accountable and creates a paper trail</li>
+        <li><strong>Ask for feedback early:</strong> Don't wait until something is "perfect" to share it. Early feedback saves you from going down the wrong path for weeks</li>
+      </ul>
+      <p>Every advisor is different. Some are very responsive, others less so. What matters is finding a communication style that works for both of you, and not taking silence personally.</p>
 
-            <p>Remember, every successful PhD student once stood exactly where you are now, wondering if they could do it. You can.</p>
+      <h2>6. Learn to Say No</h2>
+      <p>Opportunities will come your way: teaching assistantships, conference presentations, committee memberships. While these can be valuable, taking on too much will derail your research.</p>
+      <blockquote>My rule of thumb: if it doesn't directly support my dissertation or professional development, I carefully consider whether I have the bandwidth.</blockquote>
 
-            <hr style="margin: 3rem 0; border: none; border-top: 1px solid #E2E8F0;">
+      <h2>7. Embrace the Messy Middle</h2>
+      <p>Research is rarely linear. My research questions evolved significantly throughout my first year, and that's completely normal. Allow yourself to:</p>
+      <ul>
+        <li>Explore different directions</li>
+        <li>Change your mind</li>
+        <li>Make mistakes and learn from them</li>
+        <li>Iterate on your ideas</li>
+      </ul>
 
-            <p><em>What's been your biggest challenge in your PhD journey? I'd love to hear from you at <a href="mailto:jessie.thachthao@gmail.com">jessie.thachthao@gmail.com</a> or connect on <a href="contact.html">social media</a>.</em></p>
-        </section>
+      <h2>8. Take Care of Your Mental Health</h2>
+      <p>The PhD journey can be emotionally challenging. Don't hesitate to:</p>
+      <ul>
+        <li>Use university counseling services</li>
+        <li>Practice mindfulness or meditation</li>
+        <li>Maintain connections with family and friends</li>
+        <li>Seek help when you're struggling</li>
+      </ul>
 
-        <section style="background: var(--bg-light); padding: 3rem 0;">
-            <div class="container">
-                <h3 style="text-align: center; margin-bottom: 2rem;">Read More PhD Tips</h3>
-                <div class="posts-grid three-columns">
-                    <article class="post-card">
-                        <div class="post-image">
-                            <img src="https://images.unsplash.com/photo-1434030216411-0b793f4b4173?w=600&h=400&fit=crop" alt="Academic writing">
-                            <span class="post-category">PhD Life</span>
-                        </div>
-                        <div class="post-content">
-                            <time class="post-date">Coming Soon</time>
-                            <h3><a href="#">How to Write Your First Academic Paper</a></h3>
-                            <p>A step-by-step guide from literature review to publication...</p>
-                        </div>
-                    </article>
+      <h2>Looking Forward</h2>
+      <p>The first year of a PhD is about laying foundations: building relationships, developing good habits, and starting to define your research direction. It's okay if you don't have all the answers yet. Focus on consistent progress, stay curious, and be kind to yourself.</p>
+      <p>Remember, every successful PhD student once stood exactly where you are now, wondering if they could do it. You can.</p>
 
-                    <article class="post-card">
-                        <div class="post-image">
-                            <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=600&h=400&fit=crop" alt="Conference">
-                            <span class="post-category">Research</span>
-                        </div>
-                        <div class="post-content">
-                            <time class="post-date">Coming Soon</time>
-                            <h3><a href="#">Presenting at International Conferences</a></h3>
-                            <p>Tips and tricks from my experience at TESOL, JALT, and more...</p>
-                        </div>
-                    </article>
+      <hr>
 
-                    <article class="post-card">
-                        <div class="post-image">
-                            <img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?w=600&h=400&fit=crop" alt="AI research">
-                            <span class="post-category">Research</span>
-                        </div>
-                        <div class="post-content">
-                            <time class="post-date">November 5, 2024</time>
-                            <h3><a href="post-ai-language.html">AI in Language Learning</a></h3>
-                            <p>Insights from my systematic review on AI in education...</p>
-                        </div>
-                    </article>
-                </div>
-            </div>
-        </section>
-    </main>
+      <p><em>What's been your biggest challenge in your PhD journey? I'd love to hear from you at <a href="mailto:jessie.thachthao@gmail.com">jessie.thachthao@gmail.com</a> or through the <a href="contact.html">contact page</a>.</em></p>
 
-    <footer class="footer">
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-section">
-                    <h3>Thach Thao</h3>
-                    <p>PhD student in Linguistics at NTU. Sharing insights on academic life, English learning, and living abroad in Taiwan.</p>
-                </div>
-                <div class="footer-section">
-                    <h4>Quick Links</h4>
-                    <ul>
-                        <li><a href="index.html">Home</a></li>
-                        <li><a href="phd-tips.html">PhD & Research</a></li>
-                        <li><a href="english-learning.html">English Learning</a></li>
-                        <li><a href="living-abroad.html">Life in Taiwan</a></li>
-                        <li><a href="about.html">About</a></li>
-                    </ul>
-                </div>
-                <div class="footer-section">
-                    <h4>Connect</h4>
-                    <div class="social-links">
-                        <a href="mailto:jessie.thachthao@gmail.com">Email</a>
-                        <a href="https://www.linkedin.com/in/thach-thao-jessica-85aab9131/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
-                        <a href="https://www.researchgate.net/profile/Le-Thi-Thach-Thao?ev=hdr_xprf" target="_blank" rel="noopener noreferrer">ResearchGate</a>
-                        <a href="https://scholar.google.com/citations?user=sKBD3EEAAAAJ&amp;hl=en" target="_blank" rel="noopener noreferrer">Google Scholar</a>
-                    </div>
-                </div>
-            </div>
-            <div class="footer-bottom">
-                <p>&copy; 2024 Thach Thao. All rights reserved.</p>
-            </div>
-        </div>
-    </footer>
+    </div><!-- end #content-en -->
 
-    <script src="js/main.js"></script>
-    <!-- Ghibli mascots: Totoro + mushroom -->
-    <span class="ghibli-totoro" aria-hidden="true" title="Totoro">🐾</span>
-    <span class="ghibli-sticker-2" aria-hidden="true" title="Forest mushroom">🍄</span>
-    <span class="ghibli-sticker-3" aria-hidden="true" title="Seedling">🌱</span>
+    <div id="content-vi" class="post-content" style="display:none">
+
+      <p>Bắt đầu hành trình PhD (Tiến sĩ) có thể khiến bạn cảm thấy bị ngợp. Nào là làm quen với môn học mới, loay hoay tìm hướng nghiên cứu, thích nghi với văn hóa học thuật, và có khi là cả việc bắt đầu cuộc sống ở một quốc gia xa lạ.</p>
+      <p>Sau khi kết thúc năm đầu tiên tại chương trình Tiến sĩ Ngôn ngữ học ở Đại học Quốc gia Đài Loan (NTU), mình muốn chia sẻ những bài học giúp mình không chỉ "trụ vững" mà còn thực sự tận hưởng hành trình này.</p>
+
+      <h2>1. Chấp nhận rằng cảm thấy "lạc lối" là chuyện bình thường</h2>
+      <p>Mấy tháng đầu, mình luôn cảm thấy hình như ai xung quanh cũng biết rõ họ đang làm gì, trừ mình. Sau này mình mới hiểu, hầu hết NCS đều trải qua cảm giác này. Trong học thuật, nó gọi là "hội chứng kẻ giả mạo" (imposter syndrome).</p>
+      <p><strong>Cách mình đã vượt qua:</strong></p>
+      <ul>
+        <li>Cởi mở chia sẻ những khó khăn với bạn bè cùng khóa.</li>
+        <li>Tự nhủ rằng: Khoa nhận mình vì họ thấy được tiềm năng của mình.</li>
+        <li>Viết "nhật ký chiến thắng" (wins journal) để ghi lại những thành tựu nhỏ mỗi ngày.</li>
+      </ul>
+
+      <h2>2. Xây dựng mạng lưới hỗ trợ sớm</h2>
+      <p>Một trong những quyết định đúng đắn nhất của mình là chủ động kết nối ngay từ học kỳ đầu. Mạng lưới này bao gồm:</p>
+      <ul>
+        <li><strong>Bạn bè cùng khóa:</strong> Những người hiểu rõ nỗi khổ của bạn nhất.</li>
+        <li><strong>Các anh chị khóa trên:</strong> "Kho tàng" kinh nghiệm về cách vượt qua chương trình.</li>
+        <li><strong>Giảng viên:</strong> Ngoài giáo sư hướng dẫn, các thầy cô khác cũng mang lại nhiều góc nhìn thú vị.</li>
+        <li><strong>Cộng đồng sinh viên quốc tế:</strong> Nơi chia sẻ những thử thách đặc thù khi đi du học.</li>
+      </ul>
+      <p>Lưu ý nhỏ: Nếu bạn là người hướng nội giống mình 😅, đừng ép bản thân phải đi giao lưu đến mức kiệt sức. Bạn có thể tìm thấy sự đồng cảm qua các kênh YouTube, vlog của các NCS trên thế giới hoặc các cộng đồng online. Hãy tìm cách kết nối khiến bạn thấy thoải mái nhất.</p>
+
+      <h2>3. Thiết lập thói quen làm việc bền vững</h2>
+      <p>PhD là một cuộc chạy marathon, không phải chạy nước rút. Mình từng kiệt sức ở kỳ đầu vì cố làm 12 tiếng/ngày. Giờ đây, mình cố gắng bảo vệ quỹ thời gian nghỉ ngơi của mình.</p>
+      <p><strong>Lịch trình thực tế của mình:</strong></p>
+      <ul>
+        <li><strong>Giờ "vàng" (9h sáng – 6h tối):</strong> Tập trung làm việc sâu vào ban ngày để tránh phải thức đêm (vì thức đêm sẽ làm mình mệt rã rời vào hôm sau).</li>
+        <li><strong>"Pomodoro" phiên bản cá nhân:</strong> Thay vì máy móc theo app, mình thường tập trung cao độ trong 1 tiếng, sau đó đi pha trà, giặt đồ hoặc đi dạo ngắn để reset lại đầu óc.</li>
+        <li><strong>Nghỉ trọn vẹn ít nhất 1 ngày/tuần:</strong> Mình dành thời gian thiền, đọc sách giải trí, xem phim hoặc đi du lịch. Đây không phải là hưởng thụ, mà là bắt buộc để tái tạo năng lượng.</li>
+        <li><strong>Vận động nhẹ nhàng:</strong> Mình không phải dân thể thao, nên một chuyến đi bộ chậm quanh công viên là đủ để tâm trí thông thoáng hơn.</li>
+      </ul>
+
+      <h2>4. Học cách đọc tài liệu có chiến thuật</h2>
+      <p>Bạn không thể đọc hết mọi thứ, và điều đó không sao cả. Thay vì đọc từ đầu đến cuối mọi bài báo, mình chọn cách:</p>
+      <ul>
+        <li><strong>Đọc lướt (Skimming):</strong> Đọc tóm tắt (abstract), mở đầu và kết luận trước.</li>
+        <li><strong>Dùng công cụ quản lý tài liệu:</strong> Zotero, Mendeley hoặc EndNote là "cứu cánh".</li>
+        <li><strong>Ghi chú thông minh:</strong> Tập trung vào các luận điểm chính và phương pháp nghiên cứu.</li>
+        <li><strong>Vẽ bản đồ văn liệu (literature map):</strong> Để thấy được mối liên hệ giữa các nguồn tài liệu khác nhau.</li>
+      </ul>
+
+      <h2>5. Giữ liên lạc thường xuyên với Giáo sư hướng dẫn (Advisor)</h2>
+      <p>Việc trao đổi định kỳ với giáo sư là cực kỳ quan trọng. Mình thường họp với cô hằng tuần và duy trì các thói quen sau:</p>
+      <ul>
+        <li><strong>Cập nhật ngắn gọn qua email:</strong> Gửi báo cáo tiến độ giữa các buổi họp. Dù cô không phải lúc nào cũng trả lời, nhưng nó giúp cô nắm được tình hình và có sự chuẩn bị trước khi gặp mình.</li>
+        <li><strong>Chuẩn bị câu hỏi cụ thể:</strong> Đừng đến gặp thầy cô một cách mơ hồ. Hãy mang theo những câu hỏi hoặc vấn đề cụ thể cần tư vấn.</li>
+        <li><strong>Gửi tóm tắt sau cuộc họp:</strong> Ghi lại những gì đã thảo luận và các bước tiếp theo để cả hai bên cùng nắm rõ.</li>
+        <li><strong>Hỏi ý kiến sớm:</strong> Đừng đợi đến khi mọi thứ "hoàn hảo" mới trình thầy cô. Góp ý sớm sẽ giúp bạn tránh đi chệch hướng cả tháng trời.</li>
+      </ul>
+
+      <h2>6. Học cách nói "Không"</h2>
+      <p>Sẽ có rất nhiều cơ hội tìm đến: làm trợ giảng (TA), tham gia hội thảo, các dự án bên lề... Tuy nhiên, ôm đồm quá nhiều sẽ khiến bạn xao nhãng việc nghiên cứu chính.</p>
+      <blockquote>Nguyên tắc của mình: Nếu việc đó không trực tiếp hỗ trợ cho luận án hoặc phát triển sự nghiệp lâu dài, mình sẽ cân nhắc kỹ xem có thực sự đủ sức để nhận hay không.</blockquote>
+
+      <h2>7. Chấp nhận sự "ngổn ngang" ở giai đoạn giữa</h2>
+      <p>Nghiên cứu không bao giờ là một đường thẳng. Câu hỏi nghiên cứu của mình đã thay đổi đáng kể trong năm đầu tiên. Hãy cho phép bản thân:</p>
+      <ul>
+        <li>Khám phá các hướng đi khác nhau.</li>
+        <li>Thay đổi quyết định khi thấy cần thiết.</li>
+        <li>Phạm sai lầm và học hỏi từ đó.</li>
+        <li>Điều chỉnh và cải thiện ý tưởng theo từng vòng lặp.</li>
+      </ul>
+
+      <h2>8. Chăm sóc sức khỏe tinh thần</h2>
+      <p>Hành trình PhD rất dễ gây áp lực tâm lý. Đừng ngần ngại:</p>
+      <ul>
+        <li>Sử dụng dịch vụ tư vấn tâm lý của trường.</li>
+        <li>Thực hành chánh niệm hoặc thiền định.</li>
+        <li>Duy trì kết nối với gia đình và bạn bè ngoài học thuật.</li>
+        <li>Tìm kiếm sự giúp đỡ khi cảm thấy quá tải.</li>
+      </ul>
+
+      <h2>Lời kết</h2>
+      <p>Năm đầu tiên của PhD là để xây móng: xây dựng các mối quan hệ, thói quen tốt và bắt đầu định hình hướng nghiên cứu. Không sao cả nếu bạn chưa có mọi câu trả lời ngay lúc này. Hãy tập trung vào việc tiến bộ mỗi ngày, luôn tò mò và hãy tử tế với chính mình.</p>
+      <p>Hãy nhớ, mọi Tiến sĩ thành công đều từng đứng ở vị trí của bạn bây giờ, cũng từng tự hỏi liệu mình có làm được không. Và bạn chắc chắn sẽ làm được!</p>
+
+      <hr>
+
+      <p><em>Hành trình PhD của bạn có điểm gì thú vị hay thách thức nhất? Mình rất muốn nghe, hãy liên hệ qua email <a href="mailto:jessie.thachthao@gmail.com">jessie.thachthao@gmail.com</a> hoặc qua <a href="contact.html">trang liên hệ</a> nhé.</em></p>
+
+    </div><!-- end #content-vi -->
+  </div>
+
+  <section class="related-section">
+    <div class="container">
+      <h2>Read More PhD Tips</h2>
+      <div class="related-grid">
+
+        <a href="#" class="cosmic-card">
+          <div class="cc-image">
+            <img src="https://images.unsplash.com/photo-1434030216411-0b793f4b4173?w=600&h=400&fit=crop" alt="Academic writing">
+            <span class="cc-badge">Writing</span>
+          </div>
+          <div class="cc-body">
+            <time class="cc-date">Coming Soon</time>
+            <h3 class="cc-title">How to Write Your First Academic Paper</h3>
+            <p class="cc-excerpt">A step-by-step guide from literature review to submission.</p>
+            <span class="cc-readmore">Coming Soon →</span>
+          </div>
+        </a>
+
+        <a href="#" class="cosmic-card">
+          <div class="cc-image">
+            <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=600&h=400&fit=crop" alt="Conference">
+            <span class="cc-badge">Conferences</span>
+          </div>
+          <div class="cc-body">
+            <time class="cc-date">Coming Soon</time>
+            <h3 class="cc-title">Presenting at International Conferences</h3>
+            <p class="cc-excerpt">Tips from my experience at TESOL, JALT, and more.</p>
+            <span class="cc-readmore">Coming Soon →</span>
+          </div>
+        </a>
+
+        <a href="post-ai-language.html" class="cosmic-card">
+          <div class="cc-image">
+            <img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?w=600&h=400&fit=crop" alt="AI research">
+            <span class="cc-badge">Research</span>
+          </div>
+          <div class="cc-body">
+            <time class="cc-date">November 5, 2024</time>
+            <h3 class="cc-title">AI in Language Learning: What My Research Reveals</h3>
+            <p class="cc-excerpt">Insights from my systematic review on AI in education.</p>
+            <span class="cc-readmore">Read More →</span>
+          </div>
+        </a>
+
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <div class="wave-top" aria-hidden="true">
+    <svg viewBox="0 0 1440 60" preserveAspectRatio="none">
+      <path d="M0 30 Q 180 0, 360 30 T 720 30 T 1080 30 T 1440 30 V0 H0 Z" fill="#F4F8FB"/>
+    </svg>
+  </div>
+  <div class="footer-grid">
+    <div class="col brand">
+      <div class="name2"><span style="font-size:20px;" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 18 18" xmlns="http://www.w3.org/2000/svg"><g transform="translate(9,9)"><ellipse cx="0" cy="-4" rx="1.4" ry="3.5" fill="#A855F7" transform="rotate(0)"/><ellipse cx="0" cy="-4" rx="1.4" ry="3.5" fill="#9333EA" transform="rotate(30)"/><ellipse cx="0" cy="-4" rx="1.4" ry="3.5" fill="#A855F7" transform="rotate(60)"/><ellipse cx="0" cy="-4" rx="1.4" ry="3.5" fill="#9333EA" transform="rotate(90)"/><ellipse cx="0" cy="-4" rx="1.4" ry="3.5" fill="#A855F7" transform="rotate(120)"/><ellipse cx="0" cy="-4" rx="1.4" ry="3.5" fill="#9333EA" transform="rotate(150)"/><ellipse cx="0" cy="-4" rx="1.4" ry="3.5" fill="#A855F7" transform="rotate(180)"/><ellipse cx="0" cy="-4" rx="1.4" ry="3.5" fill="#9333EA" transform="rotate(210)"/><ellipse cx="0" cy="-4" rx="1.4" ry="3.5" fill="#A855F7" transform="rotate(240)"/><ellipse cx="0" cy="-4" rx="1.4" ry="3.5" fill="#9333EA" transform="rotate(270)"/><ellipse cx="0" cy="-4" rx="1.4" ry="3.5" fill="#A855F7" transform="rotate(300)"/><ellipse cx="0" cy="-4" rx="1.4" ry="3.5" fill="#9333EA" transform="rotate(330)"/><circle r="2.5" fill="#F5C518"/><circle r="1.2" fill="#C89010"/></g></svg></span> Thach <span style="color:var(--blue);">Thao</span><span style="color:#B8A9E8;font-size:0.8em;font-weight:500;margin-left:3px;"> · Jessica</span></div>
+      <p class="bio2">PhD student in Linguistics at NTU. Sharing insights on academic life, English learning, and living abroad in Taiwan.</p>
+      <div class="ocean-row" aria-hidden="true">
+        <span style="--d:0s;">🐚</span>
+        <span style="--d:-1s;">🐟</span>
+        <span style="--d:-2s;">🌊</span>
+        <span style="--d:-3s;">⭐</span>
+      </div>
+    </div>
+    <div class="col">
+      <h3>Quick Links</h3>
+      <nav class="links">
+        <a href="index.html">Home</a>
+        <a href="phd-tips.html">PhD &amp; Research</a>
+        <a href="english-learning.html">English Learning</a>
+        <a href="living-abroad.html">Life in Taiwan</a>
+      <a href="contact.html">Contact</a>
+        <a href="about.html">Profile</a>
+      </nav>
+    </div>
+    <div class="col">
+      <h3>Connect</h3>
+      <a class="connect-email" href="mailto:jessie.thachthao@gmail.com">
+        <span class="ic2" aria-hidden="true">✉️</span>jessie.thachthao@gmail.com
+      </a>
+      <div class="socials">
+        <a href="https://www.linkedin.com/in/thach-thao-jessica-85aab9131/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+        <a href="https://www.researchgate.net/profile/Le-Thi-Thach-Thao?ev=hdr_xprf" target="_blank" rel="noopener noreferrer">ResearchGate</a>
+        <a href="https://scholar.google.com/citations?user=sKBD3EEAAAAJ&hl=en" target="_blank" rel="noopener noreferrer">Scholar</a>
+        <a href="https://github.com/jessicathao" target="_blank" rel="noopener noreferrer">GitHub</a>
+      </div>
+    </div>
+  </div>
+  <div class="bottom">
+    <span>© 2024 Thach Thao. All rights reserved.</span>
+    <span class="tag2">Built with <span class="heart" aria-hidden="true">💙</span> by a linguist who loves learning and sharing</span>
+  </div>
+</footer>
+
+<button class="scroll-top" id="scrollTop" aria-label="Back to top">↑</button>
+
+<script>
+  const header = document.getElementById('siteHeader');
+  const scrollTopBtn = document.getElementById('scrollTop');
+  const onScroll = () => {
+    header.classList.toggle('scrolled', window.scrollY > 12);
+    scrollTopBtn.classList.toggle('show', window.scrollY > 400);
+  };
+  window.addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
+
+  const btn = document.getElementById('menuBtn');
+  const drawer = document.getElementById('drawer');
+  btn.addEventListener('click', () => {
+    const open = drawer.classList.toggle('open');
+    btn.textContent = open ? '✕' : '☰';
+  });
+  drawer.addEventListener('click', e => {
+    if (e.target.tagName === 'A') { drawer.classList.remove('open'); btn.textContent = '☰'; }
+  });
+
+  scrollTopBtn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+
+  // Language tab switcher
+  const titles = {
+    en: 'Surviving Your First Year as a PhD Student: Lessons from NTU',
+    vi: '8 Bài Học Giúp Mình "Sống Sót" Và Phát Triển Sau Năm Đầu Làm PhD Tại Đài Loan'
+  };
+  const postTitle = document.getElementById('post-title');
+  const contentEn = document.getElementById('content-en');
+  const contentVi = document.getElementById('content-vi');
+  const langTabs = document.querySelectorAll('.lang-tab');
+
+  langTabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      const lang = tab.dataset.lang;
+      langTabs.forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+      if (lang === 'en') {
+        contentEn.style.display = '';
+        contentVi.style.display = 'none';
+        postTitle.textContent = titles.en;
+      } else {
+        contentEn.style.display = 'none';
+        contentVi.style.display = '';
+        postTitle.textContent = titles.vi;
+      }
+      // Smooth scroll to content
+      contentEn.closest('.post-wrap').scrollIntoView({ behavior: 'smooth', block: 'start' });
+    });
+  });
+</script>
+
+<script data-goatcounter="https://jessicathao.goatcounter.com/count"
+        async src="//gc.zgo.at/count.js"></script>
+
 </body>
 </html>
