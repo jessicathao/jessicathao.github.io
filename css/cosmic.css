@@ -488,6 +488,32 @@ nav.primary a.active { color: #fff; background: linear-gradient(135deg, var(--bl
 .skill-block p { font-size: 13px; color: var(--muted); line-height: 1.6; }
 
 /* ==================================================
+   SHARE BUTTONS
+================================================== */
+.share-row {
+  display: flex; align-items: center; gap: 10px; flex-wrap: wrap;
+  max-width: 720px; margin: 0 auto; padding: 28px 24px 0;
+  border-top: 1px solid rgba(120,150,200,0.15);
+}
+.share-label {
+  font-size: 12.5px; font-weight: 700; color: var(--soft);
+  text-transform: uppercase; letter-spacing: 0.08em; margin-right: 4px;
+}
+.share-btn {
+  display: inline-flex; align-items: center; gap: 7px;
+  padding: 8px 18px; border-radius: 999px;
+  font-family: 'Nunito', sans-serif; font-size: 13px; font-weight: 700;
+  text-decoration: none; transition: transform .25s, box-shadow .25s; cursor: pointer;
+}
+.share-btn.fb { background: #1877F2; color: #fff; }
+.share-btn.fb:hover { background: #0e5fc0; transform: translateY(-2px); box-shadow: 0 8px 20px rgba(24,119,242,0.4); }
+.share-btn.x  { background: #000; color: #fff; }
+.share-btn.x:hover  { background: #222; transform: translateY(-2px); box-shadow: 0 8px 20px rgba(0,0,0,0.3); }
+.share-btn.li { background: #0A66C2; color: #fff; }
+.share-btn.li:hover { background: #084d90; transform: translateY(-2px); box-shadow: 0 8px 20px rgba(10,102,194,0.4); }
+@media (max-width: 600px) { .share-row { gap: 8px; } .share-btn { padding: 7px 14px; font-size: 12px; } }
+
+/* ==================================================
    CONTACT PAGE
 ================================================== */
 .contact-wrap {
